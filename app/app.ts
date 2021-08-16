@@ -1,0 +1,1 @@
+angular.module('otrSharedComponents', ['otrSharedComponents.tpls', 'courtsDropdown']);

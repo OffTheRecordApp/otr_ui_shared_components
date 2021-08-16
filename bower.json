@@ -1,0 +1,21 @@
+{
+  "name": "otr-components-shared",
+  "description": "Module for shared components across OTR sites",
+  "main": "app.js",
+  "authors": [
+    "Chris Crow"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/alexg313/otr_js_components_shared",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#3.7.4"
+  }
+}

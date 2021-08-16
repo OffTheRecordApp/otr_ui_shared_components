@@ -1,0 +1,78 @@
+<script type="text/ng-template" id="/courts-dropdown.html">
+    <div class="angucomplete-holder"
+         ng-class="{'angucomplete-dropdown-visible': showDropdown}">
+    
+        <input id="otr-court-search" ng-model="searchStr"
+               ng-disabled="disableInput"
+               type="text"
+               placeholder="{{placeholder}}"
+               ng-focus="onFocusHandler()"
+               class="{{inputClass}}"
+               ng-blur="hideResults($event)"
+               autocapitalize="off"
+               autocorrect="off"
+               autocomplete="off"
+               ng-change="inputChangeHandler(searchStr)"/>
+
+        <div class="angucomplete-dropdown otr-angucomplete-dropdown"
+             ng-show="showDropdown">
+            <div class="angucomplete-searching"
+                 ng-show="searching"
+                 ng-bind="textSearching">
+            </div>
+            <div class="angucomplete-searching"
+                 ng-show="!searching && (!results || results.length == 0)"
+                 ng-bind="textNoResults">
+            </div>
+
+            <div class="otr-angucomplete-row angucomplete-row"
+                 ng-repeat="result in results"
+                 ng-click="(selectResult(result))" 
+                 ng-mouseenter="hoverRow($index)"
+                 ng-class="{'otr-angucomplete-selected-row': $index == currentIndex}">
+
+                <div class="angucomplete-title"
+                     otr-fuse-highlight
+                     fuse-highlight-bind="{{result.title}}"
+                     fuse-highlight-key="customTitle">
+                </div>
+                <div class="angucomplete-description"
+                     otr-fuse-highlight
+                     fuse-highlight-bind="{{result.description}}"
+                     fuse-highlight-key="customDescription">
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="otr-dropdown" ng-switch="vm.isCourtsLoading">
+    <span class="otr-dropdown__icon"
+          ng-switch-when="true">
+        <i class="fas fa-spinner fa-pulse"></i>
+    </span>
+    <span class="otr-dropdown__icon"
+          ng-switch-default>
+        <i class="far fa-angle-down"></i>
+    </span>
+
+    <angucomplete-alt
+        template-url="/courts-dropdown.html"
+        id="courts-search-bar"
+        placeholder="e.g. Seattle Municipal Court"
+        pause="200"
+        selected-object="vm.onSelectCourt()"
+        local-data="vm.courts"
+        local-search="vm.findMatchingCourts"
+        title-field="customTitle"
+        description-field="customDescription"
+        minlength="0"
+        auto-match="true"
+        text-no-results="Enter the court name, city, county, address, or zip code."
+        text-searching="Searching courts..."
+        input-class="{{vm.classes}}"
+        disable-input="vm.isCourtsLoading"
+        clear-selected="true"
+        ng-keydown="vm.isCourtFormSubmitted = false"
+    />
+</div>

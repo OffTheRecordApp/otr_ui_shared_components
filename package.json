@@ -1,0 +1,41 @@
+{
+  "name": "otr-components-shared",
+  "version": "1.0.0",
+  "description": "Module for shared components across OTR sites",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexg313/otr_js_components_shared.git"
+  },
+  "author": "Chris Crow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexg313/otr_js_components_shared/issues"
+  },
+  "homepage": "https://github.com/alexg313/otr_js_components_shared#readme",
+  "dependencies": {
+    "bower": "^1.8.12",
+    "browser-sync": "^2.27.5",
+    "fuse.js": "^6.4.6",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "lodash": "^4.17.21",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@angular/cli": "^12.2.1",
+    "@types/angular": "^1.8.2",
+    "@types/lodash": "^4.14.172",
+    "@types/node": "^16.4.14",
+    "gulp": "^4.0.2",
+    "gulp-angular-templatecache": "^3.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.37.5"
+  }
+}
