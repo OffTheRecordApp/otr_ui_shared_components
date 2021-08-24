@@ -8,44 +8,40 @@ const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 
 // for production / build
-function jsTask(cb) {
+function jsTask() {
     var tsProject = ts.createProject('tsconfig.json');
-    src('app/**/*.ts')
+    return src('app/**/*.ts')
         .pipe(tsProject())
-        .pipe(concat('otrSharedComponents.js'))
+        .pipe(concat('otr-ui-shared-components.js'))
         .pipe(dest('dist'))
         .pipe(rename({ extname: '.min.js' }))
         .pipe(uglify())
         .pipe(dest('dist'));
-    cb();
 }
 
-function cssTask(cb) {
-    src('app/**/*.scss')
+function cssTask() {
+    return src('app/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(concat('otrSharedComponents.css'))
+        .pipe(concat('otr-ui-shared-components.css'))
         .pipe(dest('dist'));
-    cb();
 }
 
-function htmlTask(cb) {
-    src('app/**/*.html')
+function htmlTask() {
+    return src('app/**/*.html')
         .pipe(templateCache({
-            filename: 'otrSharedComponents.tpls.js',
-            module: 'otrSharedComponents.tpls',
+            filename: 'otr-ui-shared-components.tpls.js',
+            module: 'otr-ui-shared-components.tpls',
             standalone: true
         }))
         .pipe(dest('dist'))
         .pipe(rename({ extname: '.min.js' }))
         .pipe(uglify())
         .pipe(dest('dist'));
-    cb();
 }
 
-function cleanScripts(cb) {
-    src('dist')
+function cleanScripts() {
+    return src('dist')
         .pipe(clean());
-    cb();
 }
 
 exports.clean = cleanScripts;

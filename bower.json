@@ -1,5 +1,5 @@
 {
-  "name": "otr-components-shared",
+  "name": "otr-ui-shared-components",
   "description": "Module for shared components across OTR sites",
   "main": "app.js",
   "authors": [
@@ -13,9 +13,12 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "app",
+    "tsconfig.json",
+    "gulpfile.js"
   ],
   "dependencies": {
-    "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#3.7.4"
+    "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#3.8.9"
   }
 }

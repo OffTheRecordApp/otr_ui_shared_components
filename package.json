@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexg313/otr_js_components_shared.git"
+    "url": "git+https://github.com/alexg313/otr-ui-shared-components.git"
   },
   "author": "Chris Crow",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexg313/otr_js_components_shared/issues"
+    "url": "https://github.com/alexg313/otr-ui-shared-components/issues"
   },
-  "homepage": "https://github.com/alexg313/otr_js_components_shared#readme",
+  "homepage": "https://github.com/alexg313/otr-ui-shared-components#readme",
   "dependencies": {
     "bower": "^1.8.12",
     "browser-sync": "^2.27.5",

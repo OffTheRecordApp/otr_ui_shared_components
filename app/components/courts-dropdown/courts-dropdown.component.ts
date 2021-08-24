@@ -1,6 +1,13 @@
 declare const Fuse: any;
+declare const OtrService: any;
 let ctrl: any = null;
 
+interface ICourtsDropdownBindings { // TODO: revisit naming convention
+    inputClass: string;
+    hasError: boolean;
+    onSelectCourt: (selectedCourt: any) => any;
+    state: string;
+}
 class CourtsDropdownComponent implements angular.IComponentOptions {
     public bindings: any;
     public controller: any;
@@ -12,22 +19,14 @@ class CourtsDropdownComponent implements angular.IComponentOptions {
             onSelectCourt: '&',
             inputClass: '@',
             hasError: '<',
-            courts: '<'
+            state: '@'
         };
         this.controller = CourtsDropdownCtrl;
         this.controllerAs = 'vm';
         this.templateUrl = '/components/courts-dropdown/courts-dropdown.component.html';
     }
 }
-
-interface ICourtsDropdownBindings {
-    inputClass: string;
-    hasError: boolean;
-    onSelectCourt: (selectedCourt: any) => any;
-    courts: any[];
-}
-
-interface ICourtsDropdownCtrl extends ICourtsDropdownBindings {
+interface ICourtsDropdownCtrl extends ICourtsDropdownBindings { // TODO: leverage generics here
     classes: string;
     $onInit: () => void;
     $onChanges: (changes: any) => void;
@@ -35,19 +34,23 @@ interface ICourtsDropdownCtrl extends ICourtsDropdownBindings {
 }
 
 class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
-    static $inject: string[] = [];
+    static $inject: string[] = ['OtrService'];
     public inputClass: string;
     public hasError: boolean;
-    public onSelectCourt!: (selectedCourt: any) => any;
-    public courts!: any[];
     public classes: string;
     public isCourtsLoading: boolean;
+    public onSelectCourt!: (selectedCourt: any) => any;
+    public state!: string;
+    declare public courts: any[];
+    public otrService!: any;
+    private API_ENDPOINT: string = 'https://otr-backend-service-us-prod.offtherecord.com'; // TODO: any way to use ENV variable?
 
-    constructor() {
+    constructor(OtrService: any) {
         this.inputClass = '';
         this.hasError = false;
         this.classes = this.inputClass;
         this.isCourtsLoading = false;
+        this.otrService = new OtrService({ domain: this.API_ENDPOINT })
     }
 
     declare private fuseAllKeys: any;
@@ -63,9 +66,30 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
                 ? " has-error"
                 : "");
         }
-        if (changes.courts && this.courts) {
-            this.initFuse(angular.copy(this.courts));
+        if (changes.state && this.state) {
+            this.fetchCourts()
+                .then((courts) => this.initFuse(angular.copy(courts)));
         }
+    }
+
+    private async fetchCourts(): Promise<any[]> {
+        this.isCourtsLoading = true;
+        let response = await this.otrService.findCourtsUsingGET({ state: this.state });
+        this.courts = _.forEach(response.data.courts, (court) => {
+            court.customTitle = court.courtName;
+            court.customTitle += court.courtNameAdditional
+                ? ' – ' + court.courtNameAdditional
+                : '';
+            court.customTitle += court.courtCode
+                ? ' (' + court.courtCode + ')'
+                : '';
+            court.customDescription = court.address.city + ', '
+                + court.address.regionCode + ' '
+                + court.address.postalCode + ' – '
+                + court.address.countyName + ' County';
+        });
+        this.isCourtsLoading = false;
+        return this.courts;
     }
 
     private initFuse(courts: any[]): void {
@@ -97,8 +121,8 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
         }
     }
 
-    public findMatchingCourts(query: string) {
-        const threshold: number = 600;
+    public findMatchingCourts(query: string): any[] {
+        const threshold = 600;
         let allKeysResults: any[] = _.sortBy(ctrl.fuseAllKeys.search(query), 'courtId');
         let courtCodeResults: any[] = _.sortBy(ctrl.fuseCourtCode.search(query), 'courtId');
 
