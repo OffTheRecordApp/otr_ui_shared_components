@@ -1,1 +1,2 @@
-angular.module('otrSharedComponents', ['otrSharedComponents.tpls', 'courtsDropdown']);
+angular.module('otr-ui-shared-components',
+    ['angucomplete-alt', 'otrBackendService', 'otr-ui-shared-components.tpls']);

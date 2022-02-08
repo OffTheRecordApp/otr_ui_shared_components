@@ -1,4 +1,4 @@
-/* 
+/*
     DIRECTIVE ATTRIBUTES
         app-fuse-highlight:
             required to initiate directive
@@ -64,5 +64,5 @@ function fuseHighlightDirective() {
 }
 
 angular
-    .module('otrSharedComponents')
+    .module('otr-ui-shared-components')
     .directive('otrFuseHighlight', fuseHighlightDirective);

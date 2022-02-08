@@ -1,5 +1,5 @@
 "use strict";
-angular.module('otrSharedComponents', ['otrSharedComponents.tpls', 'courtsDropdown']);
+angular.module('otr-ui-shared-components', ['angucomplete-alt', 'otrBackendService', 'otr-ui-shared-components.tpls']);
 
 "use strict";
 function fuseHighlightDirective() {
@@ -50,8 +50,48 @@ function fuseHighlightDirective() {
     };
 }
 angular
-    .module('otrSharedComponents')
+    .module('otr-ui-shared-components')
     .directive('otrFuseHighlight', fuseHighlightDirective);
+
+"use strict";
+var OtrServiceProvider = /** @class */ (function () {
+    function OtrServiceProvider() {
+        var _this = this;
+        this.$get = [
+            'OtrService',
+            function (OtrService) {
+                if (!_this._otrServiceInstance) {
+                    var options = { domain: _this._domain };
+                    if (!_this._domain) {
+                        var message = 'Domain has not been set in app config';
+                        console.error(message);
+                        throw message;
+                    }
+                    if (_this._cache) {
+                        options.cache = _this._cache;
+                    }
+                    if (_this._token) {
+                        options.token = _this._token;
+                    }
+                    _this._otrServiceInstance = new OtrService(options);
+                }
+                return _this._otrServiceInstance;
+            }
+        ];
+        return;
+    }
+    OtrServiceProvider.prototype.setDomain = function (domain) {
+        this._domain = domain;
+    };
+    OtrServiceProvider.prototype.setCache = function (cache) {
+        this._cache = cache;
+    };
+    OtrServiceProvider.prototype.setToken = function (token) {
+        this._token = token;
+    };
+    return OtrServiceProvider;
+}());
+angular.module('otr-ui-shared-components').provider('otrService', OtrServiceProvider);
 
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -90,35 +130,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var ctrl = null;
-var CourtsDropdownComponent = /** @class */ (function () {
-    function CourtsDropdownComponent() {
-        this.bindings = {
-            onSelectCourt: '&',
-            inputClass: '@',
-            hasError: '<',
-            state: '@'
-        };
-        this.controller = CourtsDropdownCtrl;
-        this.controllerAs = 'vm';
-        this.templateUrl = '/components/courts-dropdown/courts-dropdown.component.html';
-    }
-    return CourtsDropdownComponent;
-}());
 var CourtsDropdownCtrl = /** @class */ (function () {
-    function CourtsDropdownCtrl(OtrService) {
-        this.API_ENDPOINT = 'https://otr-backend-service-us-prod.offtherecord.com';
+    function CourtsDropdownCtrl($scope, otrService) {
+        this.$scope = $scope;
+        this.otrService = otrService;
         this.inputClass = '';
         this.hasError = false;
         this.classes = this.inputClass;
         this.isCourtsLoading = false;
-        this.otrService = new OtrService({ domain: this.API_ENDPOINT });
+        this.findMatchingCourts = this.findMatchingCourts.bind(this);
     }
-    CourtsDropdownCtrl.prototype.$onInit = function () {
-        ctrl = this;
-    };
+    CourtsDropdownCtrl.prototype.$onInit = function () { };
     CourtsDropdownCtrl.prototype.$onChanges = function (changes) {
         var _this = this;
+        console.log(changes);
         if (changes.hasError) {
             this.classes = this.inputClass + (this.hasError
                 ? " has-error"
@@ -135,7 +160,7 @@ var CourtsDropdownCtrl = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.otrService) return [3 /*break*/, 2];
+                        _a.trys.push([0, , 2, 3]);
                         this.isCourtsLoading = true;
                         return [4 /*yield*/, this.otrService.findCourtsUsingGET({ state: this.state })];
                     case 1:
@@ -153,9 +178,12 @@ var CourtsDropdownCtrl = /** @class */ (function () {
                                 + court.address.postalCode + ' – '
                                 + court.address.countyName + ' County';
                         });
-                        this.isCourtsLoading = false;
                         return [2 /*return*/, this.courts];
-                    case 2: throw 'Error instantiating otrService';
+                    case 2:
+                        this.isCourtsLoading = false;
+                        this.$scope.$apply();
+                        return [7 /*endfinally*/];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
@@ -190,8 +218,8 @@ var CourtsDropdownCtrl = /** @class */ (function () {
     };
     CourtsDropdownCtrl.prototype.findMatchingCourts = function (query) {
         var threshold = 600;
-        var allKeysResults = _.sortBy(ctrl.fuseAllKeys.search(query), 'courtId');
-        var courtCodeResults = _.sortBy(ctrl.fuseCourtCode.search(query), 'courtId');
+        var allKeysResults = _.sortBy(this.fuseAllKeys.search(query), 'courtId');
+        var courtCodeResults = _.sortBy(this.fuseCourtCode.search(query), 'courtId');
         var results = _
             .chain(allKeysResults)
             .unionWith(courtCodeResults, function (codeVal, allVal) {
@@ -210,9 +238,19 @@ var CourtsDropdownCtrl = /** @class */ (function () {
             .value();
         return results;
     };
-    CourtsDropdownCtrl.$inject = ['OtrService'];
     return CourtsDropdownCtrl;
 }());
 angular
-    .module('courtsDropdown', [])
-    .component('courtsDropdown', new CourtsDropdownComponent());
+    .module('otr-ui-shared-components')
+    .component('courtsDropdown', {
+    controller: CourtsDropdownCtrl,
+    controllerAs: 'vm',
+    templateUrl: 'app/components/courts-dropdown/courts-dropdown.component.html',
+    bindings: {
+        onSelectCourt: '&',
+        inputClass: '@',
+        hasError: '<',
+        state: '@'
+    }
+});
+CourtsDropdownCtrl.$inject = ['$scope', 'otrService'];

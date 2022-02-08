@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="otr-ui-shared-components">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/angucomplete-alt/angucomplete-alt.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
+    <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
+    <script src="node_modules/otr-shared-libs/dist/otrBackendService.js"></script>
+    <script src="node_modules/lodash/lodash.js"></script>
+    <script src="node_modules/fuse.js/dist/fuse.js"></script>
+    <script src="dist/otr-ui-shared-components.tpls.js"></script>
+    <script src="dist/otr-ui-shared-components.js"></script>
+    <script>
+        angular.module('otr-ui-shared-components').config(
+            ['otrServiceProvider', function(otrServiceProvider){
+                otrServiceProvider.setDomain('https://otr-backend-service-us-devo.offtherecord.com');
+            }]
+        ).run(['$rootScope', function($rootScope) {
+            $rootScope.onSelect = (c) => {
+                console.log('Selected court', c);
+            }
+        }])
+    </script>
+</head>
+<body>
+    <courts-dropdown state="WA"
+                     on-select-court="onSelect">
+    </courts-dropdown>
+</body>
+</html>
