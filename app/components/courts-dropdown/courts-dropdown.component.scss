@@ -1,0 +1,51 @@
+.otr-dropdown {
+  .angucomplete-holder i {
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+    color: blue;
+  }
+
+  .otr-angucomplete-dropdown {
+    border-color: #ececec;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    width: 100% !important; // override constraint from library
+    cursor: pointer;
+    z-index: 9999;
+    position: absolute;
+    margin-top: 0;
+    background-color: white;
+    padding: 0 !important;
+
+    /* Needed for scrollbar */
+    overflow-y: scroll;
+    max-height: 400px;
+
+    .otr-angucomplete-row.otr-angucomplete-selected-row {
+      background-color: #3b7ddd;
+      color: white;
+    }
+  }
+
+  .otr-angucomplete-row {
+    padding: 20px;
+    color: #565a5c;
+    margin-bottom: 0;
+    clear: both;
+    border-bottom: 1px solid;
+    border-color: #ececec;
+    background-color: white;
+
+    .angucomplete-description {
+      color: goldenrod;
+    }
+
+    &:hover {
+      .angucomplete-description {
+        color: white;
+      }
+    }
+  }
+}

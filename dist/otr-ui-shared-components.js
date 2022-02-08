@@ -137,13 +137,12 @@ var CourtsDropdownCtrl = /** @class */ (function () {
         this.inputClass = '';
         this.hasError = false;
         this.classes = this.inputClass;
-        this.isCourtsLoading = false;
+        this.isDataLoading = false;
         this.findMatchingCourts = this.findMatchingCourts.bind(this);
     }
     CourtsDropdownCtrl.prototype.$onInit = function () { };
     CourtsDropdownCtrl.prototype.$onChanges = function (changes) {
         var _this = this;
-        console.log(changes);
         if (changes.hasError) {
             this.classes = this.inputClass + (this.hasError
                 ? " has-error"
@@ -161,7 +160,7 @@ var CourtsDropdownCtrl = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, , 2, 3]);
-                        this.isCourtsLoading = true;
+                        this.isDataLoading = true;
                         return [4 /*yield*/, this.otrService.findCourtsUsingGET({ state: this.state })];
                     case 1:
                         response = _a.sent();
@@ -180,7 +179,7 @@ var CourtsDropdownCtrl = /** @class */ (function () {
                         });
                         return [2 /*return*/, this.courts];
                     case 2:
-                        this.isCourtsLoading = false;
+                        this.isDataLoading = false;
                         this.$scope.$apply();
                         return [7 /*endfinally*/];
                     case 3: return [2 /*return*/];

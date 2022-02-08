@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="node_modules/angucomplete-alt/angucomplete-alt.css">
+    <link rel="stylesheet" href="dist/otr-ui-shared-components.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
     <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
@@ -25,8 +26,21 @@
     </script>
 </head>
 <body>
-    <courts-dropdown state="WA"
-                     on-select-court="onSelect">
-    </courts-dropdown>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        .search-input {
+            height: 35px;
+            padding: 5px;
+            width: 300px;
+        }
+    </style>
+    <div>
+        <app-courts-dropdown state="WA"
+                         input-class="search-input"
+                         on-select-court="onSelect">
+        </app-courts-dropdown>
+    </div>
 </body>
 </html>

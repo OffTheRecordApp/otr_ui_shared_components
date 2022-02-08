@@ -18,7 +18,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     public inputClass: string;
     public hasError: boolean;
     public classes: string;
-    public isCourtsLoading: boolean;
+    public isDataLoading: boolean;
     public onSelectCourt!: (selectedCourt: any) => any;
     public state!: string;
     declare public courts: any[];
@@ -27,7 +27,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
         this.inputClass = '';
         this.hasError = false;
         this.classes = this.inputClass;
-        this.isCourtsLoading = false;
+        this.isDataLoading = false;
         this.findMatchingCourts = this.findMatchingCourts.bind(this);
     }
 
@@ -37,7 +37,6 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     public $onInit(): void {}
 
     public $onChanges(changes: any): void {
-        console.log(changes);
         if (changes.hasError) {
             this.classes = this.inputClass + (this.hasError
                 ? " has-error"
@@ -51,7 +50,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
 
     private async fetchCourts(): Promise<any[]> {
         try {
-            this.isCourtsLoading = true;
+            this.isDataLoading = true;
             let response = await this.otrService.findCourtsUsingGET({ state: this.state });
             this.courts = _.forEach(response.data.courts, (court) => {
                 court.customTitle = court.courtName;
@@ -68,7 +67,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
             });
             return this.courts;
         } finally {
-            this.isCourtsLoading = false;
+            this.isDataLoading = false;
             this.$scope.$apply();
         }
     }
@@ -129,7 +128,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
 
 angular
     .module('otr-ui-shared-components')
-    .component('courtsDropdown', {
+    .component('appCourtsDropdown', {
         controller: CourtsDropdownCtrl,
         controllerAs: 'vm',
         templateUrl: 'app/components/courts-dropdown/courts-dropdown.component.html',
