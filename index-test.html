@@ -5,14 +5,17 @@
     <title>Title</title>
     <link rel="stylesheet" href="node_modules/angucomplete-alt/angucomplete-alt.css">
     <link rel="stylesheet" href="dist/otr-ui-shared-components.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
     <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
+
+    <!-- DEV DEPENDENCIES BELOW ARE JUST FOR TESTING -->
     <script src="node_modules/otr-shared-libs/dist/otrBackendService.js"></script>
     <script src="node_modules/lodash/lodash.js"></script>
     <script src="node_modules/fuse.js/dist/fuse.js"></script>
-    <script src="dist/otr-ui-shared-components.tpls.js"></script>
-    <script src="dist/otr-ui-shared-components.js"></script>
+    <script src="dist/index.js"></script>
     <script>
         angular.module('otr-ui-shared-components').config(
             ['otrServiceProvider', function(otrServiceProvider){

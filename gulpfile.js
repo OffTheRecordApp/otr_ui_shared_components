@@ -6,6 +6,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
+const merge = require('merge-stream');
 
 // for production / build
 function jsTask() {
@@ -39,10 +40,22 @@ function htmlTask() {
         .pipe(dest('dist'));
 }
 
+function createIndex() {
+    const indexStream = src(['dist/*.js', '!dist/*.min.js'])
+        .pipe(concat('index.js'))
+        .pipe(dest('dist'));
+
+    const minifiedIndexStream = src(['dist/*.min.js'])
+        .pipe(concat('index.min.js'))
+        .pipe(dest('dist'));
+
+    return merge(indexStream, minifiedIndexStream);
+}
+
 function cleanScripts() {
     return src('dist')
         .pipe(clean());
 }
 
 exports.clean = cleanScripts;
-exports.build = parallel(jsTask, cssTask, htmlTask);
+exports.build = series(parallel(jsTask, cssTask, htmlTask), createIndex);

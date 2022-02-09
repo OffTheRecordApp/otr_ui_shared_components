@@ -241,7 +241,7 @@ var CourtsDropdownCtrl = /** @class */ (function () {
 }());
 angular
     .module('otr-ui-shared-components')
-    .component('courtsDropdown', {
+    .component('appCourtsDropdown', {
     controller: CourtsDropdownCtrl,
     controllerAs: 'vm',
     templateUrl: 'app/components/courts-dropdown/courts-dropdown.component.html',

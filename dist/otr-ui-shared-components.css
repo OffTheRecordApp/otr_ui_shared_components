@@ -1,7 +1,7 @@
-.otr-dropdown .angucomplete-holder i {
-  position: absolute;
-  right: 10px;
-  bottom: 12px;
+.otr-dropdown .angucomplete-holder .otr-dropdown__icon {
+  position: relative;
+  top: 1px;
+  right: 35px;
   color: blue;
 }
 .otr-dropdown .otr-angucomplete-dropdown {
