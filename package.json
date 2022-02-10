@@ -1,11 +1,11 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepublishOnly": "gulp build"
   },
@@ -20,8 +20,7 @@
   },
   "homepage": "https://github.com/alexg313/otr-ui-shared-components#readme",
   "dependencies": {
-    "angucomplete-alt": "3.0.0",
-    "merge-stream": "^2.0.0"
+    "angucomplete-alt": "3.0.0"
   },
   "devDependencies": {
     "@angular/cli": "^12.2.1",
@@ -40,7 +39,8 @@
     "lodash": "^4.17.21",
     "otr-shared-libs": "git+https://github.com/alexg313/OTRSharedLibs.git#3.8.9",
     "sass": "^1.37.5",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "merge-stream": "^2.0.0"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",

@@ -131,7 +131,7 @@ angular
     .component('appCourtsDropdown', {
         controller: CourtsDropdownCtrl,
         controllerAs: 'vm',
-        templateUrl: 'app/components/courts-dropdown/courts-dropdown.component.html',
+        templateUrl: '/components/courts-dropdown/courts-dropdown.component.html',
         bindings: {
             onSelectCourt: '&',
             inputClass: '@',
