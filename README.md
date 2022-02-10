@@ -1,1 +1,18 @@
 # otr_js_components_shared
+## Install
+``` npm i @otr-app/otr-ui-shared-components```
+
+## Usage
+### Non-minifed version for bundle
+```import '@otr-app/otr-ui-shared-components```
+
+or in index.html
+
+```<script src='node_modules/@otr-app/otr-ui-shared-components/index.js></script>```
+
+### Minifed version for bundle
+```import '@otr-app/otrui-shared-components/index.min```
+
+or in index.html
+
+```<script src='node_modules/@otr-app/otr-ui-shared-components/index.min.js></script>```

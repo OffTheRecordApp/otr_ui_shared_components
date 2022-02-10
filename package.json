@@ -1,6 +1,6 @@
 {
-  "name": "otr-components-shared",
-  "version": "1.0.0",
+  "name": "@otr-app/otr-ui-shared-components",
+  "version": "0.0.1",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
@@ -38,7 +38,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
     "lodash": "^4.17.21",
-    "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#3.8.9",
+    "otr-shared-libs": "git+https://github.com/alexg313/OTRSharedLibs.git#3.8.9",
     "sass": "^1.37.5",
     "typescript": "^4.3.5"
   },
