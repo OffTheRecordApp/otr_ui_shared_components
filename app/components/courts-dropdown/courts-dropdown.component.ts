@@ -1,13 +1,13 @@
 declare const Fuse: any;
 
-interface ICourtsDropdownBindings { // TODO: revisit naming convention
+interface CourtsDropdownBindings {
     inputClass: string;
     hasError: boolean;
     onSelectCourt: (selectedCourt: any) => any;
     state: string;
 }
 
-interface ICourtsDropdownCtrl extends ICourtsDropdownBindings { // TODO: leverage generics here
+interface ICourtsDropdownCtrl extends CourtsDropdownBindings { // TODO: leverage generics here
     classes: string;
     $onInit: () => void;
     $onChanges: (changes: any) => void;
@@ -21,7 +21,9 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     public isDataLoading: boolean;
     public onSelectCourt!: (selectedCourt: any) => any;
     public state!: string;
+
     declare public courts: any[];
+    private isNoCourtsMessageVisible!: boolean;
 
     constructor(private $scope, private otrService) {
         this.inputClass = '';
@@ -82,8 +84,10 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
         };
         try {
             this.fuseAllKeys = new Fuse(courts, fuseAllKeysOptions);
-        } catch {
-            throw "Dependency fuse.js required";
+        } catch(error) {
+            const additionalMessage = "Dependency fuse.js required";
+            console.error(error, additionalMessage)
+            throw error;
         }
 
         let fuseCourtCodeOptions = {
@@ -95,12 +99,15 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
         }
         try {
             this.fuseCourtCode = new Fuse(courts, fuseCourtCodeOptions);
-        } catch {
-            throw "Dependency fuse.js required";
+        } catch(error) {
+            const additionalMessage = "Dependency fuse.js required";
+            console.error(error, additionalMessage)
+            throw error;
         }
     }
 
     public findMatchingCourts(query: string): any[] {
+
         const threshold = 600;
         let allKeysResults: any[] = _.sortBy(this.fuseAllKeys.search(query), 'courtId');
         let courtCodeResults: any[] = _.sortBy(this.fuseCourtCode.search(query), 'courtId');
@@ -136,7 +143,8 @@ angular
             onSelectCourt: '&',
             inputClass: '@',
             hasError: '<',
-            state: '@'
+            state: '@',
+            isRemoteSearchOn: '@'
         }
     });
 

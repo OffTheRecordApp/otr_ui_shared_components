@@ -1,0 +1,20 @@
+<div class="otr-dropdown">
+    <angucomplete-alt
+            template-url="/otr-search-template.html"
+            id="courts"
+            placeholder="{{ vm.placeholder }}"
+            pause="200"
+            selected-object="vm.onSelectCourt"
+            remote-api-handler="vm.findMatchingCourts"
+            remote-url-response-formatter="vm.formatMatchingCourtsResponse"
+            remote-url-data-field="courts"
+            title-field="title"
+            description-field="customDescription"
+            input-class="{{ vm.inputClass }}"
+            minlength="2"
+            auto-match="true"
+            text-no-results="No courts found matching "
+            text-searching="Searching courts matching "
+    >
+    </angucomplete-alt>
+</div>

@@ -13,13 +13,8 @@
                autocorrect="off"
                autocomplete="off"
                ng-change="inputChangeHandler(searchStr)"/>
-          <span ng-switch="$parent.vm.isDataLoading">
-              <span ng-switch-when="true">
-                  <i class="otr-dropdown__icon fa fa-pulse fa-spinner"></i>
-              </span>
-              <span ng-switch-default>
-                  <i class="otr-dropdown__icon fa fa-angle-down"></i>
-              </span>
+          <span ng-if="$parent.vm.isDataLoading">
+              <i class="otr-dropdown__icon fa fa-pulse fa-spinner"></i>
           </span>
      </span>
 

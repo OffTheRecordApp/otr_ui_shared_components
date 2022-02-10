@@ -40,10 +40,20 @@
         }
     </style>
     <div>
-        <app-courts-dropdown state="WA"
-                         input-class="search-input"
-                         on-select-court="onSelect">
-        </app-courts-dropdown>
+        <div style="margin-bottom: 40px;">
+            <h3>Local Search</h3>
+            <app-courts-dropdown state="WA"
+                                 input-class="search-input"
+                                 on-select-court="onSelect">
+            </app-courts-dropdown>
+        </div>
+
+        <h3>Remote Search on Demand</h3>
+        <app-remote-courts-dropdown
+            placeholder="Type in a court"
+            input-class="search-input"
+            on-select-court="onSelect">
+        </app-remote-courts-dropdown>
     </div>
 </body>
 </html>
