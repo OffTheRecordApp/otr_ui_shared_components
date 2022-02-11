@@ -1,7 +1,7 @@
 interface RemoteCourtsDropdownBindings {
     inputClass: string;
     hasError: boolean;
-    onSelectCourt: (selectedCourt: any) => any;
+    onSelectCourt: (selectedCourt: any, index?: number) => any;
     state: string;
     citationId: number;
     index: number;
@@ -11,7 +11,7 @@ interface RemoteCourtsDropdownBindings {
 class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
     inputClass: string = "";
     hasError: boolean = false;
-    onSelectCourt: (selectedCourt: any) => any = (court) => null;
+    onSelectCourt: (selectedCourt: any, index?: number) => any = (court, index) => null;
     state: string = "";
     citationId;
     index;
@@ -21,6 +21,7 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
     private isDataLoading = false;
 
     constructor(private $scope, private otrService) {
+        this.selectCourt = this.selectCourt.bind(this);
         this.findMatchingCourts = this.findMatchingCourts.bind(this);
         this.formatMatchingCourtsResponse = this.formatMatchingCourtsResponse.bind(this);
     }
@@ -62,6 +63,10 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
                 'left: ' + (width - 30) + 'px; ' +
                 'top: ' + ((height / 2) - 6) + 'px');
         }
+    }
+
+    selectCourt(court) {
+        this.onSelectCourt(court, this.index);
     }
 }
 
