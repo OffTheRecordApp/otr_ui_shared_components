@@ -25,16 +25,6 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
         this.formatMatchingCourtsResponse = this.formatMatchingCourtsResponse.bind(this);
     }
 
-    $onInit() {
-        setTimeout(() => {
-            const width = document.querySelector('.app-remote-courts input')?.clientWidth;
-            const iconNode = document.querySelector('.app-remote-courts .otr-dropdown__icon');
-            if(width) {
-                iconNode?.setAttribute('style', 'left: ' + (width - 30) + 'px');
-            }
-        });
-    }
-
     async findMatchingCourts(query: string): Promise<any[]> {
         const params = {
             q: query,
@@ -43,7 +33,7 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
         };
 
         try {
-
+            this.setSpinnerPosition();
             this.isDataLoading = true;
             const response = await this.otrService.searchCourtsUsingGET(params);
             this.isNoCourtsMessageVisible = !response.data.numRecord;
@@ -60,6 +50,18 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
         });
         setTimeout(() => this.$scope.$apply(), 0);
         return response;
+    }
+
+    setSpinnerPosition() {
+        const inputElement = document.querySelector('.app-remote-courts input');
+        const width = inputElement?.clientWidth;
+        const height = inputElement?.clientHeight;
+        const iconNode = document.querySelector('.app-remote-courts .otr-dropdown__icon');
+        if(width && height) {
+            iconNode?.setAttribute('style',
+                'left: ' + (width - 30) + 'px; ' +
+                'top: ' + ((height / 2) - 6) + 'px');
+        }
     }
 }
 

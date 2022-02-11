@@ -38,10 +38,14 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
 
     public $onInit(): void {
         setTimeout(() => {
-            const width = document.querySelector('.app-courts input')?.clientWidth;
+            const inputElement = document.querySelector('.app-courts input');
+            const width = inputElement?.clientWidth;
+            const height = inputElement?.clientHeight;
             const iconNode = document.querySelector('.app-courts .otr-dropdown__icon');
-            if(width) {
-                iconNode?.setAttribute('style', 'left: ' + (width - 30) + 'px');
+            if(width && height) {
+                iconNode?.setAttribute('style',
+                    'left: ' + (width - 30) + 'px; ' +
+                    'top: ' + ((height / 2) - 6) + 'px');
             }
         });
     }
