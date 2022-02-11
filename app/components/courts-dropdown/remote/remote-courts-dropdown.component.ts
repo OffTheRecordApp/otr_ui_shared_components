@@ -20,19 +20,19 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
     private isNoCourtsMessageVisible = false;
     private isDataLoading = false;
 
-    constructor(private $scope, private $timeout, private otrService) {
+    constructor(private $scope, private otrService) {
         this.findMatchingCourts = this.findMatchingCourts.bind(this);
         this.formatMatchingCourtsResponse = this.formatMatchingCourtsResponse.bind(this);
     }
 
     $onInit() {
-        this.$timeout(() => {
+        setTimeout(() => {
             const width = document.querySelector('.app-remote-courts input')?.clientWidth;
             const iconNode = document.querySelector('.app-remote-courts .otr-dropdown__icon');
             if(width) {
                 iconNode?.setAttribute('style', 'left: ' + (width - 30) + 'px');
             }
-        }, 1000);
+        });
     }
 
     async findMatchingCourts(query: string): Promise<any[]> {
@@ -79,4 +79,4 @@ angular.module('otr-ui-shared-components')
            }
        });
 
-RemoteCourtsDropdownComponent.$inject = ['$scope', '$timeout', 'otrService'];
+RemoteCourtsDropdownComponent.$inject = ['$scope', 'otrService'];
