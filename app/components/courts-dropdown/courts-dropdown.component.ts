@@ -155,7 +155,7 @@ angular
             onSelectCourt: '&',
             inputClass: '@',
             hasError: '<',
-            state: '@'
+            state: '<'
         }
     });
 

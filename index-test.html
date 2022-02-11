@@ -25,6 +25,7 @@
             $rootScope.onSelect = (c) => {
                 console.log('Selected item', c);
             }
+            $rootScope.regionCode = 'WA';
         }])
     </script>
 </head>
@@ -45,7 +46,7 @@
     <div>
         <div class="section">
             <h3>Local Court Search</h3>
-            <app-courts-dropdown state="WA"
+            <app-courts-dropdown state="regionCode"
                                  input-class="search-input"
                                  on-select-court="onSelect">
             </app-courts-dropdown>
@@ -63,7 +64,7 @@
         <div class="section">
             <h3>Local Violations Search</h3>
             <app-violations-dropdown
-                region-code="WA"
+                region-code="regionCode"
                 input-class="search-input"
                 on-select="onSelect">
             </app-violations-dropdown>

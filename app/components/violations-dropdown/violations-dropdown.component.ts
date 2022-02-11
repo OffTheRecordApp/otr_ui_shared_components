@@ -34,6 +34,12 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
         await this.fetchTrafficViolationTypes();
     }
 
+    async $onChanges(changes) {
+        if(changes.regionCode && this.regionCode) {
+            await this.fetchTrafficViolationTypes();
+        }
+    }
+
     filterViolationSearch(query: string, violations: any[]) {
         const descriptionOptions = {
             includeMatches: true,
@@ -63,6 +69,11 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
     }
 
     async fetchTrafficViolationTypes() {
+        if(!this.regionCode) {
+            console.warn("No region code provided");
+            return;
+        }
+
         try {
             this.isDataLoading = true;
             const response = await this.otrService
@@ -87,7 +98,7 @@ angular.module('otr-ui-shared-components')
            controller: ViolationsDropdownComponent,
            controllerAs: 'vm',
            bindings: {
-               regionCode: '@',
+               regionCode: '<',
                inputClass: '@',
                onSelect: '<'
            }
