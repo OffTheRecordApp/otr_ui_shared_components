@@ -1,6 +1,6 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexg313/otr-ui-shared-components.git"
+    "url": "git+https://github.com/alexg313/otr_ui_shared_components.git"
   },
   "author": "Chris Crow",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexg313/otr-ui-shared-components/issues"
+    "url": "https://github.com/alexg313/otr_ui_shared_components/issues"
   },
-  "homepage": "https://github.com/alexg313/otr-ui-shared-components#readme",
+  "homepage": "https://github.com/alexg313/otr_ui_shared_components#readme",
   "dependencies": {
     "angucomplete-alt": "3.0.0"
   },

@@ -1,4 +1,4 @@
-# otr_js_components_shared
+# otr_ui_shared_components
 ## Install
 ``` npm i @otr-app/otr-ui-shared-components --save```
 
