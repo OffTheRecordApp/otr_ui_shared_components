@@ -23,7 +23,7 @@
             }]
         ).run(['$rootScope', function($rootScope) {
             $rootScope.onSelect = (c) => {
-                console.log('Selected court', c);
+                console.log('Selected item', c);
             }
         }])
     </script>
@@ -38,22 +38,36 @@
             padding: 5px;
             width: 300px
         }
+        .section {
+            margin-bottom: 40px;
+        }
     </style>
     <div>
-        <div style="margin-bottom: 40px;">
-            <h3>Local Search</h3>
+        <div class="section">
+            <h3>Local Court Search</h3>
             <app-courts-dropdown state="WA"
                                  input-class="search-input"
                                  on-select-court="onSelect">
             </app-courts-dropdown>
         </div>
 
-        <h3>Remote Search on Demand</h3>
-        <app-remote-courts-dropdown
-            placeholder="Type in a court"
-            input-class="search-input"
-            on-select-court="onSelect">
-        </app-remote-courts-dropdown>
+        <div class="section">
+            <h3>Remote Court Search on Demand</h3>
+            <app-remote-courts-dropdown
+                    placeholder="Type in a court"
+                    input-class="search-input"
+                    on-select-court="onSelect">
+            </app-remote-courts-dropdown>
+        </div>
+
+        <div class="section">
+            <h3>Local Violations Search</h3>
+            <app-violations-dropdown
+                region-code="WA"
+                input-class="search-input"
+                on-select="onSelect">
+            </app-violations-dropdown>
+        </div>
     </div>
 </body>
 </html>

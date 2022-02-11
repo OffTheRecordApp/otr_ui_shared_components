@@ -1,4 +1,4 @@
-.otr-dropdown {
+.app-otr-dropdown {
 
   .angucomplete-holder .otr-dropdown__icon {
     position: absolute;
@@ -48,5 +48,17 @@
         color: white;
       }
     }
+  }
+
+  .text-bold {
+    font-weight: bold;
+  }
+
+  .text-underline {
+    text-decoration: underline;
+  }
+
+  .text-large {
+    font-size: 16px;
   }
 }

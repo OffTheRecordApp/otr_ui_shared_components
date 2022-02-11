@@ -1,0 +1,19 @@
+<div class="app-otr-dropdown">
+    <angucomplete-alt
+            template-url="/otr-search-template.html"
+            class="app-violations"
+            pause="0"
+            placeholder="Try 'Speeding' or Violation Code"
+            selected-object="vm.onSelect"
+            local-search="vm.filterViolationSearch"
+            local-data="vm.violations"
+            title-field="trafficViolationDesc"
+            description-field="violationCode"
+            minlength="0"
+            input-class="{{ vm.classes }}"
+            match-class="text-bold text-underline text-large"
+            auto-match="true"
+            clear-selected="true"
+            text-no-results="No violations found"
+    />
+</div>

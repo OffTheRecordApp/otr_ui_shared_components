@@ -155,8 +155,7 @@ angular
             onSelectCourt: '&',
             inputClass: '@',
             hasError: '<',
-            state: '@',
-            isRemoteSearchOn: '@'
+            state: '@'
         }
     });
 
