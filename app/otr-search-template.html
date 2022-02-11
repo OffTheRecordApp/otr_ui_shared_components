@@ -13,7 +13,7 @@
                autocorrect="off"
                autocomplete="off"
                ng-change="inputChangeHandler(searchStr)"/>
-          <span ng-if="$parent.vm.isDataLoading">
+          <span ng-show="$parent.vm.isDataLoading">
               <i class="otr-dropdown__icon fa fa-pulse fa-spinner"></i>
           </span>
      </span>

@@ -25,7 +25,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     declare public courts: any[];
     private isNoCourtsMessageVisible!: boolean;
 
-    constructor(private $scope, private otrService) {
+    constructor(private $scope, private $timeout, private otrService) {
         this.inputClass = '';
         this.hasError = false;
         this.classes = this.inputClass;
@@ -36,7 +36,15 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     declare private fuseAllKeys: any;
     declare private fuseCourtCode: any;
 
-    public $onInit(): void {}
+    public $onInit(): void {
+        this.$timeout(() => {
+            const width = document.querySelector('.app-courts input')?.clientWidth;
+            const iconNode = document.querySelector('.app-courts .otr-dropdown__icon');
+            if(width) {
+                iconNode?.setAttribute('style', 'left: ' + (width - 30) + 'px');
+            }
+        }, 1000);
+    }
 
     public $onChanges(changes: any): void {
         if (changes.hasError) {
@@ -148,4 +156,4 @@ angular
         }
     });
 
-CourtsDropdownCtrl.$inject = ['$scope', 'otrService'];
+CourtsDropdownCtrl.$inject = ['$scope', '$timeout', 'otrService'];

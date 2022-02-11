@@ -1,9 +1,9 @@
 .otr-dropdown {
 
   .angucomplete-holder .otr-dropdown__icon {
-    position: relative;
-    top: 1px;
-    right: 35px;
+    position: absolute;
+    top: 15px;
+    left: 10px;
     color: blue;
   }
 
@@ -15,7 +15,8 @@
     width: 100%;
     cursor: pointer;
     z-index: 9999;
-    position: absolute;
+    // position: relative;
+    // top: 40px;
     margin-top: 0;
     background-color: white;
     padding: 0 !important;
@@ -38,7 +39,6 @@
     border-bottom: 1px solid;
     border-color: #ececec;
     background-color: white;
-
     .angucomplete-description {
       color: goldenrod;
     }
