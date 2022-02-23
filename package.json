@@ -1,6 +1,6 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
@@ -46,6 +46,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "fuse.js": ">= 6.4.6 || < 7.0.0",
     "lodash": ">= 4.17.21 || < 5.0.0",
+    "pdfjs-dist": "^2.5.207",
     "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#^3.8.9"
   }
 }
