@@ -3,31 +3,29 @@ import { getDocument, GlobalWorkerOptions, PDFPageProxy } from "pdfjs-dist";
 // Set the pdfjsLib worker source manually - https://github.com/mozilla/pdf.js/issues/8305
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
 
-interface IPDFImagePreviewBindings {
-  pdf: string | URL;
+interface PDFImagePreviewBindings {
+  path: string | URL;
   scale?: number;
   canvasWidth?: number;
   canvasHeight?: number;
 }
 
-interface IPDFImagePreviewCtrl extends IPDFImagePreviewBindings {
+interface IPDFImagePreviewCtrl extends PDFImagePreviewBindings {
   $onInit: () => void;
-  getImagePreviewFromPDF: (pdf: string | URL) => void;
+  getImagePreviewFromPDF: (path: string | URL) => void;
   makeThumb: (page: PDFPageProxy) => void;
 }
 
 class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
-  static $inject: string[] = ["$element", "$scope", "$window"];
-
   // Bindings
-  pdf!: string | URL;
+  path!: string | URL;
   scale?: number;
   canvasWidth?: number;
   canvasHeight?: number;
 
   // Interface
   isLoadingPDF = true;
-  hasErrorLoadingPDF = false;
+  hasError = false;
 
   constructor(
     private $element: angular.IRootElementService,
@@ -38,12 +36,12 @@ class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
   }
 
   async $onInit() {
-    await this.getImagePreviewFromPDF(this.pdf);
+    await this.getImagePreviewFromPDF(this.path);
   }
 
-  public async getImagePreviewFromPDF(pdf: string | URL) {
+  public async getImagePreviewFromPDF(path: string | URL) {
     try {
-      const doc = await getDocument(pdf).promise;
+      const doc = await getDocument(path).promise;
       const page: PDFPageProxy = await doc.getPage(1);
       const canvas = await this.makeThumb(page);
 
@@ -51,7 +49,7 @@ class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
       div.append(canvas);
     } catch (error) {
       console.error("Error loading PDF Preview: ", error);
-      this.hasErrorLoadingPDF = true;
+      this.hasError = true;
     } finally {
       this.isLoadingPDF = false;
       this.$scope.$apply();
@@ -93,9 +91,11 @@ angular.module("otr-ui-shared-components").component("appPdfImagePreview", {
   controllerAs: "vm",
   templateUrl: "/components/pdf-image-preview/pdf-image-preview.html",
   bindings: {
-    pdf: "<",
+    path: "<",
     scale: "<?",
     canvasWidth: "<?",
     canvasHeight: "<?",
   },
 });
+
+PDFImagePreviewCtrl.$inject = ["$element", "$scope", "$window"];

@@ -38,16 +38,16 @@
 //     });
 //   }));
 
-//   it("Should set hasErrorLoadingPDF to true if image preview fails", async () => {
-//     vm.pdf = "foo.pdf";
-//     vm.hasErrorLoadingPDF = false;
+//   it("Should set hasError to true if image preview fails", async () => {
+//     vm.path = "foo.pdf";
+//     vm.hasError = false;
 
 //     $element.find.and.returnValue({ append: (canvas: any) => null });
 
 //     spyOn(vm, "makeThumb").and.rejectWith("error");
 
-//     await vm.getImagePreviewFromPDF(vm.pdf);
+//     await vm.getImagePreviewFromPDF(vm.path);
 
-//     expect(vm.hasErrorLoadingPDF).toBeTrue();
+//     expect(vm.hasError).toBeTrue();
 //   });
 // });
