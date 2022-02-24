@@ -24,12 +24,17 @@
   },
   "devDependencies": {
     "@angular/cli": "^12.2.1",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-typescript": "^7.16.8",
     "@fortawesome/fontawesome-free": "5.15.4",
     "@types/angular": "^1.8.2",
     "@types/lodash": "^4.14.172",
     "@types/node": "^16.4.14",
+    "@types/pdfjs-dist": "^2.10.378",
+    "babel-plugin-remove-import-export": "^1.1.1",
     "gulp": "^4.0.2",
     "gulp-angular-templatecache": "^3.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^2.0.0",
@@ -37,16 +42,16 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
     "lodash": "^4.17.21",
+    "merge-stream": "^2.0.0",
     "otr-shared-libs": "git+https://github.com/alexg313/OTRSharedLibs.git#3.8.9",
     "sass": "^1.37.5",
-    "typescript": "^4.3.5",
-    "merge-stream": "^2.0.0"
+    "typescript": "^4.3.5"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "fuse.js": ">= 6.4.6 || < 7.0.0",
     "lodash": ">= 4.17.21 || < 5.0.0",
-    "pdfjs-dist": "^2.5.207",
-    "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#^3.8.9"
+    "otr-shared-libs": "https://github.com/alexg313/OTRSharedLibs.git#^3.8.9",
+    "pdfjs-dist": "^2.5.207"
   }
 }

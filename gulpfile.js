@@ -7,11 +7,20 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const merge = require('merge-stream');
+const babel = require('gulp-babel');
 
 // for production / build
 function jsTask() {
     var tsProject = ts.createProject('tsconfig.json');
     return src('app/**/*.ts')
+        .pipe(
+            babel({
+                plugins: [
+                    ['@babel/plugin-transform-typescript', { allowDeclareFields: true }],
+                    ['babel-plugin-remove-import-export']
+                ],
+            })
+        )
         .pipe(tsProject())
         .pipe(concat('otr-ui-shared-components.js'))
         .pipe(dest('dist'))
