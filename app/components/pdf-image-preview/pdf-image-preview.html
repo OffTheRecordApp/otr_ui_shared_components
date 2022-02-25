@@ -1,7 +1,10 @@
 <span ng-if="vm.isLoadingPDF">
   <i class="fa fa-spinner fa-lg fa-pulse"></i>
 </span>
-<div class="app-pdf-image-preview">
-  <!-- If there's an error, just show the generic pdf icon -->
-  <img ng-if="vm.hasError" src="assets/img/pdf_icon.png" />
-</div>
+<!-- If there's an error, just show the generic pdf icon -->
+<img
+  class="app-pdf-image-preview--error"
+  ng-if="vm.hasError"
+  src="assets/img/pdf_icon.png"
+/>
+<div class="app-pdf-image-preview"></div>
