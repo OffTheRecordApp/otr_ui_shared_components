@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="otr-ui-shared-components">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="node_modules/angucomplete-alt/angucomplete-alt.css">
-    <link rel="stylesheet" href="dist/otr-ui-shared-components.css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css">
+    <link
+      rel="stylesheet"
+      href="node_modules/angucomplete-alt/angucomplete-alt.css"
+    />
+    <link rel="stylesheet" href="dist/otr-ui-shared-components.css" />
+    <link
+      rel="stylesheet"
+      href="node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css"
+    />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
     <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
@@ -19,65 +28,86 @@
     <script src="node_modules/pdfjs-dist/build/pdf.worker.js"></script>
     <script src="dist/index.js"></script>
     <script>
-        angular.module('otr-ui-shared-components').config(
-            ['otrServiceProvider', function(otrServiceProvider){
-                otrServiceProvider.setDomain('https://otr-backend-service-us-devo.offtherecord.com');
-            }]
-        ).run(['$rootScope', function($rootScope) {
+      angular
+        .module("otr-ui-shared-components")
+        .config([
+          "otrServiceProvider",
+          function (otrServiceProvider) {
+            otrServiceProvider.setDomain(
+              "https://otr-backend-service-us-devo.offtherecord.com"
+            );
+          },
+        ])
+        .run([
+          "$rootScope",
+          function ($rootScope) {
             $rootScope.onSelect = (c) => {
-                console.log('Selected item', c);
-            }
-            $rootScope.regionCode = 'WA';
-        }])
+              console.log("Selected item", c);
+            };
+            $rootScope.onChooseRating = (r) => {
+              console.log("Rating chosen: ", r);
+            };
+            $rootScope.regionCode = "WA";
+          },
+        ]);
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <style>
-        body {
-            font-family: Helvetica, Arial, sans-serif;
-        }
-        .search-input {
-            height: 30px;
-            padding: 5px;
-            width: 300px
-        }
-        .section {
-            margin-bottom: 40px;
-        }
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      .search-input {
+        height: 30px;
+        padding: 5px;
+        width: 300px;
+      }
+      .section {
+        margin-bottom: 40px;
+      }
     </style>
     <div>
-        <div class="section">
-            <h3>Local Court Search</h3>
-            <app-courts-dropdown state="regionCode"
-                                 input-class="search-input"
-                                 on-select-court="onSelect">
-            </app-courts-dropdown>
-        </div>
+      <div class="section">
+        <h3>Local Court Search</h3>
+        <app-courts-dropdown
+          state="regionCode"
+          input-class="search-input"
+          on-select-court="onSelect"
+        >
+        </app-courts-dropdown>
+      </div>
 
-        <div class="section">
-            <h3>Remote Court Search on Demand</h3>
-            <app-remote-courts-dropdown
-                    placeholder="Type in a court"
-                    input-class="search-input"
-                    on-select-court="onSelect">
-            </app-remote-courts-dropdown>
-        </div>
+      <div class="section">
+        <h3>Remote Court Search on Demand</h3>
+        <app-remote-courts-dropdown
+          placeholder="Type in a court"
+          input-class="search-input"
+          on-select-court="onSelect"
+        >
+        </app-remote-courts-dropdown>
+      </div>
 
-        <div class="section">
-            <h3>Local Violations Search</h3>
-            <app-violations-dropdown
-                region-code="regionCode"
-                input-class="search-input"
-                on-select="onSelect">
-            </app-violations-dropdown>
-        </div>
+      <div class="section">
+        <h3>Local Violations Search</h3>
+        <app-violations-dropdown
+          region-code="regionCode"
+          input-class="search-input"
+          on-select="onSelect"
+        >
+        </app-violations-dropdown>
+      </div>
 
-        <div class="section">
-            <h3>PDF Preview</h3>
-            <app-pdf-image-preview
-                    path="doc.pdf"
-            </app-pdf-image-preview>
-        </div>
+      <div class="section">
+        <h3>PDF Preview</h3>
+        <app-pdf-image-preview path="doc.pdf"> </app-pdf-image-preview>
+      </div>
+
+      <div class="section">
+        <h3>Star Rating</h3>
+        <app-star-rating
+          on-choose-rating="onChooseRating(input)"
+        ></app-star-rating>
+      </div>
     </div>
-</body>
+  </body>
 </html>

@@ -1,0 +1,15 @@
+<div class="star-rating">
+    <i
+        ng-repeat="s in vm.numberOfStarsArr track by $index"
+        ng-click="vm.onClickRating($index)"
+        ng-class="{
+            ' fal ': $index >= vm.currentRating,
+            ' fas ': $index < vm.currentRating || $index < vm.currentRatingHover,
+            ' hover-style ': $index < vm.currentRatingHover
+        }"
+        ng-mouseover="vm.onHoverRating($index)"
+        ng-mouseleave="vm.onHoverRatingLeave()"
+        class="fa-star"
+        ng-style="{ 'font-size': vm.iconSize }"
+    ></i>
+</div>
