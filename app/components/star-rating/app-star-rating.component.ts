@@ -9,7 +9,7 @@ interface StarRatingBindings {
 interface IStarRating extends StarRatingBindings {
   onClickRating: (index: number) => void;
   onHoverRating: (index: number) => void;
-  onHoverRatingLeave: () => void;
+  onHoverLeave: () => void;
 }
 
 class StarRating implements IStarRating {
@@ -39,7 +39,7 @@ class StarRating implements IStarRating {
     this.currentRatingHover = index + 1;
   }
 
-  public onHoverRatingLeave() {
+  public onHoverLeave() {
     this.currentRatingHover = 0;
   }
 }
