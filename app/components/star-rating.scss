@@ -1,0 +1,17 @@
+.star-rating {
+  display: flex;
+  width: 100%;
+
+  .hover-style {
+    opacity: 0.5;
+  }
+
+  i {
+    color: #ffc715;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      padding-right: 15px;
+    }
+  }
+}
