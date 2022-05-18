@@ -23,7 +23,7 @@ class StarRating implements IStarRating {
   currentRatingHover = 0;
   numberOfStarsArr: Array<number> = [];
 
-  constructor() {
+  $onInit() {
     this.iconSize = this.iconSize || "28px";
     this.numberOfStars = this.numberOfStars || 5;
     this.numberOfStarsArr = Array.from(Array(this.numberOfStars).keys());
@@ -48,8 +48,8 @@ angular.module("otr-ui-shared-components").component("appStarRating", {
   templateUrl: "/components/star-rating/app-star-rating.component.html",
   bindings: {
     onChooseRating: "&",
-    numberOfStars: "<?",
-    iconSize: "@?",
+    numberOfStars: "<",
+    iconSize: "@",
   },
   controller: StarRating,
   controllerAs: "vm",

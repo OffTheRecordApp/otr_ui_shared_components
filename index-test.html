@@ -51,7 +51,7 @@
               console.log("Selected item", c);
             };
             $rootScope.onChooseRating = (r) => {
-              console.log("Rating chosen: ", r);
+              console.log("Rating chosen: ", r.rating);
             };
             $rootScope.regionCode = "WA";
           },
@@ -111,7 +111,8 @@
       <div class="section">
         <h3>Star Rating</h3>
         <app-star-rating
-          on-choose-rating="onChooseRating(input)"
+          number-of-stars="4"
+          on-choose-rating="onChooseRating({rating})"
         ></app-star-rating>
       </div>
     </div>

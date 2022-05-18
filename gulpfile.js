@@ -14,14 +14,19 @@ function jsTask() {
   var tsProject = ts.createProject("tsconfig.json");
   return (
     src("app/**/*.ts")
-      /*.pipe(
-            babel({
-                plugins: [
-                    ['@babel/plugin-transform-typescript', { allowDeclareFields: true }],
-                    ['babel-plugin-remove-import-export']
-                ],
-            })
-        )* DISABLE BABEL because we need the imported modules in pdf-preview and others potentially */
+      // DISABLE BABEL because we need the imported modules in pdf-preview and others potentially
+      // UNCOMMENT to test index-test.html locally
+      // .pipe(
+      //   babel({
+      //     plugins: [
+      //       [
+      //         "@babel/plugin-transform-typescript",
+      //         { allowDeclareFields: true },
+      //       ],
+      //       ["babel-plugin-remove-import-export"],
+      //     ],
+      //   })
+      // )
       .pipe(tsProject())
       .pipe(concat("otr-ui-shared-components.js"))
       .pipe(dest("dist"))
