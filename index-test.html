@@ -54,6 +54,11 @@
               console.log("Rating chosen: ", r.rating);
             };
             $rootScope.regionCode = "WA";
+            $rootScope.updateDashboardCases = (d) => {
+              console.log("Dashboard cases updated", d);
+            };
+            $rootScope.userNum = "20";
+            $rootScope.statusToFilterOn = "cases_pending";
           },
         ]);
     </script>
@@ -70,6 +75,9 @@
       }
       .section {
         margin-bottom: 40px;
+      }
+      .section__stat-cards {
+        display: flex;
       }
     </style>
     <div>
@@ -114,6 +122,21 @@
           number-of-stars="4"
           on-choose-rating="onChooseRating({rating})"
         ></app-star-rating>
+      </div>
+
+      <div class="section">
+        <h3>Stat Card</h3>
+        <div class="section__stat-cards">
+          <app-stat-card
+            border-color="border-fusion-yellow"
+            border-color-selected="border-fusion-yellow--selected"
+            title-color="text-fusion-yellow"
+            icon-class="fa fa-users"
+            card-title="Pending Cases"
+            on-select-show-me="updateDashboardCases('cases_pending')"
+            stat-number-to-display="{{userNum}}"
+            is-selected="statusToFilterOn === 'cases_pending'"></app-stat-card>
+        </div>
       </div>
     </div>
   </body>

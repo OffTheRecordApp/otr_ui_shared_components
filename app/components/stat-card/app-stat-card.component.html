@@ -1,0 +1,29 @@
+<div
+    class="stat-card stat-card__panel stat-card__clickable stat-card__panel-primary"
+    ng-class="{
+        '{{vm.borderColor}}': !vm.isSelected,
+        '{{vm.borderColorSelected}}': vm.isSelected
+    }"
+    ng-click="vm.onSelectShowMe()"
+>
+    <div class="stat-card__panel-heading stat-card__text-gray">
+        <div class="stat-card__stat-bar">
+            <div>
+                <div class="stat-card__title" ng-class="{{'vm.titleColor'}}">
+                    {{ vm.cardTitle }}
+                </div>
+                <div ng-if="!vm.statNumberToDisplay">
+                    <i class="fa fa-spinner fa-pulse fa-lg"></i>
+                </div>
+                <div ng-if="vm.statNumberToDisplay" class="stat-card__stat-num stat-card__clickable">
+                    {{ vm.statNumberToDisplay }}
+                </div>
+            </div>
+            <div>
+                <span class="stat-card__stat-icon">
+                    <i ng-class="{{'vm.iconClass'}}"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
