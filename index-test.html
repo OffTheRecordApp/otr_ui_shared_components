@@ -55,7 +55,8 @@
             };
             $rootScope.regionCode = "WA";
             $rootScope.updateDashboardCases = (d) => {
-              console.log("Dashboard cases updated", d);
+              $rootScope.statusToFilterOn = d;
+              console.log("Selected cases filter:", d);
             };
             $rootScope.userNum = "20";
             $rootScope.statusToFilterOn = "cases_pending";
@@ -78,6 +79,7 @@
       }
       .section__stat-cards {
         display: flex;
+        gap: 10px;
       }
     </style>
     <div>
@@ -128,14 +130,21 @@
         <h3>Stat Card</h3>
         <div class="section__stat-cards">
           <app-stat-card
-            border-color="border-fusion-yellow"
-            border-color-selected="border-fusion-yellow--selected"
-            title-color="text-fusion-yellow"
+            theme="fusion-yellow"
+            color="rgb(0, 128, 0)"
             icon-class="fa fa-users"
             card-title="Pending Cases"
             on-select-show-me="updateDashboardCases('cases_pending')"
             stat-number-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'cases_pending'"></app-stat-card>
+          <app-stat-card
+            theme="fusion-teal"
+            color="rgb(128, 0, 128)"
+            icon-class="fa fa-power-off"
+            card-title="Active Cases"
+            on-select-show-me="updateDashboardCases('active_cases')"
+            stat-number-to-display="{{userNum}}"
+            is-selected="statusToFilterOn === 'active_cases'"></app-stat-card>
         </div>
       </div>
     </div>

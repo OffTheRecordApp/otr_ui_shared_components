@@ -20,6 +20,7 @@
     &__stat-num {
         font-size: 25px;
         font-weight: 700;
+        color: #565a5c;
     }
 
     &__title {
@@ -61,27 +62,64 @@
         width: 95%;
     }
 
-    &__text-gray {
-        color: #565a5c!important;
-    }
-
     &__clickable {
         cursor: pointer;
-        cursor: hover !important;
     }
 }
 
 // css for testing purposes
 
-.text-fusion-yellow {
-    color: #ffc533 !important;
+.default {
+    color: #007be3;
+    border-left: 4px solid #007be3;
+
+    &--selected {
+        color: #007be3;
+        border: 1px solid #007be3;
+        border-left: 4px solid #007be3;
+    }
 }
 
-.border-fusion-yellow {
+.fusion-yellow {
+    color: #ffc533;
     border-left: 4px solid #ffc533;
+
+    &--selected {
+        color: #ffc533 ;
+        border: 1px solid #ffc533;
+        border-left: 4px solid #ffc533;
+    }
 }
 
-.border-fusion-yellow--selected {
-    border-left: 4px solid #ffc533;
-    outline: 1px solid #ffc533;
+.fusion-teal {
+    color: #2ac3be;
+    border-left: 4px solid #2ac3be;
+
+    &--selected {
+        color: #2ac3be ;
+        border: 1px solid #2ac3be;
+        border-left: 4px solid #2ac3be;
+    }
+}
+
+.fusion-red {
+    color: #f2726f;
+    border-left: 4px solid #f2726f;
+
+    &--selected {
+        color: #f2726f ;
+        border: 1px solid #f2726f;
+        border-left: 4px solid #f2726f;
+    }
+}
+
+.fusion-purple {
+    color: #5d62b5;
+    border-left: 4px solid #5d62b5;
+
+    &--selected {
+        color: #5d62b5 ;
+        border: 1px solid #5d62b5;
+        border-left: 4px solid #5d62b5;
+    }
 }

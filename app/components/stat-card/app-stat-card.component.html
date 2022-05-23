@@ -1,15 +1,40 @@
 <div
+    ng-if="vm.theme && !vm.color"
     class="stat-card stat-card__panel stat-card__clickable stat-card__panel-primary"
-    ng-class="{
-        '{{vm.borderColor}}': !vm.isSelected,
-        '{{vm.borderColorSelected}}': vm.isSelected
-    }"
+    ng-class="vm.enumThemesCheck(vm.theme)"
     ng-click="vm.onSelectShowMe()"
 >
-    <div class="stat-card__panel-heading stat-card__text-gray">
+    <div class="stat-card__panel-heading">
         <div class="stat-card__stat-bar">
             <div>
-                <div class="stat-card__title" ng-class="{{'vm.titleColor'}}">
+                <div class="stat-card__title">
+                    {{ vm.cardTitle }}
+                </div>
+                <div ng-if="!vm.statNumberToDisplay">
+                    <i class="fa fa-spinner fa-pulse fa-lg"></i>
+                </div>
+                <div ng-if="vm.statNumberToDisplay" class="stat-card__stat-num stat-card__clickable">
+                    {{ vm.statNumberToDisplay }}
+                </div>
+            </div>
+            <div>
+                <span class="stat-card__stat-icon">
+                    <i ng-class="{{'vm.iconClass'}}"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    ng-if="vm.color"
+    class="stat-card stat-card__panel stat-card__clickable stat-card__panel-primary"
+    ng-style="vm.applyCustomColor(vm.color)"
+    ng-click="vm.onSelectShowMe()"
+>
+    <div class="stat-card__panel-heading">
+        <div class="stat-card__stat-bar">
+            <div>
+                <div class="stat-card__title">
                     {{ vm.cardTitle }}
                 </div>
                 <div ng-if="!vm.statNumberToDisplay">
