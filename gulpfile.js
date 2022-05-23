@@ -16,17 +16,17 @@ function jsTask() {
     src("app/**/*.ts")
       // DISABLE BABEL because we need the imported modules in pdf-preview and others potentially
       // UNCOMMENT to test index-test.html locally
-      // .pipe(
-      //   babel({
-      //     plugins: [
-      //       [
-      //         "@babel/plugin-transform-typescript",
-      //         { allowDeclareFields: true },
-      //       ],
-      //       ["babel-plugin-remove-import-export"],
-      //     ],
-      //   })
-      // )
+      .pipe(
+        babel({
+          plugins: [
+            [
+              "@babel/plugin-transform-typescript",
+              { allowDeclareFields: true },
+            ],
+            ["babel-plugin-remove-import-export"],
+          ],
+        })
+      )
       .pipe(tsProject())
       .pipe(concat("otr-ui-shared-components.js"))
       .pipe(dest("dist"))

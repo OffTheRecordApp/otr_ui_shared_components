@@ -136,15 +136,31 @@
             card-title="Pending Cases"
             on-select-show-me="updateDashboardCases('cases_pending')"
             stat-number-to-display="{{userNum}}"
-            is-selected="statusToFilterOn === 'cases_pending'"></app-stat-card>
+            is-selected="statusToFilterOn === 'cases_pending'"
+          ></app-stat-card>
           <app-stat-card
             theme="fusion-teal"
-            color="rgb(128, 0, 128)"
             icon-class="fa fa-power-off"
             card-title="Active Cases"
             on-select-show-me="updateDashboardCases('active_cases')"
             stat-number-to-display="{{userNum}}"
-            is-selected="statusToFilterOn === 'active_cases'"></app-stat-card>
+            is-selected="statusToFilterOn === 'active_cases'"
+          ></app-stat-card>
+          <app-stat-card
+            color="rgb(0, 128, 0)"
+            icon-class="fa fa-power-off"
+            card-title="Foo"
+            on-select-show-me="updateDashboardCases('foo')"
+            stat-number-to-display="{{userNum}}"
+            is-selected="statusToFilterOn === 'foo'"
+          ></app-stat-card>
+          <app-stat-card
+            icon-class="fa fa-power-off"
+            card-title="Bar"
+            on-select-show-me="updateDashboardCases('bar')"
+            stat-number-to-display="{{userNum}}"
+            is-selected="statusToFilterOn === 'bar'"
+          ></app-stat-card>
         </div>
       </div>
     </div>
