@@ -1,0 +1,72 @@
+@mixin box-shadow($args...) {
+    box-shadow: $args;
+    box-shadow: $args;
+    box-shadow: $args;
+}
+
+.toggle-card {
+    &__sub-title {
+        padding-right: 10px;
+        font-size: 14px;
+    }
+
+    &__title {
+        font-size: 14px;
+        font-weight: 700;
+        padding-bottom: 5px;
+        text-transform: uppercase;
+        color: black !important;
+    }
+
+    &__layout {
+        display: flex;
+        gap: 10px;
+    } 
+    
+    &__body {
+        display: flex;
+        align-items: center;
+    }
+
+    &__tooltip {
+        margin-right: 10px;
+        color: #aaa!important;
+    }
+
+    &__uib-tooltip {
+        &.in {
+            opacity: 1;
+        }
+    
+        .tooltip-inner {
+            @include box-shadow(0 0 5px #aaa);
+            background-color: white;
+            color: #484848;
+            font-size: 14px;
+            opacity: 1;
+            padding: 20px;
+            text-align: left;
+            z-index: 10;
+        }
+    
+        .tooltip-arrow {
+            border-top-color: white !important;
+        }
+    }
+
+    &__loading {
+        color:#484848;
+    }
+}
+
+// color options for toggle card
+
+.toggle-success-green {
+    color: green;
+    border-color: green;
+}
+
+.toggle-error-red {
+    color: red;
+    border-color: red;
+}

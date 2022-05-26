@@ -16,6 +16,11 @@
       rel="stylesheet"
       href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css"
     />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link
+        rel="stylesheet"
+        href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+    />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
     <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
@@ -26,6 +31,9 @@
     <script src="node_modules/fuse.js/dist/fuse.js"></script>
     <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
     <script src="node_modules/pdfjs-dist/build/pdf.worker.js"></script>
+    <script src="node_modules/angularjs-ui-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="node_modules/angularjs-ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="dist/index.js"></script>
     <link
       rel="stylesheet"
@@ -58,9 +66,33 @@
               $rootScope.statusToFilterOn = d;
               console.log("Selected cases filter:", d);
             };
+            // variables for stat card
             $rootScope.userNum = "20";
             $rootScope.statusToFilterOn = "cases_pending";
-          },
+            $rootScope.isVacationMode = "true";
+            $rootScope.updateVacationMode = () => {
+              $rootScope.isVacationMode = !$rootScope.isVacationMode; 
+            }
+
+            // variables for toggle card
+            $rootScope.message = "You are NOT accepting cases"
+            $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
+            $rootScope.title = "Not accepting cases";
+            $rootScope.vacationModeUpdating = "false"
+            
+            $rootScope.changeMessage = () => {
+              $rootScope.message = "You are accepting cases";
+              $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
+              $rootScope.title = "Accepting cases";
+              $rootScope.vacationModeUpdating = "true";
+              
+              setTimeout(() => {
+                $rootScope.vacationModeUpdating = "false";
+                $rootScope.isVacationMode = !$rootScope.isVacationMode;
+                $rootScope.$apply();
+              }, 3000)
+            }
+          }, 
         ]);
     </script>
   </head>
@@ -68,6 +100,7 @@
     <style>
       body {
         font-family: Helvetica, Arial, sans-serif;
+        height: 200vh;
       }
       .search-input {
         height: 30px;
@@ -76,10 +109,16 @@
       }
       .section {
         margin-bottom: 40px;
+        margin-left: 10px;
       }
       .section__stat-cards {
         display: flex;
         gap: 10px;
+      }
+
+      button {
+        height: min-content;
+        margin: auto 0;
       }
     </style>
     <div>
@@ -115,7 +154,7 @@
 
       <div class="section">
         <h3>PDF Preview</h3>
-        <app-pdf-image-preview path="doc.pdf"> </app-pdf-image-preview>
+        <app-pdf-image-preview path="doc.pdf"></app-pdf-image-preview>
       </div>
 
       <div class="section">
@@ -131,36 +170,50 @@
         <div class="section__stat-cards">
           <app-stat-card
             theme="fusion-yellow"
-            color="rgb(0, 128, 0)"
-            icon-class="fa fa-users"
+            icon-class="fa fa-solid fa-bell"
             card-title="Pending Cases"
-            on-select-show-me="updateDashboardCases('cases_pending')"
-            stat-number-to-display="{{userNum}}"
+            on-select="updateDashboardCases('cases_pending')"
+            stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'cases_pending'"
           ></app-stat-card>
           <app-stat-card
-            theme="fusion-teal"
-            icon-class="fa fa-power-off"
+            theme="fusion-purple"
+            icon-class="fa fa-gavel"
             card-title="Active Cases"
-            on-select-show-me="updateDashboardCases('active_cases')"
-            stat-number-to-display="{{userNum}}"
+            on-select="updateDashboardCases('active_cases')"
+            stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'active_cases'"
           ></app-stat-card>
           <app-stat-card
             color="rgb(0, 128, 0)"
             icon-class="fa fa-power-off"
             card-title="Foo"
-            on-select-show-me="updateDashboardCases('foo')"
-            stat-number-to-display="{{userNum}}"
+            on-select="updateDashboardCases('foo')"
+            stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'foo'"
           ></app-stat-card>
           <app-stat-card
-            icon-class="fa fa-power-off"
             card-title="Bar"
-            on-select-show-me="updateDashboardCases('bar')"
-            stat-number-to-display="{{userNum}}"
+            on-select="updateDashboardCases('bar')"
+            stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'bar'"
           ></app-stat-card>
+        </div>
+      </div>
+      <div class="section">
+        <h3>Toggle Card</h3>
+        <div class="section__stat-cards">
+          <app-toggle-card
+            icon-class="fa fa-power-off"
+            card-title="title"
+            message="message"
+            is-toggled="isVacationMode"
+            update-toggle="updateVacationMode()"
+            is-toggle-loading="vacationModeUpdating"
+            tooltip-direction="bottom"
+            tooltip-message="uibMessage"
+            ></app-toggle-card>
+          <button ng-click="changeMessage()">Toggle Card</button>
         </div>
       </div>
     </div>

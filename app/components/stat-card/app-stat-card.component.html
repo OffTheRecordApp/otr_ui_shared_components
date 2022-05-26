@@ -1,8 +1,8 @@
 <div
   class="stat-card"
-  ng-class="vm.applyCustomClass()"
+  ng-class="vm.applyThemeClass()"
   ng-style="vm.applyCustomColor()"
-  ng-click="vm.onSelectShowMe()"
+  ng-click="vm.onSelect()"
 >
   <div class="stat-card__heading">
     <div class="stat-card__stat-bar">
@@ -10,14 +10,14 @@
         <div class="stat-card__title">
           {{ vm.cardTitle }}
         </div>
-        <div ng-if="!vm.statNumberToDisplay">
+        <div ng-if="!vm.statInfoToDisplay">
           <i class="fa fa-spinner fa-pulse fa-lg"></i>
         </div>
         <div
-          ng-if="vm.statNumberToDisplay"
+          ng-if="vm.statInfoToDisplay"
           class="stat-card__stat-num stat-card__clickable"
         >
-          {{ vm.statNumberToDisplay }}
+          {{ vm.statInfoToDisplay }}
         </div>
       </div>
       <div>

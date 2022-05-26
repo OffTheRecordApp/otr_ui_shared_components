@@ -13,6 +13,11 @@
 
   cursor: pointer;
 
+  &__layout {
+    display: flex;
+    gap: 15px;
+  }
+
   &__heading {
     padding: 10px 15px;
     border-bottom: 1px solid transparent;
@@ -30,7 +35,6 @@
     font-size: 14px;
     font-weight: 700;
     padding-bottom: 5px;
-    text-align: right;
     text-transform: uppercase;
   }
 

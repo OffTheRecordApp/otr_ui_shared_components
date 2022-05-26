@@ -1,0 +1,7 @@
+package.json
+package-lock.json
+dist
+build
+bower_components
+node_modules
+coverage
