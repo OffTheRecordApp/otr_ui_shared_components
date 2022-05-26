@@ -30,7 +30,6 @@ class StatCard implements StatCardBindings {
         this.iconClass = this.iconClass || 'fa fa-solid fa-info';
         this.cardTitle = this.cardTitle || 'Card title';
         this.statInfoToDisplay = this.statInfoToDisplay || '10';
-        this.isSelected = this.isSelected;
     }
 
     applyThemeClass() {

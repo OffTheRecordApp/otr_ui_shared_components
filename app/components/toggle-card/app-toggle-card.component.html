@@ -16,9 +16,9 @@
             {{ vm.cardTitle }}
           </div>
           <span class="clickable" ng-click="vm.updateToggle()">
-              <i class="fa fa-toggle-on" ng-switch-default></i>
+              <i class="fa fa-toggle-on toggle-card__toggle" ng-switch-default></i>
               <i
-                  class="fa fa-toggle-on fa-rotate-180"
+                  class="fa fa-toggle-on fa-rotate-180 toggle-card__toggle"
                   ng-switch-when="true"></i>
           </span>
           <span class="toggle-card__loading" ng-if="vm.isToggleLoading === 'true'">
@@ -39,7 +39,7 @@
               class="fa fa-question-circle-o"
               uib-tooltip="{{vm.tooltipMessage}}"
               tooltip-class="toggle-card__uib-tooltip"
-              tooltip-placement="{{vm.tooltipDirection}}"></i>
+              tooltip-placement="{{vm.tooltipPlacement}}"></i>
           </div>
         </div>
       </div>

@@ -81,14 +81,14 @@
             $rootScope.vacationModeUpdating = "false"
             
             $rootScope.changeMessage = () => {
-              $rootScope.message = "You are accepting cases";
-              $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
-              $rootScope.title = "Accepting cases";
               $rootScope.vacationModeUpdating = "true";
               
               setTimeout(() => {
                 $rootScope.vacationModeUpdating = "false";
                 $rootScope.isVacationMode = !$rootScope.isVacationMode;
+                $rootScope.message = "You are accepting cases";
+                $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
+                $rootScope.title = "Accepting cases";
                 $rootScope.$apply();
               }, 3000)
             }
@@ -179,7 +179,7 @@
           <app-stat-card
             theme="fusion-purple"
             icon-class="fa fa-gavel"
-            card-title="Active Cases"
+            card-title="Cases in progress"
             on-select="updateDashboardCases('active_cases')"
             stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'active_cases'"
@@ -194,6 +194,7 @@
           ></app-stat-card>
           <app-stat-card
             card-title="Bar"
+            icon-class="fa fa-info"
             on-select="updateDashboardCases('bar')"
             stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'bar'"
@@ -206,12 +207,12 @@
           <app-toggle-card
             icon-class="fa fa-power-off"
             card-title="title"
-            message="message"
+            message="{{message}}"
             is-toggled="isVacationMode"
             update-toggle="updateVacationMode()"
             is-toggle-loading="vacationModeUpdating"
-            tooltip-direction="bottom"
-            tooltip-message="uibMessage"
+            tooltip-placement="bottom"
+            tooltip-message="{{uibMessage}}"
             ></app-toggle-card>
           <button ng-click="changeMessage()">Toggle Card</button>
         </div>
