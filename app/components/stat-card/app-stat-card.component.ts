@@ -1,8 +1,8 @@
 import angular from 'angular';
 
 interface StatCardBindings {
-    theme: string | undefined;
-    color: string | undefined;
+    theme?: string;
+    color?: string;
     iconClass: string;
     cardTitle: string;
     onSelect: () => null;
@@ -15,8 +15,8 @@ type Theme = 'fusion-yellow' | 'fusion-teal' | 'fusion-red' | 'fusion-purple' | 
 
 class StatCard implements StatCardBindings {
     //bindings
-    theme!: Theme | undefined;
-    color!: string | undefined;
+    theme?: Theme;
+    color?: string;
     iconClass!: string;
     cardTitle!: string;
     onSelect!: () => null;

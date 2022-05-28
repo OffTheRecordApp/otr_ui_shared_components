@@ -16,6 +16,7 @@
       rel="stylesheet"
       href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css"
     />
+
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link
         rel="stylesheet"
@@ -31,8 +32,8 @@
     <script src="node_modules/fuse.js/dist/fuse.js"></script>
     <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
     <script src="node_modules/pdfjs-dist/build/pdf.worker.js"></script>
-    <script src="node_modules/angularjs-ui-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="node_modules/angularjs-ui-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="dist/index.js"></script>
     <link
@@ -168,6 +169,9 @@
       <div class="section">
         <h3>Stat Card</h3>
         <div class="section__stat-cards">
+          <app-stat-card
+            on-select="updateDashboardCases('cases_pending')"
+            is-selected="statusToFilterOn === 'cases_pending'"></app-stat-card>
           <app-stat-card
             theme="fusion-yellow"
             icon-class="fa fa-solid fa-bell"

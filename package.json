@@ -31,10 +31,7 @@
     "@types/lodash": "^4.14.172",
     "@types/node": "^16.4.14",
     "@types/pdfjs-dist": "^2.10.378",
-    "angular-animate": "1.6.0",
-    "angularjs-ui-bootstrap": "2.5.0",
     "babel-plugin-remove-import-export": "^1.1.1",
-    "bootstrap": "~3.3.2",
     "gulp": "^4.0.2",
     "gulp-angular-templatecache": "^3.0.0",
     "gulp-babel": "^8.0.0",
@@ -51,9 +48,12 @@
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@otr-app/shared-backend-generated-client": ">= 1.0.0",
+    "angular-animate": ">= 1.4.9 || <= 1.6.9",
+    "angular-ui-bootstrap": "2.5.0",
+    "bootstrap": "~3.3.2",
     "fuse.js": ">= 6.4.6 || < 7.0.0",
     "lodash": ">= 4.17.21 || < 5.0.0",
-    "@otr-app/shared-backend-generated-client": ">= 1.0.0",
     "pdfjs-dist": "2.5.207"
   }
 }

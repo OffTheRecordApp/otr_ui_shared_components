@@ -3,9 +3,9 @@ import angular from 'angular';
 interface ToggleCardBindings {
     iconClass: string;
     cardTitle: string;
-    tooltipPlacement: TooltipPlacements | undefined;
-    tooltipMessage: string | undefined;
-    message: string | undefined;
+    tooltipPlacement?: string;
+    tooltipMessage?: string;
+    message?: string;
     isToggled: boolean;
     updateToggle: () => null;
     isToggleLoading: boolean;
@@ -30,9 +30,9 @@ class ToggleCard implements ToggleCardBindings {
     // bindings
     iconClass!: string;
     cardTitle!: string;
-    tooltipPlacement: TooltipPlacements | undefined;
-    tooltipMessage: string | undefined;
-    message: string | undefined;
+    tooltipPlacement?: TooltipPlacements;
+    tooltipMessage?: string;
+    message?: string;
     isToggled!: boolean;
     isToggleLoading!: boolean;
     updateToggle!: () => null;
