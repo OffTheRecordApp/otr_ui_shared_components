@@ -1,8 +1,8 @@
 <div
     class="stat-card"
     ng-class="{
-        'toggle-error-red': vm.isToggled,
-        'toggle-success-green': !vm.isToggled
+        'toggle-error-red': vm.isEnabled,
+        'toggle-success-green': !vm.isEnabled
       }"
 >
     <div class="stat-card__heading">
@@ -11,7 +11,7 @@
                 <div 
                     class="toggle-card__layout"
                     ng-switch
-                    on="vm.isToggled">
+                    on="vm.isEnabled">
                   <div class="toggle-card__title">
                       {{ vm.cardTitle }}
                   </div>
@@ -19,7 +19,7 @@
                       <span class="toggle-card__loading" ng-if="vm.isToggleLoading === 'true'">
                           <i class="fa fa-spinner fa-pulse"></i>
                       </span>
-                      <span class="clickable" ng-click="vm.updateToggle()">
+                      <span class="clickable" ng-click="vm.onSwitchClick()">
                           <i class="fa fa-toggle-on toggle-card__toggle" ng-switch-default></i>
                           <i
                               class="fa fa-toggle-on fa-rotate-180 toggle-card__toggle"

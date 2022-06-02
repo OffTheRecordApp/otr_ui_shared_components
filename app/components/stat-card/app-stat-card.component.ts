@@ -7,7 +7,6 @@ interface StatCardBindings {
     cardTitle: string;
     onSelect: () => null;
     statInfoToDisplay: string;
-    statNumberLoading: boolean;
     isSelected: boolean;
 }
 
@@ -21,7 +20,6 @@ class StatCard implements StatCardBindings {
     cardTitle!: string;
     onSelect!: () => null;
     statInfoToDisplay!: string;
-    statNumberLoading!: boolean;
     isSelected!: boolean;
 
     $onInit() {
@@ -66,7 +64,6 @@ const component = {
         cardTitle: '@',
         onSelect: '&',
         statInfoToDisplay: '@',
-        statNumberLoading: '<',
         isSelected: '<'
     },
     controller: StatCard,
