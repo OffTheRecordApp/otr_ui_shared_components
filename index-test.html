@@ -119,6 +119,20 @@
       .section__stat-cards {
         display: flex;
         gap: 10px;
+        height: 80px;
+        max-width: 250px;
+      }
+
+      .stat-card__singular {
+        display: flex; 
+        height: 80px;
+        width: 500px;
+        margin-bottom: 10px;
+      }
+
+      .section__toggle-card {
+        height: 78px;
+        max-width: 300px;
       }
 
       button {
@@ -172,6 +186,11 @@
 
       <div class="section">
         <h3>Stat Card</h3>
+        <div class="stat-card__singular">
+          <app-stat-card
+            on-select="updateDashboardCases('cases_pending')"
+            is-selected="statusToFilterOn === 'cases_pending'"></app-stat-card>
+        </div>
         <div class="section__stat-cards">
           <app-stat-card
             on-select="updateDashboardCases('cases_pending')"
@@ -210,22 +229,20 @@
           <button ng-click="resetSelectedFilter()">Reset</button>
         </div>
       </div>
-      <div class="section">
-        <h3>Toggle Card</h3>
-        <div class="section__stat-cards">
-          <app-toggle-card
-            icon-class="fa fa-power-off"
-            card-title="title"
-            message="{{message}}"
-            is-toggled="isVacationMode"
-            update-toggle="updateVacationMode()"
-            is-toggle-loading="vacationModeUpdating"
-            tooltip-placement="bottom"
-            tooltip-message="{{uibMessage}}"
-            ></app-toggle-card>
-          <button ng-click="changeMessage()">Toggle Card</button>
+      <h3>Toggle Card</h3>
+      <div class="section__toggle-card">
+        <app-toggle-card
+          icon-class="fa fa-power-off"
+          card-title="title"
+          message="{{message}}"
+          is-toggled="isVacationMode"
+          update-toggle="updateVacationMode()"
+          is-toggle-loading="vacationModeUpdating"
+          tooltip-placement="bottom"
+          tooltip-message="{{uibMessage}}"
+          ></app-toggle-card>
         </div>
-      </div>
+        <button ng-click="changeMessage()">Toggle Card</button>
     </div>
   </body>
 </html>
