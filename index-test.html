@@ -93,6 +93,10 @@
                 $rootScope.$apply();
               }, 3000)
             }
+
+            $rootScope.resetSelectedFilter = () => {
+              $rootScope.statusToFilterOn = undefined;
+            }
           }, 
         ]);
     </script>
@@ -203,6 +207,7 @@
             stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'bar'"
           ></app-stat-card>
+          <button ng-click="resetSelectedFilter()">Reset</button>
         </div>
       </div>
       <div class="section">
