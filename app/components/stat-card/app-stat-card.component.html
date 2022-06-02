@@ -1,13 +1,13 @@
 <div
-  class="stat-card"
+  class="app-stat-card"
   ng-class="vm.applyThemeClass()"
   ng-style="vm.applyCustomColor()"
   ng-click="vm.onSelect()"
 >
-  <div class="stat-card__heading">
-    <div class="stat-card__stat-bar">
+  <div class="app-stat-card__heading">
+    <div class="app-stat-card__stat-bar">
       <div>
-        <div class="stat-card__title">
+        <div class="app-stat-card__title">
           {{ vm.cardTitle }}
         </div>
         <div ng-if="!vm.statInfoToDisplay">
@@ -15,13 +15,13 @@
         </div>
         <div
           ng-if="vm.statInfoToDisplay"
-          class="stat-card__stat-num stat-card__clickable"
+          class="app-stat-card__stat-num app-stat-card__clickable"
         >
           {{ vm.statInfoToDisplay }}
         </div>
       </div>
       <div>
-        <span class="stat-card__stat-icon">
+        <span class="app-stat-card__stat-icon">
           <i ng-class="{{'vm.iconClass'}}"></i>
         </span>
       </div>

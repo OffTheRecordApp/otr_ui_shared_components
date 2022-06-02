@@ -1,54 +1,54 @@
 <div
-    class="stat-card"
+    class="app-stat-card"
     ng-class="{
         'toggle-error-red': vm.isEnabled,
         'toggle-success-green': !vm.isEnabled
-      }"
+        }"
 >
-    <div class="stat-card__heading">
-        <div class="toggle-card__toggle-bar">
-            <div class="toggle-card__content">
+    <div class="app-stat-card__heading">
+        <div class="app-toggle-card__toggle-bar">
+            <div class="app-toggle-card__content">
                 <div 
-                    class="toggle-card__layout"
+                    class="app-toggle-card__layout"
                     ng-switch
                     on="vm.isEnabled">
-                  <div class="toggle-card__title">
-                      {{ vm.cardTitle }}
-                  </div>
-                  <div class="toggle-card__toggle-control">
-                      <span class="toggle-card__loading" ng-if="vm.isToggleLoading === 'true'">
-                          <i class="fa fa-spinner fa-pulse"></i>
-                      </span>
-                      <span class="clickable" ng-click="vm.onSwitchClick()">
-                          <i class="fa fa-toggle-on toggle-card__toggle" ng-switch-default></i>
-                          <i
-                              class="fa fa-toggle-on fa-rotate-180 toggle-card__toggle"
-                              ng-switch-when="true"></i>
-                      </span>
-                  </div>
+                    <div class="app-toggle-card__title">
+                        {{ vm.cardTitle }}
+                    </div>
+                    <div class="app-toggle-card__toggle-control">
+                        <span class="app-toggle-card__loading" ng-if="vm.isToggleLoading === 'true'">
+                            <i class="fa fa-spinner fa-pulse"></i>
+                        </span>
+                        <span class="clickable" ng-click="vm.onSwitchClick()">
+                            <i class="fa fa-toggle-on app-toggle-card__toggle" ng-switch-default></i>
+                            <i
+                                class="fa fa-toggle-on fa-rotate-180 app-toggle-card__toggle"
+                                ng-switch-when="true"></i>
+                        </span>
+                    </div>
                 </div>
-                <div class="toggle-card__body">
+                <div class="app-toggle-card__body">
                     <div ng-if="!vm.message">
                         <i class="fa fa-spinner fa-pulse fa-lg"></i>
                     </div>
                     <div
-                        class="stat-card__stat-num toggle-card__sub-title"
+                        class="app-stat-card__stat-num app-toggle-card__sub-title"
                     >
                         {{ vm.message }}
                     </div>
-                    <div class="toggle-card__tooltip">
+                    <div class="app-toggle-card__tooltip">
                         <i 
                             class="fa fa-question-circle-o"
                             uib-tooltip="{{vm.tooltipMessage}}"
-                            tooltip-class="toggle-card__uib-tooltip"
+                            tooltip-class="app-toggle-card__uib-tooltip"
                             tooltip-placement="{{vm.tooltipPlacement}}"></i>
                     </div>
                 </div>
             </div>
             <div>
-              <span class="stat-card__stat-icon">
-                <i ng-class="{{'vm.iconClass'}}"></i>
-              </span>
+                <span class="app-stat-card__stat-icon">
+                    <i ng-class="{{'vm.iconClass'}}"></i>
+                </span>
             </div>
         </div>
     </div>
