@@ -6,8 +6,8 @@ interface ToggleCardBindings {
     tooltipPlacement?: string;
     tooltipMessage?: string;
     message?: string;
-    isToggled: boolean;
-    updateToggle: () => null;
+    isEnabled: boolean;
+    onSwitchClick: () => null;
     isToggleLoading: boolean;
 }
 
@@ -33,9 +33,9 @@ class ToggleCard implements ToggleCardBindings {
     tooltipPlacement?: TooltipPlacements;
     tooltipMessage?: string;
     message?: string;
-    isToggled!: boolean;
+    isEnabled!: boolean;
     isToggleLoading!: boolean;
-    updateToggle!: () => null;
+    onSwitchClick!: () => null;
 
     $onInit() {
         this.iconClass = this.iconClass || 'fa fa-solid fa-info';
@@ -52,9 +52,9 @@ const component = {
         tooltipPlacement: '@',
         tooltipMessage: '@',
         message: '@',
-        isToggled: '<',
+        isEnabled: '<',
         isToggleLoading: '<',
-        updateToggle: '&'
+        onSwitchClick: '&'
     },
     controller: ToggleCard,
     controllerAs: 'vm'

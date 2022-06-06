@@ -80,7 +80,7 @@
             $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
             $rootScope.title = "Not accepting cases";
             $rootScope.vacationModeUpdating = "false"
-            
+            $rootScope.isIconShowing = "true";
             $rootScope.changeMessage = () => {
               $rootScope.vacationModeUpdating = "true";
               
@@ -92,6 +92,15 @@
                 $rootScope.title = "Accepting cases";
                 $rootScope.$apply();
               }, 3000)
+            }
+
+            $rootScope.resetSelectedFilter = () => {
+              $rootScope.statusToFilterOn = undefined;
+            }
+
+            $rootScope.removeIcons = () => {
+              $rootScope.isIconShowing = "false";
+              console.log($rootScope.isIconShowing)
             }
           }, 
         ]);
@@ -115,6 +124,21 @@
       .section__stat-cards {
         display: flex;
         gap: 10px;
+        height: 100px;
+        width: 250px;
+        max-width: 250px;
+      }
+
+      .stat-card__singular {
+        display: flex; 
+        height: 100px;
+        width: 180px;
+        margin-bottom: 10px;
+      }
+
+      .section__toggle-card {
+        height: 100px;
+        max-width: 300px;
       }
 
       button {
@@ -168,10 +192,17 @@
 
       <div class="section">
         <h3>Stat Card</h3>
+        <div class="stat-card__singular">
+          <app-stat-card
+            on-select="updateDashboardCases('cases_pending')"
+            is-selected="statusToFilterOn === 'cases_pending'"
+            is-icon-showing="isIconShowing"></app-stat-card>
+        </div>
         <div class="section__stat-cards">
           <app-stat-card
             on-select="updateDashboardCases('cases_pending')"
-            is-selected="statusToFilterOn === 'cases_pending'"></app-stat-card>
+            is-selected="statusToFilterOn === 'cases_pending'"
+            is-icon-showing="isIconShowing"></app-stat-card>
           <app-stat-card
             theme="fusion-yellow"
             icon-class="fa fa-solid fa-bell"
@@ -179,6 +210,7 @@
             on-select="updateDashboardCases('cases_pending')"
             stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'cases_pending'"
+            is-icon-showing="isIconShowing"
           ></app-stat-card>
           <app-stat-card
             theme="fusion-purple"
@@ -186,7 +218,9 @@
             card-title="Cases in progress"
             on-select="updateDashboardCases('active_cases')"
             stat-info-to-display="{{userNum}}"
+            is-icon-showing="isIconShowing"
             is-selected="statusToFilterOn === 'active_cases'"
+            is-icon-showing="isIconShowing"
           ></app-stat-card>
           <app-stat-card
             color="rgb(0, 128, 0)"
@@ -195,6 +229,7 @@
             on-select="updateDashboardCases('foo')"
             stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'foo'"
+            is-icon-showing="isIconShowing"
           ></app-stat-card>
           <app-stat-card
             card-title="Bar"
@@ -202,25 +237,26 @@
             on-select="updateDashboardCases('bar')"
             stat-info-to-display="{{userNum}}"
             is-selected="statusToFilterOn === 'bar'"
+            is-icon-showing="isIconShowing"
           ></app-stat-card>
+          <button ng-click="resetSelectedFilter()">Reset</button>
+          <button ng-click="removeIcons()">Remove Icon</button>
         </div>
       </div>
-      <div class="section">
-        <h3>Toggle Card</h3>
-        <div class="section__stat-cards">
-          <app-toggle-card
-            icon-class="fa fa-power-off"
-            card-title="title"
-            message="{{message}}"
-            is-toggled="isVacationMode"
-            update-toggle="updateVacationMode()"
-            is-toggle-loading="vacationModeUpdating"
-            tooltip-placement="bottom"
-            tooltip-message="{{uibMessage}}"
-            ></app-toggle-card>
-          <button ng-click="changeMessage()">Toggle Card</button>
+      <h3>Toggle Card</h3>
+      <div class="section__toggle-card">
+        <app-toggle-card
+          icon-class="fa fa-power-off"
+          card-title="title"
+          message="{{message}}"
+          is-enabled="isVacationMode"
+          on-switch-click="updateVacationMode()"
+          is-toggle-loading="vacationModeUpdating"
+          tooltip-placement="bottom"
+          tooltip-message="{{uibMessage}}"
+          ></app-toggle-card>
         </div>
-      </div>
+        <button ng-click="changeMessage()">Toggle Card</button>
     </div>
   </body>
 </html>

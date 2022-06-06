@@ -60,8 +60,8 @@ function htmlTask() {
 
 function createIndex() {
   const indexStream = src([
-    "dist/otr-ui-shared-components.tpls.js",
     "dist/otr-ui-shared-components.js",
+    "dist/otr-ui-shared-components.tpls.js",
     "!dist/*.min.js",
   ])
     .pipe(concat("index.js"))

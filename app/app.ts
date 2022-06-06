@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular.module('otr-ui-shared-components', [
     'angucomplete-alt',
     'otrBackendService',

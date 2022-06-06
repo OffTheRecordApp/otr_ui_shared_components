@@ -7,8 +7,8 @@ interface StatCardBindings {
     cardTitle: string;
     onSelect: () => null;
     statInfoToDisplay: string;
-    statNumberLoading: boolean;
     isSelected: boolean;
+    isIconShowing: boolean;
 }
 
 type Theme = 'fusion-yellow' | 'fusion-teal' | 'fusion-red' | 'fusion-purple' | 'default';
@@ -21,8 +21,8 @@ class StatCard implements StatCardBindings {
     cardTitle!: string;
     onSelect!: () => null;
     statInfoToDisplay!: string;
-    statNumberLoading!: boolean;
     isSelected!: boolean;
+    isIconShowing!: boolean;
 
     $onInit() {
         this.color = this.color || undefined;
@@ -66,8 +66,8 @@ const component = {
         cardTitle: '@',
         onSelect: '&',
         statInfoToDisplay: '@',
-        statNumberLoading: '<',
-        isSelected: '<'
+        isSelected: '<',
+        isIconShowing: '<'
     },
     controller: StatCard,
     controllerAs: 'vm'
