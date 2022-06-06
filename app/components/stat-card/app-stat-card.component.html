@@ -21,7 +21,9 @@
         </div>
       </div>
       <div>
-        <span class="app-stat-card__stat-icon">
+        <span 
+            class="app-stat-card__stat-icon"
+            ng-if="vm.isIconShowing === 'true'">
           <i ng-class="{{'vm.iconClass'}}"></i>
         </span>
       </div>

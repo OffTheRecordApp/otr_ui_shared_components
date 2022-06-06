@@ -6,27 +6,27 @@
         }"
 >
     <div class="app-stat-card__heading">
+        <div 
+            class="app-toggle-card__layout"
+            ng-switch
+            on="vm.isEnabled">
+            <div class="app-toggle-card__title">
+                {{ vm.cardTitle }}
+            </div>
+            <div>
+                <span class="app-toggle-card__loading" ng-if="vm.isToggleLoading === 'true'">
+                    <i class="fa fa-spinner fa-pulse"></i>
+                </span>
+                <span class="clickable" ng-click="vm.onSwitchClick()">
+                    <i class="fa fa-toggle-on app-toggle-card__toggle" ng-switch-default></i>
+                    <i
+                        class="fa fa-toggle-on fa-rotate-180 app-toggle-card__toggle"
+                        ng-switch-when="true"></i>
+                </span>
+            </div>
+        </div>
         <div class="app-toggle-card__toggle-bar">
             <div class="app-toggle-card__content">
-                <div 
-                    class="app-toggle-card__layout"
-                    ng-switch
-                    on="vm.isEnabled">
-                    <div class="app-toggle-card__title">
-                        {{ vm.cardTitle }}
-                    </div>
-                    <div class="app-toggle-card__toggle-control">
-                        <span class="app-toggle-card__loading" ng-if="vm.isToggleLoading === 'true'">
-                            <i class="fa fa-spinner fa-pulse"></i>
-                        </span>
-                        <span class="clickable" ng-click="vm.onSwitchClick()">
-                            <i class="fa fa-toggle-on app-toggle-card__toggle" ng-switch-default></i>
-                            <i
-                                class="fa fa-toggle-on fa-rotate-180 app-toggle-card__toggle"
-                                ng-switch-when="true"></i>
-                        </span>
-                    </div>
-                </div>
                 <div class="app-toggle-card__body">
                     <div ng-if="!vm.message">
                         <i class="fa fa-spinner fa-pulse fa-lg"></i>
