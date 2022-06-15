@@ -1,0 +1,28 @@
+.star-rating-display {
+    &__empty-stars {
+        position: relative;
+        display: inline-block;
+        font-size: 15px;
+        font-family: 'Font Awesome 5 Pro';
+        letter-spacing: 3px;
+    }
+
+    &__empty-stars::before {
+        content: '\f005 \f005 \f005 \f005 \f005';
+        font-weight: 300;
+    }
+
+    &__filled-stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+    }
+
+    &__filled-stars::before {
+        content: '\f005 \f005 \f005 \f005 \f005';
+        font-weight: 900;
+    }
+}

@@ -67,6 +67,7 @@
               $rootScope.statusToFilterOn = d;
               console.log("Selected cases filter:", d);
             };
+
             // variables for stat card
             $rootScope.userNum = "20";
             $rootScope.statusToFilterOn = "cases_pending";
@@ -258,5 +259,16 @@
         </div>
         <button ng-click="changeMessage()">Toggle Card</button>
     </div>
+
+    <h3>Star Rating Display</h3>
+    <app-star-rating-display rating="1" color="#ff595e"></app-star-rating-display>
+    <br/>
+    <app-star-rating-display rating="2"></app-star-rating-display>
+    <br/>
+    <app-star-rating-display rating="3" color="#8ac926"></app-star-rating-display>
+    <br/>
+    <app-star-rating-display rating="4" color="#1982c4"></app-star-rating-display>
+    <br/>
+    <app-star-rating-display rating="5" color="#6a4c93"></app-star-rating-display>
   </body>
 </html>
