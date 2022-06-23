@@ -1,6 +1,6 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
@@ -54,6 +54,7 @@
     "bootstrap": "~3.3.2",
     "fuse.js": ">= 6.4.6 || < 7.0.0",
     "lodash": ">= 4.17.21 || < 5.0.0",
+    "ngletteravatar": "4.0.4",
     "pdfjs-dist": "2.5.207"
   }
 }
