@@ -19,28 +19,24 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
     constructor(private $element) {}
 
     $onInit() {
-        this.imageClass = this.avatarClass ? this.avatarClass : 'fallback';
+        this.imageClass = this.avatarClass
+            ? this.avatarClass
+            : 'app-avatar-image-fallback__default';
         this.setCharCount();
 
         this.$element.find('img').bind('error', () => {
             const appColors = ['#007BE3', '#FFC715', '#00D6B2', '#FF4848', '#385064'];
             const defaultFallback = angular
                 .element(document.createElement('i'))
-                .addClass(`fas fa-user app-avatar-image ${this.avatarClass}`)
+                .addClass(
+                    `fas fa-user app-avatar-image__default-user ${this.avatarClass}`
+                )
                 .css({
                     background: appColors[Math.floor(Math.random() * appColors.length)]
                 });
             this.$element.parent().prepend(defaultFallback);
             this.$element.remove();
         });
-    }
-
-    isProfilePictureShowing() {
-        if (!this.src || this.src.includes('default-user')) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     setCharCount() {

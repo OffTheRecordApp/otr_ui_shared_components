@@ -1,7 +1,7 @@
 <img 
     ng-src="{{ vm.src }}" 
     ng-class="vm.imageClass" 
-    ng-show="vm.isProfilePictureShowing()"/>
+    ng-show="vm.src"/>
 
 <ng-letter-avatar
     data="{{ vm.name }}"
@@ -11,5 +11,5 @@
     width="62"
     fontWeight="500"
     fontFamily="Helvetica"
-    ng-show="!vm.isProfilePictureShowing()">
+    ng-show="!vm.src">
 </ng-letter-avatar>
