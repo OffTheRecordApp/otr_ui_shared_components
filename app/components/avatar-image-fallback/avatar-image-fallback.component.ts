@@ -29,7 +29,7 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
             const defaultFallback = angular
                 .element(document.createElement('i'))
                 .addClass(
-                    `fas fa-user app-avatar-image__default-user ${this.avatarClass}`
+                    `fas fa-user app-avatar-image-fallback__default-user ${this.avatarClass}`
                 )
                 .css({
                     background: appColors[Math.floor(Math.random() * appColors.length)]
