@@ -36,6 +36,7 @@
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="dist/index.js"></script>
+    <script src="node_modules/ngletteravatar/dist/ngletteravatar.min.js"></script>
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -103,6 +104,13 @@
               $rootScope.isIconShowing = "false";
               console.log($rootScope.isIconShowing)
             }
+
+            $rootScope.profileImageUrl = "https://off-the-record-service.s3.amazonaws.com/private/clients/profile-pictures/383297.jpeg?AWSAccessKeyId=AKIAIJNV2QCSYMKVDEKQ&Expires=1656089733&Signature=LvRn%2BEDowvwl6JxS138HIeMsbY0%3D"
+            $rootScope.name = "James Smith"
+            $rootScope.avatarClass = "customer"
+            $rootScope.defaultUserProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/default-user.png"
+            $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
+            $rootScope.brokenProfileImageUrl = "https://off-the-record-service.s3.amazonaws.com/private/clients/profile-pictures/383297.jpeg?AWSAccessKeyId=AKIAIJNV2QCSYMKVDEKQ&Expires=1656004212&Signature=SipY0B8QCnjOoo8jALMJsUT3vAE%3"
           }, 
         ]);
     </script>
@@ -145,6 +153,20 @@
       button {
         height: min-content;
         margin: auto 0;
+      }
+
+      .customer {
+        border-radius: 50%;
+        height: 62px;
+        object-fit: cover;
+        width: 62px;
+      }
+
+      .image-fallback-group {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
       }
     </style>
     <div>
@@ -259,16 +281,41 @@
         </div>
         <button ng-click="changeMessage()">Toggle Card</button>
     </div>
-
-    <h3>Star Rating Display</h3>
-    <app-star-rating-display rating="1" color="#ff595e"></app-star-rating-display>
-    <br/>
-    <app-star-rating-display rating="2"></app-star-rating-display>
-    <br/>
-    <app-star-rating-display rating="3" color="#8ac926"></app-star-rating-display>
-    <br/>
-    <app-star-rating-display rating="4" color="#1982c4"></app-star-rating-display>
-    <br/>
-    <app-star-rating-display rating="5" color="#6a4c93"></app-star-rating-display>
+    <div class="section">
+        <h3>Star Rating Display</h3>
+        <app-star-rating-display rating="1" color="#ff595e"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="2"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="3" color="#8ac926"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="4" color="#1982c4"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="5" color="#6a4c93"></app-star-rating-display>
+    </div>
+    <h3>Avatar Image Fallback</h3>
+    <div class="section image-fallback-group">
+        <avatar-image-fallback
+            src="profileImageUrl"
+            avatar-class="{{avatarClass}}"
+            name="{{name}}">
+        </avatar-image-fallback>
+        <!-- use case: default profile image is used -->
+        <avatar-image-fallback
+            name="George Martin">
+        </avatar-image-fallback>
+        <!-- use case: facebook profile picture is used -->
+        <avatar-image-fallback
+            src="facebookProfileImage"
+            avatar-class="customer"
+            name="Earl Benz">
+        </avatar-image-fallback>
+        <!-- use case: img tags that throw an error -->
+        <span>
+          <avatar-image-fallback
+              src="brokenProfileImageUrl"
+              name="Shaun Kent"></avatar-image-fallback>
+        </span>
+    </div>
   </body>
 </html>

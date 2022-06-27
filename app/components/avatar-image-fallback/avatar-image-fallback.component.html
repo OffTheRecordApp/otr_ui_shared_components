@@ -1,0 +1,15 @@
+<img 
+    ng-src="{{ vm.src }}" 
+    ng-class="vm.imageClass" 
+    ng-show="vm.src"/>
+
+<ng-letter-avatar
+    data="{{ vm.name }}"
+    shape="round"
+    charCount="{{vm.charCount}}"
+    height="62"
+    width="62"
+    fontWeight="500"
+    fontFamily="Helvetica"
+    ng-show="!vm.src">
+</ng-letter-avatar>
