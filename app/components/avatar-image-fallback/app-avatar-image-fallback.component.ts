@@ -6,7 +6,7 @@ interface AvatarImageFallbackBindings {
     name?: string;
 }
 
-class AvatarImageFallback implements AvatarImageFallbackBindings {
+class AppAvatarImageFallback implements AvatarImageFallbackBindings {
     // bindings
     src?: string;
     avatarClass?: string;
@@ -61,7 +61,7 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
 angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
     templateUrl:
         'app/components/avatar-image-fallback/app-avatar-image-fallback.component.html',
-    controller: AvatarImageFallback,
+    controller: AppAvatarImageFallback,
     bindings: {
         src: '<',
         avatarClass: '@',
@@ -70,4 +70,4 @@ angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
     controllerAs: 'vm'
 });
 
-AvatarImageFallback.$inject = ['$element', '$scope'];
+AppAvatarImageFallback.$inject = ['$element', '$scope'];
