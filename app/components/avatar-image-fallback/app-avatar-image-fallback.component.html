@@ -1,0 +1,16 @@
+<img
+    ng-src="{{ vm.src }}"
+    ng-class="vm.imageClass"
+    ng-show="vm.src"/>
+
+<span ng-show="(!vm.src && vm.name) || vm.isLetterAvatarVisible">
+    <ng-letter-avatar
+        data="{{ vm.name }}"
+        shape="round"
+        charCount="{{vm.charCount}}"
+        height="62"
+        width="62"
+        fontWeight="500"
+        fontFamily="Helvetica">
+    </ng-letter-avatar>
+</span>

@@ -1,321 +1,326 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="otr-ui-shared-components">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-    <link
-      rel="stylesheet"
-      href="node_modules/angucomplete-alt/angucomplete-alt.css"
-    />
-    <link rel="stylesheet" href="dist/otr-ui-shared-components.css" />
-    <link
-      rel="stylesheet"
-      href="node_modules/@fortawesome/fontawesome-free/css/all.css"
-    />
-    <link
-      rel="stylesheet"
-      href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css"
-    />
-
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link
-        rel="stylesheet"
-        href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
-    />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
-    <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
-
-    <!-- DEV DEPENDENCIES BELOW ARE JUST FOR TESTING -->
-    <script src="node_modules/@otr-app/shared-backend-generated-client/dist/otrBackendService.js"></script>
-    <script src="node_modules/lodash/lodash.js"></script>
-    <script src="node_modules/fuse.js/dist/fuse.js"></script>
-    <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
-    <script src="node_modules/pdfjs-dist/build/pdf.worker.js"></script>
-    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
-    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-    <script src="dist/index.js"></script>
-    <script src="node_modules/ngletteravatar/dist/ngletteravatar.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.5.0/css/all.css"
-      integrity="sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt"
-      crossorigin="anonymous"
-    />
-    <script>
-      angular
-        .module("otr-ui-shared-components")
-        .config([
-          "otrServiceProvider",
-          function (otrServiceProvider) {
-            otrServiceProvider.setDomain(
-              "https://otr-backend-service-us-devo.offtherecord.com"
-            );
-          },
-        ])
-        .run([
-          "$rootScope",
-          function ($rootScope) {
-            $rootScope.onSelect = (c) => {
-              console.log("Selected item", c);
-            };
-            $rootScope.onChooseRating = (r) => {
-              console.log("Rating chosen: ", r.rating);
-            };
-            $rootScope.regionCode = "WA";
-            $rootScope.updateDashboardCases = (d) => {
-              $rootScope.statusToFilterOn = d;
-              console.log("Selected cases filter:", d);
-            };
-
-            // variables for stat card
-            $rootScope.userNum = "20";
-            $rootScope.statusToFilterOn = "cases_pending";
-            $rootScope.isVacationMode = "true";
-            $rootScope.updateVacationMode = () => {
-              $rootScope.isVacationMode = !$rootScope.isVacationMode; 
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        <link
+            rel="stylesheet"
+            href="node_modules/angucomplete-alt/angucomplete-alt.css"
+        />
+        <link rel="stylesheet" href="dist/otr-ui-shared-components.css" />
+        <link
+            rel="stylesheet"
+            href="node_modules/@fortawesome/fontawesome-free/css/all.css"
+        />
+        <link
+            rel="stylesheet"
+            href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css"
+        />
+    
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+        />
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
+        <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
+    
+        <!-- DEV DEPENDENCIES BELOW ARE JUST FOR TESTING -->
+        <script src="node_modules/@otr-app/shared-backend-generated-client/dist/otrBackendService.js"></script>
+        <script src="node_modules/lodash/lodash.js"></script>
+        <script src="node_modules/fuse.js/dist/fuse.js"></script>
+        <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
+        <script src="node_modules/pdfjs-dist/build/pdf.worker.js"></script>
+        <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+        <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="dist/index.js"></script>
+        <script src="node_modules/ngletteravatar/dist/ngletteravatar.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt"
+            crossorigin="anonymous"
+            />
+        <script>
+            angular
+                .module("otr-ui-shared-components")
+                .config([
+                    "otrServiceProvider",
+                    function (otrServiceProvider) {
+                        otrServiceProvider.setDomain(
+                            "https://otr-backend-service-us-devo.offtherecord.com"
+                        );
+                    },
+                    ])
+                .run([
+                    "$rootScope",
+                    function ($rootScope) {
+                    $rootScope.onSelect = (c) => {
+                        console.log("Selected item", c);
+                    };
+                    $rootScope.onChooseRating = (r) => {
+                        console.log("Rating chosen: ", r.rating);
+                    };
+                    $rootScope.regionCode = "WA";
+                    $rootScope.updateDashboardCases = (d) => {
+                        $rootScope.statusToFilterOn = d;
+                        console.log("Selected cases filter:", d);
+                    };
+        
+                    // variables for stat card
+                    $rootScope.userNum = "20";
+                    $rootScope.statusToFilterOn = "cases_pending";
+                    $rootScope.isVacationMode = "true";
+                    $rootScope.updateVacationMode = () => {
+                        $rootScope.isVacationMode = !$rootScope.isVacationMode;
+                    }
+        
+                    // variables for toggle card
+                    $rootScope.message = "You are NOT accepting cases"
+                    $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
+                    $rootScope.title = "Not accepting cases";
+                    $rootScope.vacationModeUpdating = "false"
+                    $rootScope.isIconShowing = "true";
+                    $rootScope.changeMessage = () => {
+                        $rootScope.vacationModeUpdating = "true";
+                    
+                        setTimeout(() => {
+                            $rootScope.vacationModeUpdating = "false";
+                            $rootScope.isVacationMode = !$rootScope.isVacationMode;
+                            $rootScope.message = "You are accepting cases";
+                            $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
+                            $rootScope.title = "Accepting cases";
+                            $rootScope.$apply();
+                        }, 3000)
+                    }
+        
+                    $rootScope.resetSelectedFilter = () => {
+                        $rootScope.statusToFilterOn = undefined;
+                    }
+        
+                    $rootScope.removeIcons = () => {
+                        $rootScope.isIconShowing = "false";
+                        console.log($rootScope.isIconShowing)
+                    }
+        
+                    $rootScope.profileImageUrl = "https://graph.facebook.com/v2.8/3668555106576865/picture?height=961"
+                    $rootScope.name = "James Smith"
+                    $rootScope.avatarClass = "customer"
+                    $rootScope.brokenProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/jkfkl;jdaf"
+                    $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
+                    $rootScope.undefinedName = undefined;
+                    },
+                ]);
+        </script>
+    </head>
+    <body>
+        <style>
+            body {
+                font-family: Helvetica, Arial, sans-serif;
+                height: 200vh;
             }
-
-            // variables for toggle card
-            $rootScope.message = "You are NOT accepting cases"
-            $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
-            $rootScope.title = "Not accepting cases";
-            $rootScope.vacationModeUpdating = "false"
-            $rootScope.isIconShowing = "true";
-            $rootScope.changeMessage = () => {
-              $rootScope.vacationModeUpdating = "true";
-              
-              setTimeout(() => {
-                $rootScope.vacationModeUpdating = "false";
-                $rootScope.isVacationMode = !$rootScope.isVacationMode;
-                $rootScope.message = "You are accepting cases";
-                $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
-                $rootScope.title = "Accepting cases";
-                $rootScope.$apply();
-              }, 3000)
+            .search-input {
+                height: 30px;
+                padding: 5px;
+                width: 300px;
             }
-
-            $rootScope.resetSelectedFilter = () => {
-              $rootScope.statusToFilterOn = undefined;
+            .section {
+                margin-bottom: 40px;
+                margin-left: 10px;
             }
-
-            $rootScope.removeIcons = () => {
-              $rootScope.isIconShowing = "false";
-              console.log($rootScope.isIconShowing)
+            .section__stat-cards {
+                display: flex;
+                gap: 10px;
+                height: 100px;
+                width: 250px;
+                max-width: 250px;
             }
-
-            $rootScope.profileImageUrl = "https://off-the-record-service.s3.amazonaws.com/private/clients/profile-pictures/383297.jpeg?AWSAccessKeyId=AKIAIJNV2QCSYMKVDEKQ&Expires=1656089733&Signature=LvRn%2BEDowvwl6JxS138HIeMsbY0%3D"
-            $rootScope.name = "James Smith"
-            $rootScope.avatarClass = "customer"
-            $rootScope.defaultUserProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/default-user.png"
-            $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
-            $rootScope.brokenProfileImageUrl = "https://off-the-record-service.s3.amazonaws.com/private/clients/profile-pictures/383297.jpeg?AWSAccessKeyId=AKIAIJNV2QCSYMKVDEKQ&Expires=1656004212&Signature=SipY0B8QCnjOoo8jALMJsUT3vAE%3"
-          }, 
-        ]);
-    </script>
-  </head>
-  <body>
-    <style>
-      body {
-        font-family: Helvetica, Arial, sans-serif;
-        height: 200vh;
-      }
-      .search-input {
-        height: 30px;
-        padding: 5px;
-        width: 300px;
-      }
-      .section {
-        margin-bottom: 40px;
-        margin-left: 10px;
-      }
-      .section__stat-cards {
-        display: flex;
-        gap: 10px;
-        height: 100px;
-        width: 250px;
-        max-width: 250px;
-      }
-
-      .stat-card__singular {
-        display: flex; 
-        height: 100px;
-        width: 180px;
-        margin-bottom: 10px;
-      }
-
-      .section__toggle-card {
-        height: 100px;
-        max-width: 300px;
-      }
-
-      button {
-        height: min-content;
-        margin: auto 0;
-      }
-
-      .customer {
-        border-radius: 50%;
-        height: 62px;
-        object-fit: cover;
-        width: 62px;
-      }
-
-      .image-fallback-group {
-        display: flex;
-        flex-direction: row;
-        gap: 5px;
-        align-items: center;
-      }
-    </style>
-    <div>
-      <div class="section">
-        <h3>Local Court Search</h3>
-        <app-courts-dropdown
-          state="regionCode"
-          input-class="search-input"
-          on-select-court="onSelect"
-        >
-        </app-courts-dropdown>
-      </div>
-
-      <div class="section">
-        <h3>Remote Court Search on Demand</h3>
-        <app-remote-courts-dropdown
-          placeholder="Type in a court"
-          input-class="search-input"
-          on-select-court="onSelect"
-        >
-        </app-remote-courts-dropdown>
-      </div>
-
-      <div class="section">
-        <h3>Local Violations Search</h3>
-        <app-violations-dropdown
-          region-code="regionCode"
-          input-class="search-input"
-          on-select="onSelect"
-        >
-        </app-violations-dropdown>
-      </div>
-
-      <div class="section">
-        <h3>PDF Preview</h3>
-        <app-pdf-image-preview path="doc.pdf"></app-pdf-image-preview>
-      </div>
-
-      <div class="section">
-        <h3>Star Rating</h3>
-        <app-star-rating
-          number-of-stars="4"
-          on-choose-rating="onChooseRating({rating})"
-        ></app-star-rating>
-      </div>
-
-      <div class="section">
-        <h3>Stat Card</h3>
-        <div class="stat-card__singular">
-          <app-stat-card
-            on-select="updateDashboardCases('cases_pending')"
-            is-selected="statusToFilterOn === 'cases_pending'"
-            is-icon-showing="isIconShowing"></app-stat-card>
+        
+            .stat-card__singular {
+                display: flex;
+                height: 100px;
+                width: 180px;
+                margin-bottom: 10px;
+            }
+        
+            .section__toggle-card {
+                height: 100px;
+                max-width: 300px;
+            }
+        
+            button {
+                height: min-content;
+                margin: auto 0;
+            }
+        
+            .customer {
+                border-radius: 50%;
+                height: 62px;
+                object-fit: cover;
+                width: 62px;
+            }
+        
+            .image-fallback-group {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                align-items: center;
+            }
+        </style>
+        <div>
+            <div class="section">
+                <h3>Local Court Search</h3>
+                <app-courts-dropdown
+                    state="regionCode"
+                    input-class="search-input"
+                    on-select-court="onSelect">
+                </app-courts-dropdown>
+            </div>
+    
+            <div class="section">
+                <h3>Remote Court Search on Demand</h3>
+                <app-remote-courts-dropdown
+                    placeholder="Type in a court"
+                    input-class="search-input"
+                    on-select-court="onSelect"
+                >
+                </app-remote-courts-dropdown>
+            </div>
+    
+            <div class="section">
+                <h3>Local Violations Search</h3>
+                <app-violations-dropdown
+                    region-code="regionCode"
+                    input-class="search-input"
+                    on-select="onSelect"
+                >
+                </app-violations-dropdown>
+            </div>
+    
+            <div class="section">
+                <h3>PDF Preview</h3>
+                <app-pdf-image-preview path="doc.pdf"></app-pdf-image-preview>
+            </div>
+    
+            <div class="section">
+                <h3>Star Rating</h3>
+                <app-star-rating
+                    number-of-stars="4"
+                    on-choose-rating="onChooseRating({rating})"
+                ></app-star-rating>
+            </div>
+    
+            <div class="section">
+                <h3>Stat Card</h3>
+                <div class="stat-card__singular">
+                    <app-stat-card
+                        on-select="updateDashboardCases('cases_pending')"
+                        is-selected="statusToFilterOn === 'cases_pending'"
+                        is-icon-showing="isIconShowing"></app-stat-card>
+                </div>
+                <div class="section__stat-cards">
+                    <app-stat-card
+                        on-select="updateDashboardCases('cases_pending')"
+                        is-selected="statusToFilterOn === 'cases_pending'"
+                        is-icon-showing="isIconShowing"></app-stat-card>
+                    <app-stat-card
+                        theme="fusion-yellow"
+                        icon-class="fa fa-solid fa-bell"
+                        card-title="Pending Cases"
+                        on-select="updateDashboardCases('cases_pending')"
+                        stat-info-to-display="{{userNum}}"
+                        is-selected="statusToFilterOn === 'cases_pending'"
+                        is-icon-showing="isIconShowing"
+                    ></app-stat-card>
+                    <app-stat-card
+                        theme="fusion-purple"
+                        icon-class="fa fa-gavel"
+                        card-title="Cases in progress"
+                        on-select="updateDashboardCases('active_cases')"
+                        stat-info-to-display="{{userNum}}"
+                        is-icon-showing="isIconShowing"
+                        is-selected="statusToFilterOn === 'active_cases'"
+                        is-icon-showing="isIconShowing"
+                    ></app-stat-card>
+                    <app-stat-card
+                        color="rgb(0, 128, 0)"
+                        icon-class="fa fa-power-off"
+                        card-title="Foo"
+                        on-select="updateDashboardCases('foo')"
+                        stat-info-to-display="{{userNum}}"
+                        is-selected="statusToFilterOn === 'foo'"
+                        is-icon-showing="isIconShowing"
+                    ></app-stat-card>
+                    <app-stat-card
+                        card-title="Bar"
+                        icon-class="fa fa-info"
+                        on-select="updateDashboardCases('bar')"
+                        stat-info-to-display="{{userNum}}"
+                        is-selected="statusToFilterOn === 'bar'"
+                        is-icon-showing="isIconShowing"
+                    ></app-stat-card>
+                    <button ng-click="resetSelectedFilter()">Reset</button>
+                    <button ng-click="removeIcons()">Remove Icon</button>
+                </div>
+            </div>
+            <h3>Toggle Card</h3>
+            <div class="section__toggle-card">
+                <app-toggle-card
+                    icon-class="fa fa-power-off"
+                    card-title="title"
+                    message="{{message}}"
+                    is-enabled="isVacationMode"
+                    on-switch-click="updateVacationMode()"
+                    is-toggle-loading="vacationModeUpdating"
+                    tooltip-placement="bottom"
+                    tooltip-message="{{uibMessage}}"
+                ></app-toggle-card>
+            </div>
+            <button ng-click="changeMessage()">Toggle Card</button>
         </div>
-        <div class="section__stat-cards">
-          <app-stat-card
-            on-select="updateDashboardCases('cases_pending')"
-            is-selected="statusToFilterOn === 'cases_pending'"
-            is-icon-showing="isIconShowing"></app-stat-card>
-          <app-stat-card
-            theme="fusion-yellow"
-            icon-class="fa fa-solid fa-bell"
-            card-title="Pending Cases"
-            on-select="updateDashboardCases('cases_pending')"
-            stat-info-to-display="{{userNum}}"
-            is-selected="statusToFilterOn === 'cases_pending'"
-            is-icon-showing="isIconShowing"
-          ></app-stat-card>
-          <app-stat-card
-            theme="fusion-purple"
-            icon-class="fa fa-gavel"
-            card-title="Cases in progress"
-            on-select="updateDashboardCases('active_cases')"
-            stat-info-to-display="{{userNum}}"
-            is-icon-showing="isIconShowing"
-            is-selected="statusToFilterOn === 'active_cases'"
-            is-icon-showing="isIconShowing"
-          ></app-stat-card>
-          <app-stat-card
-            color="rgb(0, 128, 0)"
-            icon-class="fa fa-power-off"
-            card-title="Foo"
-            on-select="updateDashboardCases('foo')"
-            stat-info-to-display="{{userNum}}"
-            is-selected="statusToFilterOn === 'foo'"
-            is-icon-showing="isIconShowing"
-          ></app-stat-card>
-          <app-stat-card
-            card-title="Bar"
-            icon-class="fa fa-info"
-            on-select="updateDashboardCases('bar')"
-            stat-info-to-display="{{userNum}}"
-            is-selected="statusToFilterOn === 'bar'"
-            is-icon-showing="isIconShowing"
-          ></app-stat-card>
-          <button ng-click="resetSelectedFilter()">Reset</button>
-          <button ng-click="removeIcons()">Remove Icon</button>
+        <div class="section">
+            <h3>Star Rating Display</h3>
+            <app-star-rating-display rating="1" color="#ff595e"></app-star-rating-display>
+            <br/>
+            <app-star-rating-display rating="2"></app-star-rating-display>
+            <br/>
+            <app-star-rating-display rating="3" color="#8ac926"></app-star-rating-display>
+            <br/>
+            <app-star-rating-display rating="4" color="#1982c4"></app-star-rating-display>
+            <br/>
+            <app-star-rating-display rating="5" color="#6a4c93"></app-star-rating-display>
         </div>
-      </div>
-      <h3>Toggle Card</h3>
-      <div class="section__toggle-card">
-        <app-toggle-card
-          icon-class="fa fa-power-off"
-          card-title="title"
-          message="{{message}}"
-          is-enabled="isVacationMode"
-          on-switch-click="updateVacationMode()"
-          is-toggle-loading="vacationModeUpdating"
-          tooltip-placement="bottom"
-          tooltip-message="{{uibMessage}}"
-          ></app-toggle-card>
+        <h3>Avatar Image Fallback</h3>
+        <div class="section image-fallback-group">
+            <app-avatar-image-fallback
+                src="facebookProfilePicture"
+                avatar-class="{{avatarClass}}"
+                name="{{name}}">
+            </app-avatar-image-fallback>
+            <!-- use case: default profile image is used -->
+            <app-avatar-image-fallback
+                src="brokenProfileImage"
+                name="George Martin">
+            </app-avatar-image-fallback>
+            <!-- use case: facebook profile picture is used -->
+            <app-avatar-image-fallback
+                src="null"
+                avatar-class="customer"
+                name="Earl Benz">
+            </app-avatar-image-fallback>
+            <!-- use case: img tags that throw an error -->
+            <span>
+                <app-avatar-image-fallback
+                    src="profileImageUrl"
+                    name="Shaun Kent"></app-avatar-image-fallback>
+            </span>
+            <span>
+                <app-avatar-image-fallback
+                    src="null"
+                    name="{{undefinedName}}"></app-avatar-image-fallback>
+            </span>
         </div>
-        <button ng-click="changeMessage()">Toggle Card</button>
-    </div>
-    <div class="section">
-        <h3>Star Rating Display</h3>
-        <app-star-rating-display rating="1" color="#ff595e"></app-star-rating-display>
-        <br/>
-        <app-star-rating-display rating="2"></app-star-rating-display>
-        <br/>
-        <app-star-rating-display rating="3" color="#8ac926"></app-star-rating-display>
-        <br/>
-        <app-star-rating-display rating="4" color="#1982c4"></app-star-rating-display>
-        <br/>
-        <app-star-rating-display rating="5" color="#6a4c93"></app-star-rating-display>
-    </div>
-    <h3>Avatar Image Fallback</h3>
-    <div class="section image-fallback-group">
-        <avatar-image-fallback
-            src="profileImageUrl"
-            avatar-class="{{avatarClass}}"
-            name="{{name}}">
-        </avatar-image-fallback>
-        <!-- use case: default profile image is used -->
-        <avatar-image-fallback
-            name="George Martin">
-        </avatar-image-fallback>
-        <!-- use case: facebook profile picture is used -->
-        <avatar-image-fallback
-            src="facebookProfileImage"
-            avatar-class="customer"
-            name="Earl Benz">
-        </avatar-image-fallback>
-        <!-- use case: img tags that throw an error -->
-        <span>
-          <avatar-image-fallback
-              src="brokenProfileImageUrl"
-              name="Shaun Kent"></avatar-image-fallback>
-        </span>
-    </div>
-  </body>
+    </body>
 </html>
