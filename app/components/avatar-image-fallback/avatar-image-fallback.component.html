@@ -1,15 +1,17 @@
-<img 
-    ng-src="{{ vm.src }}" 
-    ng-class="vm.imageClass" 
+<img
+    ng-src="{{ vm.src }}"
+    ng-class="vm.imageClass"
     ng-show="vm.src"/>
 
-<ng-letter-avatar
-    data="{{ vm.name }}"
-    shape="round"
-    charCount="{{vm.charCount}}"
-    height="62"
-    width="62"
-    fontWeight="500"
-    fontFamily="Helvetica"
-    ng-show="!vm.src">
-</ng-letter-avatar>
+<span ng-show="!vm.src && vm.name">
+    <ng-letter-avatar
+        data="{{ vm.name }}"
+        shape="round"
+        charCount="{{vm.charCount}}"
+        height="62"
+        width="62"
+        fontWeight="500"
+        fontFamily="Helvetica">
+    </ng-letter-avatar>
+</span>
+

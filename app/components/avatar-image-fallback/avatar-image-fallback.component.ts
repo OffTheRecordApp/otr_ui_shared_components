@@ -22,31 +22,39 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
         this.imageClass = this.avatarClass
             ? this.avatarClass
             : 'app-avatar-image-fallback__default';
-        this.setCharCount();
 
-        this.$element.find('img').bind('error', () => {
-            const appColors = ['#007BE3', '#FFC715', '#00D6B2', '#FF4848', '#385064'];
-            const defaultFallback = angular
-                .element(document.createElement('i'))
-                .addClass(
-                    `fas fa-user app-avatar-image-fallback__default-user ${this.avatarClass}`
-                )
-                .css({
-                    background: appColors[Math.floor(Math.random() * appColors.length)]
-                });
-            this.$element.parent().prepend(defaultFallback);
-            this.$element.remove();
-        });
+        this.setCharCount();
+        this.setLetterProfileAvatar();
     }
 
+    //sets ngLetterAvatar character count; max 2 characters
     setCharCount() {
         if (this.name) {
             this.charCount = this.name.includes(' ') ? 2 : 1;
         }
     }
+
+    setLetterProfileAvatar() {
+        // Use case: when user does not have profile image or name
+        if (!this.src && !this.name) {
+            const appColors = ['#007BE3', '#FFC715', '#00D6B2', '#FF4848', '#385064'];
+            const defaultFallback = angular
+                .element(document.createElement('i'))
+                .addClass('fas fa-user app-avatar-image-fallback__default-user')
+                .css({
+                    background: appColors[Math.floor(Math.random() * appColors.length)]
+                });
+            this.$element.parent().prepend(defaultFallback);
+            this.$element.remove();
+        } else {
+            this.$element.find('img').bind('error', () => {
+                this.$element[0].children[0].remove();
+            });
+        }
+    }
 }
 
-angular.module('otr-ui-shared-components').component('avatarImageFallback', {
+angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
     templateUrl:
         'app/components/avatar-image-fallback/avatar-image-fallback.component.html',
     controller: AvatarImageFallback,
