@@ -15,8 +15,9 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
     // interface
     imageClass!: string;
     charCount!: number;
+    isLetterAvatarShowing!: boolean;
 
-    constructor(private $element) {}
+    constructor(private $element, private $scope) {}
 
     $onInit() {
         this.imageClass = this.avatarClass
@@ -29,8 +30,9 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
 
     //sets ngLetterAvatar character count; max 2 characters
     setCharCount() {
+        const regex = /\s+/;
         if (this.name) {
-            this.charCount = this.name.includes(' ') ? 2 : 1;
+            this.charCount = regex.test(this.name) ? 2 : 1;
         }
     }
 
@@ -49,6 +51,8 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
         } else {
             this.$element.find('img').bind('error', () => {
                 this.$element[0].children[0].remove();
+                this.isLetterAvatarShowing = true;
+                this.$scope.$apply();
             });
         }
     }
@@ -56,7 +60,7 @@ class AvatarImageFallback implements AvatarImageFallbackBindings {
 
 angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
     templateUrl:
-        'app/components/avatar-image-fallback/avatar-image-fallback.component.html',
+        'app/components/avatar-image-fallback/app-avatar-image-fallback.component.html',
     controller: AvatarImageFallback,
     bindings: {
         src: '<',
@@ -66,4 +70,4 @@ angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
     controllerAs: 'vm'
 });
 
-AvatarImageFallback.$inject = ['$element'];
+AvatarImageFallback.$inject = ['$element', '$scope'];
