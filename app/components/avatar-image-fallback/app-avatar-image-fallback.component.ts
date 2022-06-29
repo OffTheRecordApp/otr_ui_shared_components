@@ -15,7 +15,7 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
     // interface
     imageClass!: string;
     charCount!: number;
-    isLetterAvatarShowing!: boolean;
+    isLetterAvatarVisible!: boolean;
 
     constructor(private $element, private $scope) {}
 
@@ -30,9 +30,9 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
 
     //sets ngLetterAvatar character count; max 2 characters
     setCharCount() {
-        const regex = /\s+/;
+        const spacePattern = /\s+/;
         if (this.name) {
-            this.charCount = regex.test(this.name) ? 2 : 1;
+            this.charCount = spacePattern.test(this.name) ? 2 : 1;
         }
     }
 
@@ -51,7 +51,7 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
         } else {
             this.$element.find('img').bind('error', () => {
                 this.$element[0].children[0].remove();
-                this.isLetterAvatarShowing = true;
+                this.isLetterAvatarVisible = true;
                 this.$scope.$apply();
             });
         }

@@ -3,7 +3,7 @@
     ng-class="vm.imageClass"
     ng-show="vm.src"/>
 
-<span ng-show="(!vm.src && vm.name) || vm.isLetterAvatarShowing">
+<span ng-show="(!vm.src && vm.name) || vm.isLetterAvatarVisible">
     <ng-letter-avatar
         data="{{ vm.name }}"
         shape="round"

@@ -108,7 +108,7 @@
                     $rootScope.profileImageUrl = "https://graph.facebook.com/v2.8/3668555106576865/picture?height=961"
                     $rootScope.name = "James Smith"
                     $rootScope.avatarClass = "customer"
-                    $rootScope.defaultUserProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/jkfkl;jdaf"
+                    $rootScope.brokenProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/jkfkl;jdaf"
                     $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
                     $rootScope.undefinedName = undefined;
                     },
@@ -301,7 +301,7 @@
             </app-avatar-image-fallback>
             <!-- use case: default profile image is used -->
             <app-avatar-image-fallback
-                src="defaultUserProfileImage"
+                src="brokenProfileImage"
                 name="George Martin">
             </app-avatar-image-fallback>
             <!-- use case: facebook profile picture is used -->
