@@ -72,7 +72,7 @@
                     // variables for stat card
                     $rootScope.userNum = "20";
                     $rootScope.statusToFilterOn = "cases_pending";
-                    $rootScope.isVacationMode = "true";
+                    $rootScope.isVacationMode = true;
                     $rootScope.updateVacationMode = () => {
                         $rootScope.isVacationMode = !$rootScope.isVacationMode;
                     }
@@ -82,12 +82,12 @@
                     $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
                     $rootScope.title = "Not accepting cases";
                     $rootScope.vacationModeUpdating = "false"
-                    $rootScope.isIconShowing = "true";
+                    $rootScope.isIconShowing = true;
                     $rootScope.changeMessage = () => {
-                        $rootScope.vacationModeUpdating = "true";
+                        $rootScope.vacationModeUpdating = true;
                     
                         setTimeout(() => {
-                            $rootScope.vacationModeUpdating = "false";
+                            $rootScope.vacationModeUpdating = false;
                             $rootScope.isVacationMode = !$rootScope.isVacationMode;
                             $rootScope.message = "You are accepting cases";
                             $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
@@ -101,7 +101,7 @@
                     }
         
                     $rootScope.removeIcons = () => {
-                        $rootScope.isIconShowing = "false";
+                        $rootScope.isIconShowing = false;
                         console.log($rootScope.isIconShowing)
                     }
         
