@@ -4,7 +4,7 @@ interface AvatarImageFallbackBindings {
     src?: string;
     avatarClass?: string;
     name?: string;
-    avatarSize?: number;
+    size?: number;
     fontSize?: number;
 }
 
@@ -13,13 +13,14 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
     src?: string;
     avatarClass?: string;
     name?: string;
-    avatarSize?: number;
+    size?: number;
     fontSize?: number;
 
     // interface
     imageClass!: string;
     charCount!: number;
     isLetterAvatarVisible!: boolean;
+    stringSize!: string;
 
     constructor(private $element, private $scope) {}
 
@@ -27,8 +28,11 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
         this.imageClass = this.avatarClass
             ? this.avatarClass
             : 'app-avatar-image-fallback__default';
-        this.avatarSize = this.avatarSize || 62;
+        this.size = this.size || 62;
         this.fontSize = this.fontSize || 30;
+
+        // convert to string for ng-style
+        this.stringSize = this.size.toString() + 'px';
 
         this.setCharCount();
         this.setLetterProfileAvatar();
@@ -50,7 +54,9 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
                 .element(document.createElement('i'))
                 .addClass('fas fa-user app-avatar-image-fallback__default-user')
                 .css({
-                    background: appColors[Math.floor(Math.random() * appColors.length)]
+                    background: appColors[Math.floor(Math.random() * appColors.length)],
+                    height: this.stringSize,
+                    width: this.stringSize
                 });
             this.$element.parent().prepend(defaultFallback);
             this.$element.remove();
@@ -72,7 +78,7 @@ angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
         src: '<',
         avatarClass: '@',
         name: '@',
-        avatarSize: '<',
+        size: '<',
         fontSize: '<'
     },
     controllerAs: 'vm'

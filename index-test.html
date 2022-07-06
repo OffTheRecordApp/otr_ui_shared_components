@@ -111,6 +111,7 @@
                     $rootScope.brokenProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/jkfkl;jdaf"
                     $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
                     $rootScope.undefinedName = undefined;
+                    $rootScope.size = 72;
                     },
                 ]);
         </script>
@@ -297,13 +298,14 @@
             <app-avatar-image-fallback
                 src="facebookProfilePicture"
                 avatar-class="{{avatarClass}}"
-                name="{{name}}">
+                name="{{name}}"
+                size="size">
             </app-avatar-image-fallback>
             <!-- use case: default profile image is used -->
             <app-avatar-image-fallback
                 src="brokenProfileImage"
                 name="George Martin"
-                avatar-size="55"
+                size="100"
                 font-size="15"
                 >
             </app-avatar-image-fallback>
@@ -311,18 +313,21 @@
             <app-avatar-image-fallback
                 src="null"
                 avatar-class="customer"
-                name="Earl Benz">
+                name="Earl Benz"
+                size="size">
             </app-avatar-image-fallback>
             <!-- use case: img tags that throw an error -->
             <span>
                 <app-avatar-image-fallback
                     src="profileImageUrl"
-                    name="Shaun Kent"></app-avatar-image-fallback>
+                    name="Shaun Kent"
+                    size="size"></app-avatar-image-fallback>
             </span>
             <span>
                 <app-avatar-image-fallback
                     src="null"
-                    name="{{undefinedName}}"></app-avatar-image-fallback>
+                    name="{{undefinedName}}"
+                    size="size"></app-avatar-image-fallback>
             </span>
         </div>
     </body>
