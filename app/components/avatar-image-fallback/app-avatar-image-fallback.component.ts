@@ -4,6 +4,8 @@ interface AvatarImageFallbackBindings {
     src?: string;
     avatarClass?: string;
     name?: string;
+    avatarSize?: number;
+    fontSize?: number;
 }
 
 class AppAvatarImageFallback implements AvatarImageFallbackBindings {
@@ -11,6 +13,8 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
     src?: string;
     avatarClass?: string;
     name?: string;
+    avatarSize?: number;
+    fontSize?: number;
 
     // interface
     imageClass!: string;
@@ -23,6 +27,8 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
         this.imageClass = this.avatarClass
             ? this.avatarClass
             : 'app-avatar-image-fallback__default';
+        this.avatarSize = this.avatarSize || 62;
+        this.fontSize = this.fontSize || 30;
 
         this.setCharCount();
         this.setLetterProfileAvatar();
@@ -65,7 +71,9 @@ angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
     bindings: {
         src: '<',
         avatarClass: '@',
-        name: '@'
+        name: '@',
+        avatarSize: '<',
+        fontSize: '<'
     },
     controllerAs: 'vm'
 });
