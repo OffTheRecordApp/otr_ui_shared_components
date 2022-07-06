@@ -1,5 +1,6 @@
 <img
     ng-src="{{ vm.src }}"
+    ng-style="{ 'width': vm.stringSize, 'height': vm.stringSize }"
     ng-class="vm.imageClass"
     ng-show="vm.src"/>
 
@@ -8,8 +9,8 @@
         data="{{ vm.name }}"
         shape="round"
         charCount="{{vm.charCount}}"
-        height="{{ vm.avatarSize }}"
-        width="{{ vm.avatarSize }}"
+        height="{{ vm.size }}"
+        width="{{ vm.size }}"
         fontSize="{{ vm.fontSize }}"
         fontWeight="500"
         fontFamily="Helvetica">

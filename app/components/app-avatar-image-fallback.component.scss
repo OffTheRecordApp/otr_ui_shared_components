@@ -1,19 +1,12 @@
 .app-avatar-image-fallback__default {
     background: #d6dbe7;
-    border: 5px solid #fff;
     border-radius: 50%;
-    height: 72px;
-    min-height: 72px;
-    min-width: 72px;
     object-fit: cover;
-    width: 72px;
 }
 
 .app-avatar-image-fallback__default-user {
     line-height: 2em;
     text-align: center;
-    height: 62px;
-    width: 62px;
     border-radius: 50%;
     font-size: 39px;
     display: flex !important;
