@@ -5,7 +5,7 @@
 }
 
 .app-toggle-card {
-    cursor: none;
+    cursor: default;
 
     &__sub-title {
         padding-right: 10px;
@@ -93,4 +93,8 @@
 .toggle-error-red {
     color: red;
     border-color: red;
+}
+
+.clickable {
+    cursor: pointer;
 }
