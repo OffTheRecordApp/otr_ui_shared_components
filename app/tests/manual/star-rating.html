@@ -1,0 +1,20 @@
+<div class="section">
+    <h3>Star Rating</h3>
+    <app-star-rating
+            number-of-stars="4"
+            on-choose-rating="vm.onChooseRating({rating})"
+    ></app-star-rating>
+
+    <div class="section">
+        <h3>Star Rating Display</h3>
+        <app-star-rating-display rating="1" color="#ff595e"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="2"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="3" color="#8ac926"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="4" color="#1982c4"></app-star-rating-display>
+        <br/>
+        <app-star-rating-display rating="5" color="#6a4c93"></app-star-rating-display>
+    </div>
+</div>

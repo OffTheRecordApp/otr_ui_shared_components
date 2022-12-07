@@ -1,0 +1,53 @@
+<div class="section">
+    <h3>Stat Card</h3>
+    <div class="stat-card__singular">
+        <app-stat-card
+                on-select="vm.updateDashboardCases('cases_pending')"
+                is-selected="vm.statusToFilterOn === 'cases_pending'"
+                is-icon-showing="vm.isIconShowing"></app-stat-card>
+    </div>
+    <div class="section__stat-cards">
+        <app-stat-card
+                on-select="vm.updateDashboardCases('cases_pending')"
+                is-selected="vm.statusToFilterOn === 'cases_pending'"
+                is-icon-showing="vm.isIconShowing"></app-stat-card>
+        <app-stat-card
+                theme="fusion-yellow"
+                icon-class="fa fa-solid fa-bell"
+                card-title="Pending Cases"
+                on-select="vm.updateDashboardCases('cases_pending')"
+                stat-info-to-display="{{vm.userNum}}"
+                is-selected="vm.statusToFilterOn === 'cases_pending'"
+                is-icon-showing="vm.isIconShowing"
+        ></app-stat-card>
+        <app-stat-card
+                theme="fusion-purple"
+                icon-class="fa fa-gavel"
+                card-title="Cases in progress"
+                on-select="vm.updateDashboardCases('active_cases')"
+                stat-info-to-display="{{vm.userNum}}"
+                is-icon-showing="vm.isIconShowing"
+                is-selected="vm.statusToFilterOn === 'active_cases'"
+                is-icon-showing="vm.isIconShowing"
+        ></app-stat-card>
+        <app-stat-card
+                color="rgb(0, 128, 0)"
+                icon-class="fa fa-power-off"
+                card-title="Foo"
+                on-select="vm.updateDashboardCases('foo')"
+                stat-info-to-display="{{userNum}}"
+                is-selected="vm.statusToFilterOn === 'foo'"
+                is-icon-showing="vm.isIconShowing"
+        ></app-stat-card>
+        <app-stat-card
+                card-title="Bar"
+                icon-class="fa fa-info"
+                on-select="vm.updateDashboardCases('bar')"
+                stat-info-to-display="{{vm.userNum}}"
+                is-selected="vm.statusToFilterOn === 'bar'"
+                is-icon-showing="vm.isIconShowing"
+        ></app-stat-card>
+        <button ng-click="vm.resetSelectedFilter()">Reset</button>
+        <button ng-click="vm.toggleIcons()">Toogle Icons</button>
+    </div>
+</div>

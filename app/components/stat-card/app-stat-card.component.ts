@@ -1,4 +1,5 @@
 import angular from 'angular';
+import template from './app-stat-card.component.html';
 
 interface StatCardBindings {
     theme?: string;
@@ -58,7 +59,7 @@ class StatCard implements StatCardBindings {
 
 const component = {
     selector: 'appStatCard',
-    templateUrl: '/components/stat-card/app-stat-card.component.html',
+    template: template,
     bindings: {
         theme: '@',
         color: '@',

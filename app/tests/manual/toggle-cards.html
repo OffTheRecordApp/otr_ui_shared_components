@@ -1,0 +1,14 @@
+<h3>Toggle Card</h3>
+<div class="section__toggle-card">
+    <app-toggle-card
+            icon-class="fa fa-power-off"
+            card-title="title"
+            message="{{vm.message}}"
+            is-enabled="vm.isVacationMode"
+            on-switch-click="vm.updateVacationMode()"
+            is-toggle-loading="vm.vacationModeUpdating"
+            tooltip-placement="bottom"
+            tooltip-message="{{vm.uibMessage}}"
+    ></app-toggle-card>
+</div>
+<button ng-click="vm.changeMessage()">Toggle Card</button>

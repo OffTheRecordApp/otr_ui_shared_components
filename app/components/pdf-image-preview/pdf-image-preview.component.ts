@@ -1,7 +1,9 @@
 import angular from 'angular';
 import { getDocument, GlobalWorkerOptions, PDFPageProxy } from 'pdfjs-dist';
-// Set the pdfjsLib worker source manually - https://github.com/mozilla/pdf.js/issues/8305
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+
+// Set the pdfjsLib worker source manually - https://github.com/mozilla/pdf.js/issues/8305
+import template from './pdf-image-preview.html';
 
 interface PDFImagePreviewBindings {
     path: string | URL;
@@ -45,8 +47,8 @@ class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
             const page: PDFPageProxy = await doc.getPage(1);
             const canvas = await this.makeThumb(page);
 
-            const div = this.$element.find('.app-pdf-image-preview');
-            div.append(canvas);
+            const div = document.querySelector('.app-pdf-image-preview');
+            div?.append(canvas);
         } catch (error) {
             console.error('Error loading PDF Preview: ', error);
             this.hasError = true;
@@ -89,7 +91,7 @@ class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
 angular.module('otr-ui-shared-components').component('appPdfImagePreview', {
     controller: PDFImagePreviewCtrl,
     controllerAs: 'vm',
-    templateUrl: '/components/pdf-image-preview/pdf-image-preview.html',
+    template: template,
     bindings: {
         path: '<',
         scale: '<?',

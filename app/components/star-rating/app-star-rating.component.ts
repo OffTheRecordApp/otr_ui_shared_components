@@ -1,4 +1,5 @@
 import angular from 'angular';
+import template from './app-star-rating.component.html';
 
 interface StarRatingBindings {
     numberOfStars?: number;
@@ -45,7 +46,7 @@ class StarRating implements IStarRating {
 }
 
 angular.module('otr-ui-shared-components').component('appStarRating', {
-    templateUrl: '/components/star-rating/app-star-rating.component.html',
+    template: template,
     bindings: {
         onChooseRating: '&',
         numberOfStars: '<',

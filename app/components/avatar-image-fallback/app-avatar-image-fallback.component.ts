@@ -1,4 +1,5 @@
 import angular from 'angular';
+import template from './app-avatar-image-fallback.component.html';
 
 interface AvatarImageFallbackBindings {
     src?: string;
@@ -71,8 +72,7 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
 }
 
 angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
-    templateUrl:
-        '/components/avatar-image-fallback/app-avatar-image-fallback.component.html',
+    template: template,
     controller: AppAvatarImageFallback,
     bindings: {
         src: '<',

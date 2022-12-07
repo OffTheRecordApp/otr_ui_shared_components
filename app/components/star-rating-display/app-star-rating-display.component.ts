@@ -1,4 +1,5 @@
 import angular from 'angular';
+import template from './app-star-rating-display.component.html';
 
 interface StarRatingDisplay {
     color?: string;
@@ -32,7 +33,7 @@ class StarRatingDisplay implements StarRatingDisplay {
 
 const component = {
     selector: 'appStarRatingDisplay',
-    templateUrl: '/components/star-rating-display/app-star-rating-display.component.html',
+    template: template,
     bindings: {
         color: '@',
         rating: '<'

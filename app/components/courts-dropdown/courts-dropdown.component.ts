@@ -1,3 +1,7 @@
+import angular from 'angular';
+import template from './courts-dropdown.component.html';
+import _ from "lodash";
+
 declare const Fuse: any;
 
 interface CourtsDropdownBindings {
@@ -150,7 +154,7 @@ angular
     .component('appCourtsDropdown', {
         controller: CourtsDropdownCtrl,
         controllerAs: 'vm',
-        templateUrl: '/components/courts-dropdown/courts-dropdown.component.html',
+        template: template,
         bindings: {
             onSelectCourt: '&',
             inputClass: '@',

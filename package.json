@@ -1,13 +1,15 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "1.0.20",
+  "version": "2.0.14-alpha",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
   ],
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "prepublishOnly": "gulp build"
+    "serve": "git init ./dist && cp ./package.json dist/ && npm i --omit=dev --prefix dist/ && webpack serve --progress --mode=development",
+    "build": "webpack build --progress --mode=production",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,27 +26,25 @@
   },
   "devDependencies": {
     "@angular/cli": "^12.2.1",
-    "@babel/core": "^7.17.5",
-    "@babel/plugin-transform-typescript": "^7.16.8",
+    "angular": "~1.8.3",
     "@fortawesome/fontawesome-free": "5.15.4",
     "@types/angular": "^1.8.2",
     "@types/lodash": "^4.14.172",
     "@types/node": "^16.4.14",
     "@types/pdfjs-dist": "^2.10.378",
-    "babel-plugin-remove-import-export": "^1.1.1",
-    "gulp": "^4.0.2",
-    "gulp-angular-templatecache": "^3.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify": "^3.0.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.2",
+    "html-webpack-plugin": "^5.5.0",
     "lodash": "^4.17.21",
     "merge-stream": "^2.0.0",
     "sass": "^1.37.5",
-    "typescript": "^4.3.5"
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.3.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",

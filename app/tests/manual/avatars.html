@@ -1,0 +1,39 @@
+<h3>Avatar Image Fallback</h3>
+<div class="section image-fallback-group">
+    <app-avatar-image-fallback
+            src="vm.facebookProfilePicture"
+            avatar-class="{{vm.avatarClass}}"
+            name="{{vm.name}}"
+            size="vm.size">
+    </app-avatar-image-fallback>
+    <!-- use case: default profile image is used -->
+    <app-avatar-image-fallback
+            src="vm.brokenProfileImage"
+            name="George Martin"
+            size="100"
+            font-size="15"
+    >
+    </app-avatar-image-fallback>
+    <!-- use case: facebook profile picture is used -->
+    <app-avatar-image-fallback
+            src="null"
+            avatar-class="customer"
+            name="Earl Benz"
+            size="vm.size">
+    </app-avatar-image-fallback>
+    <!-- use case: img tags that throw an error -->
+    <span>
+        <app-avatar-image-fallback
+                src="vm.profileImageUrl"
+                name="Shaun Kent"
+                size="vm.size">
+        </app-avatar-image-fallback>
+    </span>
+    <span>
+        <app-avatar-image-fallback
+                src="null"
+                name="{{vm.undefinedName}}"
+                size="vm.size">
+        </app-avatar-image-fallback>
+    </span>
+</div>

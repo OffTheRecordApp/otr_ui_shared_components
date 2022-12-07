@@ -1,0 +1,19 @@
+<div ui-view></div>
+<div class="section">
+    <h3>Local Court Search</h3>
+    <app-courts-dropdown
+            state="vm.regionCode"
+            input-class="search-input"
+            on-select-court="vm.onSelect">
+    </app-courts-dropdown>
+</div>
+
+<div class="section">
+    <h3>Remote Court Search on Demand</h3>
+    <app-remote-courts-dropdown
+            placeholder="Type in a court"
+            input-class="search-input"
+            on-select-court="vm.onSelect"
+    >
+    </app-remote-courts-dropdown>
+</div>

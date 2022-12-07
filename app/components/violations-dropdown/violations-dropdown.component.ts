@@ -1,3 +1,8 @@
+import angular from "angular";
+import template from './violations-dropdown.component.html';
+import Fuse from "fuse.js";
+import _ from "lodash";
+
 interface ViolationsDropdownBindings {
     regionCode: string;
     onSelect: (violation: any) => any;
@@ -94,7 +99,7 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
 
 angular.module('otr-ui-shared-components')
        .component('appViolationsDropdown', {
-           templateUrl: '/components/violations-dropdown/violations-dropdown.component.html',
+           template: template,
            controller: ViolationsDropdownComponent,
            controllerAs: 'vm',
            bindings: {
