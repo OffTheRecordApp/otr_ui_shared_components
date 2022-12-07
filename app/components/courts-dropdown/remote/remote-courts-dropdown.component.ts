@@ -1,3 +1,7 @@
+import angular from "angular";
+import template from './remote-courts-dropdown.component.html';
+import _ from "lodash";
+
 interface RemoteCourtsDropdownBindings {
     inputClass: string;
     hasError: boolean;
@@ -72,7 +76,7 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
 
 angular.module('otr-ui-shared-components')
        .component('appRemoteCourtsDropdown', {
-           templateUrl: '/components/courts-dropdown/remote/remote-courts-dropdown.component.html',
+           templateUrl: template,
            controller: RemoteCourtsDropdownComponent,
            controllerAs: 'vm',
            bindings: {

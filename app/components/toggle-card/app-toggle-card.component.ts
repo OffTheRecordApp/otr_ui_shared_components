@@ -1,4 +1,5 @@
 import angular from 'angular';
+import template from './app-toggle-card.component.html';
 
 interface ToggleCardBindings {
     iconClass: string;
@@ -45,7 +46,7 @@ class ToggleCard implements ToggleCardBindings {
 
 const component = {
     selector: 'appToggleCard',
-    templateUrl: '/components/toggle-card/app-toggle-card.component.html',
+    templateUrl: template,
     bindings: {
         iconClass: '@',
         cardTitle: '<',

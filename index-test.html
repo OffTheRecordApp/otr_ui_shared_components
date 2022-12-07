@@ -7,7 +7,6 @@
             rel="stylesheet"
             href="node_modules/angucomplete-alt/angucomplete-alt.css"
         />
-        <link rel="stylesheet" href="dist/otr-ui-shared-components.css" />
         <link
             rel="stylesheet"
             href="node_modules/@fortawesome/fontawesome-free/css/all.css"
@@ -35,7 +34,6 @@
         <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
         <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
         <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-        <script src="dist/index.js"></script>
         <script src="node_modules/ngletteravatar/dist/ngletteravatar.min.js"></script>
         <link
             rel="stylesheet"
@@ -43,20 +41,23 @@
             integrity="sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt"
             crossorigin="anonymous"
             />
+        <script type="text/javascript" src="<%= htmlWebpackPlugin.files.js %>"></script>
+    </head>
+    <body>
         <script>
-            angular
-                .module("otr-ui-shared-components")
-                .config([
-                    "otrServiceProvider",
-                    function (otrServiceProvider) {
-                        otrServiceProvider.setDomain(
-                            "https://otr-backend-service-us-devo.offtherecord.com"
-                        );
-                    },
-                    ])
-                .run([
-                    "$rootScope",
-                    function ($rootScope) {
+        angular
+            .module("otr-ui-shared-components")
+            .config([
+                "otrServiceProvider",
+                function (otrServiceProvider) {
+                    otrServiceProvider.setDomain(
+                        "https://otr-backend-service-us-devo.offtherecord.com"
+                    );
+                },
+            ])
+            .run([
+                "$rootScope",
+                function ($rootScope) {
                     $rootScope.onSelect = (c) => {
                         console.log("Selected item", c);
                     };
@@ -68,7 +69,7 @@
                         $rootScope.statusToFilterOn = d;
                         console.log("Selected cases filter:", d);
                     };
-        
+
                     // variables for stat card
                     $rootScope.userNum = "20";
                     $rootScope.statusToFilterOn = "cases_pending";
@@ -76,7 +77,7 @@
                     $rootScope.updateVacationMode = () => {
                         $rootScope.isVacationMode = !$rootScope.isVacationMode;
                     }
-        
+
                     // variables for toggle card
                     $rootScope.message = "You are NOT accepting cases"
                     $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
@@ -85,7 +86,7 @@
                     $rootScope.isIconShowing = true;
                     $rootScope.changeMessage = () => {
                         $rootScope.vacationModeUpdating = true;
-                    
+
                         setTimeout(() => {
                             $rootScope.vacationModeUpdating = false;
                             $rootScope.isVacationMode = !$rootScope.isVacationMode;
@@ -95,16 +96,16 @@
                             $rootScope.$apply();
                         }, 3000)
                     }
-        
+
                     $rootScope.resetSelectedFilter = () => {
                         $rootScope.statusToFilterOn = undefined;
                     }
-        
+
                     $rootScope.removeIcons = () => {
                         $rootScope.isIconShowing = false;
                         console.log($rootScope.isIconShowing)
                     }
-        
+
                     $rootScope.profileImageUrl = "https://graph.facebook.com/v2.8/3668555106576865/picture?height=961"
                     $rootScope.name = "James Smith"
                     $rootScope.avatarClass = "customer"
@@ -112,11 +113,9 @@
                     $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
                     $rootScope.undefinedName = undefined;
                     $rootScope.size = 72;
-                    },
-                ]);
+                },
+            ]);
         </script>
-    </head>
-    <body>
         <style>
             body {
                 font-family: Helvetica, Arial, sans-serif;
@@ -201,8 +200,12 @@
             </div>
     
             <div class="section">
-                <h3>PDF Preview</h3>
-                <app-pdf-image-preview path="doc.pdf"></app-pdf-image-preview>
+                <h3>PDF Preview (commented out)</h3>
+                <!--<app-pdf-image-preview canvas-height="100"
+                                       canvas-width="100"
+                                       scale="1"
+                                       path="'./assets/logo_v2.pdf'">
+                </app-pdf-image-preview>-->
             </div>
     
             <div class="section">
