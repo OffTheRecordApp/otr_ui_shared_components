@@ -154,7 +154,7 @@ angular
     .component('appCourtsDropdown', {
         controller: CourtsDropdownCtrl,
         controllerAs: 'vm',
-        templateUrl: template,
+        template: template,
         bindings: {
             onSelectCourt: '&',
             inputClass: '@',

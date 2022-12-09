@@ -76,7 +76,7 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
 
 angular.module('otr-ui-shared-components')
        .component('appRemoteCourtsDropdown', {
-           templateUrl: template,
+           template: template,
            controller: RemoteCourtsDropdownComponent,
            controllerAs: 'vm',
            bindings: {

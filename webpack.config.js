@@ -20,11 +20,11 @@ module.exports = (env, argv) => {
             rules: [
                 {
                     test: /\.html$/,
-                    type: 'asset/resource',
+                    type: 'asset/source', // inline the HTML in the bundle
                     exclude: /index-test.html/,
-                    generator: {
-                        filename: 'templates/[name].[contenthash][ext]'
-                    }
+                    //generator: {
+                    //    filename: 'templates/[name].[contenthash][ext]'
+                    //}
                 },
                 {
                     test: /\.tsx?$/,

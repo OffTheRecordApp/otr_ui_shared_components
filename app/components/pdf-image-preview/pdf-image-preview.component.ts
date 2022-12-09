@@ -90,7 +90,7 @@ class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
 angular.module('otr-ui-shared-components').component('appPdfImagePreview', {
     controller: PDFImagePreviewCtrl,
     controllerAs: 'vm',
-    templateUrl: template,
+    template: template,
     bindings: {
         path: '<',
         scale: '<?',

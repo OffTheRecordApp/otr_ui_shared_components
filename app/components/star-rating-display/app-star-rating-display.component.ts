@@ -33,7 +33,7 @@ class StarRatingDisplay implements StarRatingDisplay {
 
 const component = {
     selector: 'appStarRatingDisplay',
-    templateUrl: template,
+    template: template,
     bindings: {
         color: '@',
         rating: '<'

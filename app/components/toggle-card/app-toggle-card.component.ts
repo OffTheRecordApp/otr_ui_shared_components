@@ -46,7 +46,7 @@ class ToggleCard implements ToggleCardBindings {
 
 const component = {
     selector: 'appToggleCard',
-    templateUrl: template,
+    template: template,
     bindings: {
         iconClass: '@',
         cardTitle: '<',

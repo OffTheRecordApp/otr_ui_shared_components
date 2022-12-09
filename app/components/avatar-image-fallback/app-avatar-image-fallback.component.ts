@@ -72,7 +72,7 @@ class AppAvatarImageFallback implements AvatarImageFallbackBindings {
 }
 
 angular.module('otr-ui-shared-components').component('appAvatarImageFallback', {
-    templateUrl: template,
+    template: template,
     controller: AppAvatarImageFallback,
     bindings: {
         src: '<',

@@ -59,7 +59,7 @@ class StatCard implements StatCardBindings {
 
 const component = {
     selector: 'appStatCard',
-    templateUrl: template,
+    template: template,
     bindings: {
         theme: '@',
         color: '@',

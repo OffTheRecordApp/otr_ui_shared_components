@@ -99,7 +99,7 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
 
 angular.module('otr-ui-shared-components')
        .component('appViolationsDropdown', {
-           templateUrl: template,
+           template: template,
            controller: ViolationsDropdownComponent,
            controllerAs: 'vm',
            bindings: {

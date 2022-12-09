@@ -46,7 +46,7 @@ class StarRating implements IStarRating {
 }
 
 angular.module('otr-ui-shared-components').component('appStarRating', {
-    templateUrl: template,
+    template: template,
     bindings: {
         onChooseRating: '&',
         numberOfStars: '<',
