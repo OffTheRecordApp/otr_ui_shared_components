@@ -6,6 +6,6 @@ angular.module('otr-ui-shared-components', [
     'otrBackendService',
     'ui.bootstrap',
     'ngLetterAvatar'
-]).run(['$templateCache', async function ($templateCache) {
+]).run(['$templateCache', ($templateCache) => {
     $templateCache.put('/otr-search-template.html', otrSearchTemplate);
 }]);
