@@ -58,6 +58,9 @@ module.exports = (env, argv) => {
                         }
                     },
                     {
+                        from: 'app/tests/manual/**/*'
+                    },
+                    {
                         from: 'package.json'
                     }
                 ]

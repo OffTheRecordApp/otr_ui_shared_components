@@ -21,7 +21,7 @@
             rel="stylesheet"
             href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
         />
-    
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
         <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
     
@@ -41,81 +41,12 @@
             integrity="sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt"
             crossorigin="anonymous"
             />
-        <script type="text/javascript" src="<%= htmlWebpackPlugin.files.js %>"></script>
+
+        <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+        <script src="app/tests/manual/setup.js"></script>
+
     </head>
     <body>
-        <script>
-        angular
-            .module("otr-ui-shared-components")
-            .config([
-                "otrServiceProvider",
-                function (otrServiceProvider) {
-                    otrServiceProvider.setDomain(
-                        "https://otr-backend-service-us-devo.offtherecord.com"
-                    );
-                },
-            ])
-            .run([
-                "$rootScope",
-                function ($rootScope) {
-                    $rootScope.onSelect = (c) => {
-                        console.log("Selected item", c);
-                    };
-                    $rootScope.onChooseRating = (r) => {
-                        console.log("Rating chosen: ", r.rating);
-                    };
-                    $rootScope.regionCode = "WA";
-                    $rootScope.updateDashboardCases = (d) => {
-                        $rootScope.statusToFilterOn = d;
-                        console.log("Selected cases filter:", d);
-                    };
-
-                    // variables for stat card
-                    $rootScope.userNum = "20";
-                    $rootScope.statusToFilterOn = "cases_pending";
-                    $rootScope.isVacationMode = true;
-                    $rootScope.updateVacationMode = () => {
-                        $rootScope.isVacationMode = !$rootScope.isVacationMode;
-                    }
-
-                    // variables for toggle card
-                    $rootScope.message = "You are NOT accepting cases"
-                    $rootScope.uibMessage = "Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time."
-                    $rootScope.title = "Not accepting cases";
-                    $rootScope.vacationModeUpdating = "false"
-                    $rootScope.isIconShowing = true;
-                    $rootScope.changeMessage = () => {
-                        $rootScope.vacationModeUpdating = true;
-
-                        setTimeout(() => {
-                            $rootScope.vacationModeUpdating = false;
-                            $rootScope.isVacationMode = !$rootScope.isVacationMode;
-                            $rootScope.message = "You are accepting cases";
-                            $rootScope.uibMessage = "Accepting Cases is turned on for your law firm. You will receive new cases to review as they are booked. If you need a break or are on vacation, you can click the toggle switch to pause receiving cases at any time.";
-                            $rootScope.title = "Accepting cases";
-                            $rootScope.$apply();
-                        }, 3000)
-                    }
-
-                    $rootScope.resetSelectedFilter = () => {
-                        $rootScope.statusToFilterOn = undefined;
-                    }
-
-                    $rootScope.removeIcons = () => {
-                        $rootScope.isIconShowing = false;
-                        console.log($rootScope.isIconShowing)
-                    }
-
-                    $rootScope.profileImageUrl = "https://graph.facebook.com/v2.8/3668555106576865/picture?height=961"
-                    $rootScope.name = "James Smith"
-                    $rootScope.avatarClass = "customer"
-                    $rootScope.brokenProfileImage = "https://s3.amazonaws.com/otr-assets/img/icons/jkfkl;jdaf"
-                    $rootScope.facebookProfilePicture = "https://graph.facebook.com/v2.5/10155312614059658/picture?height=961"
-                    $rootScope.undefinedName = undefined;
-                    $rootScope.size = 72;
-                },
-            ]);
-        </script>
         <style>
             body {
                 font-family: Helvetica, Arial, sans-serif;
@@ -178,7 +109,7 @@
                     on-select-court="onSelect">
                 </app-courts-dropdown>
             </div>
-    
+
             <div class="section">
                 <h3>Remote Court Search on Demand</h3>
                 <app-remote-courts-dropdown
@@ -188,7 +119,7 @@
                 >
                 </app-remote-courts-dropdown>
             </div>
-    
+
             <div class="section">
                 <h3>Local Violations Search</h3>
                 <app-violations-dropdown
@@ -198,7 +129,7 @@
                 >
                 </app-violations-dropdown>
             </div>
-    
+
             <div class="section">
                 <h3>PDF Preview (commented out)</h3>
                 <!--<app-pdf-image-preview canvas-height="100"
@@ -207,7 +138,7 @@
                                        path="'./assets/logo_v2.pdf'">
                 </app-pdf-image-preview>-->
             </div>
-    
+
             <div class="section">
                 <h3>Star Rating</h3>
                 <app-star-rating
@@ -215,7 +146,7 @@
                     on-choose-rating="onChooseRating({rating})"
                 ></app-star-rating>
             </div>
-    
+
             <div class="section">
                 <h3>Stat Card</h3>
                 <div class="stat-card__singular">
