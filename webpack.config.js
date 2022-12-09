@@ -59,9 +59,6 @@ module.exports = (env, argv) => {
                     },
                     {
                         from: 'package.json'
-                    },
-                    {
-                        from: 'app/otr-search-template.html'
                     }
                 ]
             })
