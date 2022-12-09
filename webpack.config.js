@@ -6,11 +6,11 @@ module.exports = (env, argv) => {
     let libsToIgnore = {};
     if(!env.WEBPACK_SERVE) {
         libsToIgnore = {
-            'angular': 'angular',
+            // 'angular': 'angular',
             //'pdfjs-dist': '{ getDocument, GlobalWorkerOptions, PDFPageProxy }',
             //'pdfjs-dist/build/pdf.worker.entry': 'pdfjsWorker',
-            'lodash': '_',
-            'fuse.js': 'Fuse'
+            // 'lodash': '_',
+            // 'fuse.js': 'Fuse'
         };
     }
     return {
