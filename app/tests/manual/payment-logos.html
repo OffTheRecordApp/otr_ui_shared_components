@@ -1,0 +1,11 @@
+<div class="static-width">
+    <app-payment-logos
+        title="{{vm.title}}"></app-payment-logos>
+
+    <div class="">
+        <app-select-payment
+            current-user="vm.currentUser"
+            on-select-payment-method="vm.onSelectPayment(paymentMethod)"
+            on-card-add-error="vm.onError(error)"></app-select-payment>
+    </div>
+</div>
