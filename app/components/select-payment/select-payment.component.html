@@ -1,0 +1,111 @@
+<div class="select-payment">
+    <!-- Select Payment Method -->
+    <div
+        class="position-relative"
+        ng-blur="vm.closePaymentMethodsOnBlur($event)"
+        tabindex="0"
+    >
+        <div
+            class="card--white select__option--active padding-top-5 padding-bottom-5 clickable"
+            data-ref="fight.book.payment-methods.dropdown"
+            ng-click="vm.isPaymentMethodsVisible = !vm.isPaymentMethodsVisible"
+        >
+            <!-- TODO: When we have more payment options, like gpay, dynamically render this -->
+            <div ng-if="vm.selectedPaymentType === 'card' && !vm.selectedPaymentMethod">
+                <div class="weight-semibold">
+                    <div>
+                        <i class="fas fa-credit-card fa-3" aria-hidden="true"></i>
+                        <span class="margin-left-15"> Credit or debit card </span>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="vm.isLoadingInitial">
+                <i class="fas fa-spinner fa-pulse"></i>
+            </div>
+            <div>
+                <span class="card__remove-button top-10">
+                    <i
+                        class="fas"
+                        ng-class="{
+                            'fa-chevron-down': !vm.isPaymentMethodsVisible,
+                            'fa-chevron-down flipped-180': vm.isPaymentMethodsVisible
+                        }"
+                    ></i>
+                </span>
+                <div ng-if="vm.selectedPaymentMethod">
+                    <img
+                        class="img-size--sm img-fit--contain"
+                        ng-src="{{ vm.getBrandLogo(vm.selectedPaymentMethod.brand) }}"
+                    />
+                    <span class="card__label margin-left-15 margin-right-15"
+                        >...{{ vm.selectedPaymentMethod.last4 }}</span
+                    >
+                    <span
+                        >Expires {{ vm.selectedPaymentMethod.expMonth }}/{{
+                            vm.selectedPaymentMethod.expYear
+                        }}</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- We show the dropdown options if only if the user has not selected something, and if there are available payment methods -->
+    <div ng-show="vm.isPaymentMethodsVisible" class="font-size-body card__dropdown">
+        <!-- Show all available cards -->
+        <div
+            tabindex="0"
+            class="clickable card__option select__option"
+            ng-repeat="card in vm.paymentMethods"
+            ng-click="vm.selectPaymentMethod(card.cardId)"
+        >
+            <div>
+                <img
+                    class="img-size--sm img-fit--contain"
+                    ng-src="{{ vm.getBrandLogo(card.brand) }}"
+                />
+                <span class="card__label margin-left-15 margin-right-15">
+                    ...{{ card.last4 }}
+                </span>
+                <span>Expires {{ card.expMonth }}/{{ card.expYear }}</span>
+            </div>
+            <!-- Add checkmark next to currently selected card -->
+            <span
+                class="select__checked"
+                ng-if="card.cardId === vm.selectedPaymentMethod.cardId"
+            >
+                <i class="fas fa-check fa-3" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!-- Show options for adding more payment methods -->
+        <div class="select__subtitle weight-semibold font-size-body-sm">
+            Add payment method
+        </div>
+        <!-- TODO: When we have more payment options, like gpay, dynamically render this -->
+        <div
+            tabindex="0"
+            class="weight-semibold select__option card__option"
+            data-ref="fight.book.new-card.add-form"
+            ng-click="vm.openNewCardForm()"
+        >
+            <div>
+                <i class="fas fa-credit-card fa-3" aria-hidden="true"></i>
+                <span class="margin-left-15"> Credit or debit card </span>
+            </div>
+        </div>
+    </div>
+    <!-- Add Card Form -->
+    <div
+        class="margin-bottom-30"
+        ng-show="
+            (vm.isAddCardFormVisible && vm.selectedPaymentType === 'card') ||
+            vm.isAddingNewCard
+        "
+    >
+        <app-credit-card-form 
+            on-card-add="vm.onCardAdd()"
+            current-user="vm.currentUser"
+            on-error="vm.onAddCardError(error)"
+        > </app-credit-card-form>
+    </div>
+</div>
