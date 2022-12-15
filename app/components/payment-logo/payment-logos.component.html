@@ -1,0 +1,11 @@
+<h3 class="payment-logos__header payment-logos__logos">
+    <span ng-if="vm.title">{{ vm.title }}</span>
+    <div>
+        <img
+            class="img-size--xs img-fit--contain"
+            ng-repeat="availablePayment in vm.availablePaymentLogos"
+            ng-src="{{ availablePayment.logo }}"
+            title="{{ availablePayment.humanReadableKey }}"
+        />
+    </div>
+</h3>
