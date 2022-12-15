@@ -40,9 +40,9 @@
     margin-top: 5px;
     overflow-y: scroll;
     position: absolute;
-    width: calc(100% - 30px);
+    width: 100%;
     z-index: 3;
-    max-width: 430px;
+    max-width: 530px;
 
     .card__option {
         &:hover {
@@ -167,15 +167,4 @@
     @extend .card;
 
     padding: 10px 15px;
-}
-
-.fa-angle-down,
-.fa-chevron-down {
-    animation: ease-out;
-    transition-duration: 0.2s;
-    transition-property: transform;
-}
-
-.flipped-180 {
-    transform: rotate(180deg);
 }
