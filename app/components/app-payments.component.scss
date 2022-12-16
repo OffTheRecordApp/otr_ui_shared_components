@@ -13,22 +13,6 @@
   }
 }
 
-.img-size--xs {
-    height: 28px;
-    object-fit: cover;
-    width: 28px;
-}
-
-.img-size--sm {
-    height: 38px;
-    object-fit: cover;
-    width: 38px;
-}
-
-.img-fit--contain {
-    object-fit: contain;
-}
-
 .card__dropdown {
     background-color: white;
     border: 1px solid #d6dbe7;
@@ -133,7 +117,7 @@
     color: #002340;
     position: absolute;
     right: 20px;
-    top: 18px;
+    top: 14px;
 }
 
 .card--error {

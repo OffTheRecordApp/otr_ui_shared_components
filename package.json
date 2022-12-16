@@ -1,6 +1,6 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "2.0.17-alpha",
+  "version": "2.0.21-alpha",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
@@ -9,7 +9,8 @@
   "scripts": {
     "serve": "git init ./dist && cp ./package.json dist/ && npm i --omit=dev --prefix dist/ && webpack serve --progress --mode=development",
     "build": "webpack build --progress --mode=production",
-    "prepublishOnly": "rm -r dist && npm run build"
+    "prepublishOnly": "rm -r dist && npm run build",
+    "build:devo": "webpack build --progress --mode=development"
   },
   "repository": {
     "type": "git",
@@ -55,7 +56,6 @@
     "lodash": ">= 4.17.21 || < 5.0.0",
     "ngletteravatar": "4.0.4",
     "pdfjs-dist": "2.5.207",
-    "stripe": "^8.216.0",
     "angular-stripe": "5.0.0",
     "angular-credit-cards": "3.1.7",
     "angular-validator": "1.2.9"

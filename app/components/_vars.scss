@@ -84,3 +84,19 @@
 .flipped-180 {
     transform: rotate(180deg);
 }
+
+.img-size--xs {
+    height: 28px;
+    object-fit: cover;
+    width: 28px;
+}
+
+.img-size--sm {
+    height: 38px;
+    object-fit: cover;
+    width: 38px;
+}
+
+.img-fit--contain {
+    object-fit: contain;
+}

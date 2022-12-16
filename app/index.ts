@@ -1,3 +1,3 @@
-import "./app.ts";
-import "./providers/otr-service.provider.ts";
+import './app.ts';
+import './providers/otr-service.provider.ts';
 import './components';

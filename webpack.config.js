@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(jpe?g|png|gif|svg)$/,
-                    type: 'asset/resource'
+                    type: 'asset/inline'
                 }
             ]
         },

@@ -1,40 +1,47 @@
 import angular from 'angular';
+import Visa from '../assets/img/logos/payment-logo-visa.png';
+import MasterCard from '../assets/img/logos/payment-logo-master_card.svg';
+import Discover from '../assets/img/logos/payment-logo-discover.jpg';
+import AM from '../assets/img/logos/payment-logo-american_express.svg';
+import Diners from '../assets/img/logos/payment-logo-diners_club.jpg';
+import JCB from '../assets/img/logos/payment-logo-jcb.jpg';
+import Union from '../assets/img/logos/payment-logo-union_pay.jpg';
 
 export class PaymentService {
     public availablePaymentLogos = [
         {
             key: 'visa',
-            logo: '../assets/img/logos/payment-logo-visa.png',
+            logo: Visa,
             humanReadableKey: 'Visa'
         },
         {
             key: 'master_card',
-            logo: '../assets/img/logos/payment-logo-master_card.svg',
+            logo: MasterCard,
             humanReadableKey: 'Master Card'
         },
         {
             key: 'discover',
-            logo: '../assets/img/logos/payment-logo-discover.jpg',
+            logo: Discover,
             humanReadableKey: 'Discover'
         },
         {
             key: 'american_express',
-            logo: '../assets/img/logos/payment-logo-american_express.svg',
+            logo: AM,
             humanReadableKey: 'American Express'
         },
         {
             key: 'diners_club',
-            logo: '../assets/img/logos/payment-logo-diners_club.jpg',
+            logo: Diners,
             humanReadableKey: `Diner's Club`
         },
         {
             key: 'jcb',
-            logo: '../assets/img/logos/payment-logo-jcb.jpg',
+            logo: JCB,
             humanReadableKey: 'JCB'
         },
         {
             key: 'union_pay',
-            logo: '../assets/img/logos/payment-logo-union_pay.jpg',
+            logo: Union,
             humanReadableKey: 'Union Pay'
         }
     ];
