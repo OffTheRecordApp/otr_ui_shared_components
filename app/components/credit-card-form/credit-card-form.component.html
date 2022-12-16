@@ -8,18 +8,18 @@
 >
     <div class="row">
         <div class="col-sm-9">
-            <div class="otr-form__card-label-wrapper">
-                <label class="otr-form__label" for="credit-card-number">
+            <div class="app-otr-form__card-label-wrapper">
+                <label class="app-otr-form__label" for="credit-card-number">
                     Card Number
                 </label>
-                <label class="otr-form__label-exp" for="credit-card-month"
+                <label class="app-otr-form__label-exp" for="credit-card-month"
                     >Expiry Date</label
                 >
             </div>
             <div class="position-relative">
                 <input
                     name="cardNumber"
-                    class="otr-form__input"
+                    class="app-otr-form__input"
                     placeholder="Enter card number"
                     maxlength="19"
                     cc-number
@@ -30,11 +30,11 @@
                     invalid-message="vm.paymentFormValidator(creditCardForm.cardNumber)"
                     ng-model="vm.newCard.number"
                 />
-                <div cc-exp class="otr-form__nested-input-group">
+                <div cc-exp class="app-otr-form__nested-input-group">
                     <input
                         type="text"
                         name="ccExpMonth"
-                        class="otr-form__nested-input text-right"
+                        class="app-otr-form__nested-input text-right"
                         placeholder="MM"
                         cc-exp-month
                         data-hook="credit-card-month"
@@ -46,7 +46,7 @@
                     <input
                         type="text"
                         name="ccExpYear"
-                        class="otr-form__nested-input"
+                        class="app-otr-form__nested-input"
                         placeholder="YY"
                         cc-exp-year
                         data-hook="credit-card-year"
@@ -58,10 +58,10 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <label class="otr-form__label"> CVV </label>
+            <label class="app-otr-form__label"> CVV </label>
             <input
                 name="ccCvc"
-                class="otr-form__input"
+                class="app-otr-form__input"
                 cc-cvc
                 data-hook="credit-card-cvv"
                 validator="vm.paymentFormValidator(creditCardForm.ccCvc) === true"
@@ -72,11 +72,11 @@
     </div>
     <div class="row">
         <div class="col-sm-6 margin-top-15">
-            <label class="otr-form__label" for="credit-card-country"> Country </label>
+            <label class="app-otr-form__label" for="credit-card-country"> Country </label>
             <div class="select-container">
                 <select
                     name="addressCountry"
-                    class="otr-form__input"
+                    class="app-otr-form__input"
                     id="country"
                     autocomplete="country-name"
                     validator="vm.paymentFormValidator(creditCardForm.addressCountry) === true"
@@ -89,21 +89,21 @@
         <div class="col-sm-6 margin-top-15">
             <div>
                 <label
-                    class="otr-form__label"
+                    class="app-otr-form__label"
                     ng-if="vm.newCard.address_country === 'US'"
                     for="zip"
                 >
                     Zip
                 </label>
                 <label
-                    class="otr-form__label"
+                    class="app-otr-form__label"
                     ng-if="vm.newCard.address_country === 'CA'"
                     for="Postal Code"
                 >
                     Postal Code
                 </label>
                 <label
-                    class="otr-form__label"
+                    class="app-otr-form__label"
                     ng-hide="
                         vm.newCard.address_country === 'CA' ||
                         vm.newCard.address_country === 'US'
@@ -115,7 +115,7 @@
             </div>
             <input
                 name="addressZip"
-                class="otr-form__input"
+                class="app-otr-form__input"
                 id="credit-card-zip"
                 autocomplete="postal-code"
                 validator="vm.paymentFormValidator(creditCardForm.addressZip) === true"
@@ -126,10 +126,10 @@
     </div>
     <div class="row">
         <div class="col-sm-6 margin-top-15">
-            <label class="otr-form__label"> Phone Number </label>
+            <label class="app-otr-form__label"> Phone Number </label>
             <input
                 name="phoneNumber"
-                class="otr-form__input"
+                class="app-otr-form__input"
                 ng-model="vm.newCard.phoneNumber"
                 ui-mask="(999) 999-9999"
             />
@@ -141,7 +141,7 @@
         Credit card information is secured with 128-bit SSL encryption.
     </p>
     <div
-        class="margin-bottom-10 margin-top-20 otr-form__footer-error position-static"
+        class="margin-bottom-10 margin-top-20 app-otr-form__footer-error position-static"
         ng-if="vm.paymentErrorMessage"
     >
         {{ vm.paymentErrorMessage }}

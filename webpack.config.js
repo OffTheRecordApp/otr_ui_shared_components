@@ -38,7 +38,7 @@ module.exports = (env, argv) => {
                     use: ['style-loader', 'css-loader', 'sass-loader']
                 },
                 {
-                    test: /\.(jpe?g|png|gif|svg)$/,
+                    test: /\.(jpe?g|png|gif|svg|webp)$/,
                     type: 'asset/inline'
                 }
             ]

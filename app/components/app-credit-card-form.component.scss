@@ -1,6 +1,6 @@
 @import '_vars.scss';
 
-%otr-form__input-template {
+%app-otr-form__input-template {
     background-color: #fff;
     border: 1px solid #d6dbe7;
     border-radius: 4px;
@@ -18,15 +18,15 @@
     }
 }
 
-.otr-form__input {
-    @extend %otr-form__input-template;
+.app-otr-form__input {
+    @extend %app-otr-form__input-template;
 
     &::placeholder {
         color: #a6b1ba;
     }
 }
 
-.otr-form__footer-error {
+.app-otr-form__footer-error {
     background-color: #fff9f9;
     border: 1px solid #ff4848;
     border-radius: 4px;
@@ -36,14 +36,14 @@
 }
 
 
-.otr-form__nested-input-group {
+.app-otr-form__nested-input-group {
     font-size: 14px;
     position: absolute;
     right: 2px;
     top: 2px;
 
-    .otr-form__nested-input {
-        @extend %otr-form__input-template;
+    .app-otr-form__nested-input {
+        @extend %app-otr-form__input-template;
         border: none;
 
         display: inline;
@@ -57,18 +57,18 @@
     }
 }
 
-.otr-form__label {
+.app-otr-form__label {
     color: #002340;
     font-family: sans-serif;
     font-size: 14px;
     font-weight: 500;
 }
 
-.otr-form__card-label-wrapper {
+.app-otr-form__card-label-wrapper {
     display: flex;
     justify-content: space-between;
 
-    .otr-form__label-exp {
+    .app-otr-form__label-exp {
         padding-right: 5px;
     }
 }
