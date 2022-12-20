@@ -1,0 +1,157 @@
+<form
+    id="credit-card-form"
+    class="margin-bottom-20 margin-top-20"
+    name="creditCardForm"
+    novalidate
+    angular-validator-submit="vm.confirmAddCard(creditCardForm)"
+    angular-validator
+>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="app-otr-form__card-label-wrapper">
+                <label class="app-otr-form__label" for="credit-card-number">
+                    Card Number
+                </label>
+                <label class="app-otr-form__label-exp" for="credit-card-month"
+                    >Expiry Date</label
+                >
+            </div>
+            <div class="position-relative">
+                <input
+                    name="cardNumber"
+                    class="app-otr-form__input"
+                    placeholder="Enter card number"
+                    maxlength="19"
+                    cc-number
+                    cc-format
+                    cc-eager-type
+                    data-hook="credit-card-number"
+                    validator="vm.paymentFormValidator(creditCardForm.cardNumber) === true"
+                    invalid-message="vm.paymentFormValidator(creditCardForm.cardNumber)"
+                    ng-model="vm.newCard.number"
+                />
+                <div cc-exp class="app-otr-form__nested-input-group">
+                    <input
+                        type="text"
+                        name="ccExpMonth"
+                        class="app-otr-form__nested-input text-right"
+                        placeholder="MM"
+                        cc-exp-month
+                        data-hook="credit-card-month"
+                        ng-model="vm.newCard.exp_month"
+                        invalid-message="''"
+                        angular-validator-quiet
+                    />
+                    /
+                    <input
+                        type="text"
+                        name="ccExpYear"
+                        class="app-otr-form__nested-input"
+                        placeholder="YY"
+                        cc-exp-year
+                        data-hook="credit-card-year"
+                        ng-model="vm.newCard.exp_year"
+                        invalid-message="''"
+                        angular-validator-quiet
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <label class="app-otr-form__label"> CVV </label>
+            <input
+                name="ccCvc"
+                class="app-otr-form__input"
+                cc-cvc
+                data-hook="credit-card-cvv"
+                validator="vm.paymentFormValidator(creditCardForm.ccCvc) === true"
+                invalid-message="vm.paymentFormValidator(creditCardForm.ccCvc)"
+                ng-model="vm.newCard.cvc"
+            />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 margin-top-15">
+            <label class="app-otr-form__label" for="credit-card-country"> Country </label>
+            <div class="select-container">
+                <select
+                    name="addressCountry"
+                    class="app-otr-form__input"
+                    id="country"
+                    autocomplete="country-name"
+                    validator="vm.paymentFormValidator(creditCardForm.addressCountry) === true"
+                    invalid-message="vm.paymentFormValidator(creditCardForm.addressCountry)"
+                    ng-options="c.countryCode as c.countryName for c in vm.countries"
+                    ng-model="vm.newCard.address_country"
+                ></select>
+            </div>
+        </div>
+        <div class="col-sm-6 margin-top-15">
+            <div>
+                <label
+                    class="app-otr-form__label"
+                    ng-if="vm.newCard.address_country === 'US'"
+                    for="zip"
+                >
+                    Zip
+                </label>
+                <label
+                    class="app-otr-form__label"
+                    ng-if="vm.newCard.address_country === 'CA'"
+                    for="Postal Code"
+                >
+                    Postal Code
+                </label>
+                <label
+                    class="app-otr-form__label"
+                    ng-hide="
+                        vm.newCard.address_country === 'CA' ||
+                        vm.newCard.address_country === 'US'
+                    "
+                    for="Zip / Postal Code"
+                >
+                    Zip / Postal
+                </label>
+            </div>
+            <input
+                name="addressZip"
+                class="app-otr-form__input"
+                id="credit-card-zip"
+                autocomplete="postal-code"
+                validator="vm.paymentFormValidator(creditCardForm.addressZip) === true"
+                invalid-message="vm.paymentFormValidator(creditCardForm.addressZip)"
+                ng-model="vm.newCard.address_zip"
+            />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 margin-top-15">
+            <label class="app-otr-form__label"> Phone Number </label>
+            <input
+                name="phoneNumber"
+                class="app-otr-form__input"
+                ng-model="vm.newCard.phoneNumber"
+                ui-mask="(999) 999-9999"
+            />
+        </div>
+    </div>
+
+    <p class="font-size-body-xs margin-top-20">
+        <i class="far fa-lock-alt fa-lg color-primary padding-right-5"></i>
+        Credit card information is secured with 128-bit SSL encryption.
+    </p>
+    <div
+        class="margin-bottom-10 margin-top-20 app-otr-form__footer-error position-static"
+        ng-if="vm.paymentErrorMessage"
+    >
+        {{ vm.paymentErrorMessage }}
+    </div>
+    <button type="submit" class="otr-button--primary block"
+            data-ref="fight.book.new-card.verify-button"
+            ng-disabled="vm.showLoading">
+        Verify Card
+        <span ng-show="vm.showLoading">
+            <i class="far fa-lg fa-spinner fa-pulse"></i>
+        </span>
+    </button>
+</form>

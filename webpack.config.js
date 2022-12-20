@@ -38,8 +38,8 @@ module.exports = (env, argv) => {
                     use: ['style-loader', 'css-loader', 'sass-loader']
                 },
                 {
-                    test: /\.(jpe?g|png|gif|svg)$/,
-                    type: 'asset/resource'
+                    test: /\.(jpe?g|png|gif|svg|webp)$/,
+                    type: 'asset/inline'
                 }
             ]
         },
@@ -79,7 +79,7 @@ module.exports = (env, argv) => {
             // serve index.html for all 404
             historyApiFallback: true,
             compress: true,
-            port: 8886,
+            port: 8889,
             hot: true,
             open: true
         },

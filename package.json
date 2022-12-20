@@ -1,6 +1,6 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
@@ -9,7 +9,8 @@
   "scripts": {
     "serve": "git init ./dist && cp ./package.json dist/ && npm i --omit=dev --prefix dist/ && webpack serve --progress --mode=development",
     "build": "webpack build --progress --mode=production",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "rm -r dist && npm run build",
+    "build:devo": "webpack build --progress --mode=development"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,10 @@
     "url": "https://github.com/alexg313/otr_ui_shared_components/issues"
   },
   "homepage": "https://github.com/alexg313/otr_ui_shared_components#readme",
-  "dependencies": {
-    "angucomplete-alt": "3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@angular/cli": "^12.2.1",
-    "angular": "~1.8.3",
+    "angular": "~1.6.9",
     "@fortawesome/fontawesome-free": "5.15.4",
     "@types/angular": "^1.8.2",
     "@types/lodash": "^4.14.172",
@@ -49,12 +48,16 @@
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@otr-app/shared-backend-generated-client": ">= 1.0.0 || < 3.0.0",
+    "angucomplete-alt": "3.0.0",
     "angular-animate": ">= 1.4.9 || <= 1.6.9",
     "angular-ui-bootstrap": "2.5.0",
     "bootstrap": "~3.3.2",
     "fuse.js": ">= 6.4.6 || < 7.0.0",
     "lodash": ">= 4.17.21 || < 5.0.0",
     "ngletteravatar": "4.0.4",
-    "pdfjs-dist": "2.5.207"
+    "pdfjs-dist": "2.5.207",
+    "angular-stripe": "5.0.0",
+    "angular-credit-cards": "3.1.7",
+    "angular-validator": "1.2.9"
   }
 }
