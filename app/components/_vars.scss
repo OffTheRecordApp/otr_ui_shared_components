@@ -1,7 +1,25 @@
-.position-relative {
-        position: relative !important;
+// colors
+$conversationDarkGray: #222;
+$appDefaultBlue: #007be3;
+$appFusionYellow: #ffc533;
+$appFusionTeal: #2ac3be;
+$appFusionRed: #f2726f;
+$appFusionPurple: #5d62b5;
+
+// Layout
+.vertical-center {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
-    
+
+.position-relative {
+    position: relative !important;
+}
+
+// utility classes
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
@@ -31,47 +49,11 @@
 }
 
 .color-primary {
-    color: #007be3;
+    color: $appDefaultBlue;
 }
 
 .font-size-body-xs {
     font-size: 12px;
-}
-
-%otr-button {
-    border: 1px solid transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block;
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.42857143;
-    margin-bottom: 0;
-    padding: 12px 15px;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    z-index: 2;
-}
-    
-.otr-button--primary {
-    @extend %otr-button;
-    
-    background-color: #007be3;
-    color: #fff;
-    
-    &:hover,
-    &:active {
-        background-color: darken(#007be3, 10%);
-    }
-    
-    &:disabled {
-        background-color: #717d96;
-    }
 }
 
 .fa-angle-down,
@@ -100,3 +82,153 @@
 .img-fit--contain {
     object-fit: contain;
 }
+
+// OTR Button
+%otr-button {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.42857143;
+    margin-bottom: 0;
+    padding: 12px 15px;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.extend-otr-button {
+    @extend %otr-button;
+}
+
+.otr-button--default {
+    @extend %otr-button;
+
+    background-color: $appDefaultBlue;
+    color: #fff;
+
+    &:hover,
+    &:active {
+        background-color: darken($appDefaultBlue, 10%);
+    }
+
+    &:disabled {
+        background-color: #717d96;
+    }
+}
+
+.otr-button--fusion {    
+    &-yellow {
+        @extend %otr-button;
+        background-color: $appFusionYellow;
+        color: #fff;
+
+        &:hover,
+        &:active {
+            background-color: darken($appFusionYellow, 10%);
+        }
+
+        &:disabled {
+            background-color: #717d96;
+        }
+    }
+
+    &-teal {
+        @extend %otr-button;
+        background-color: $appFusionTeal;
+        color: #fff;
+
+        &:hover,
+        &:active {
+            background-color: darken($appFusionTeal, 10%);
+        }
+
+        &:disabled {
+            background-color: #717d96;
+        }
+    }
+
+    &-red {
+        @extend %otr-button;
+        background-color: $appFusionRed;
+        color: #fff;
+
+        &:hover,
+        &:active {
+            background-color: darken($appFusionRed, 10%);
+        }
+
+        &:disabled {
+            background-color: #717d96;
+        }
+    }
+
+    &-purple {
+        @extend %otr-button;
+        background-color: $appFusionPurple;
+        color: #fff;
+
+        &:hover,
+        &:active {
+            background-color: darken($appFusionPurple, 10%);
+        }
+
+        &:disabled {
+            background-color: #717d96;
+        }
+    }
+}
+
+// Stat/button/toggle card themes
+.default {
+    color: $appDefaultBlue;
+    border-left-color: $appDefaultBlue;
+
+        &--selected {
+        color: $appDefaultBlue;
+        border-color: $appDefaultBlue;
+        }
+    }
+
+    .fusion-yellow {
+        color: $appFusionYellow;
+        border-left-color: $appFusionYellow;
+
+        &--selected {
+        border-color: $appFusionYellow;
+        }
+    }
+
+    .fusion-teal {
+        color: $appFusionTeal;
+        border-left-color: $appFusionTeal;
+
+        &--selected {
+        border-color: $appFusionTeal;
+        }
+    }
+
+    .fusion-red {
+        color: $appFusionRed;
+        border-left-color: $appFusionRed;
+
+        &--selected {
+        border-color: $appFusionRed;
+        }
+    }
+
+    .fusion-purple {
+        color: $appFusionPurple;
+        border-left-color: $appFusionPurple;
+
+        &--selected {
+        border-color: $appFusionPurple;
+        }
+    }

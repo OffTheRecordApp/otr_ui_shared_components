@@ -1,0 +1,24 @@
+@import'_vars.scss';
+
+.app-button-card {
+    &__message {
+        color: $conversationDarkGray;
+    }
+
+    &__stat-icon {
+        color: #dddfeb;
+        font-size: 33px;
+        padding-top: 5px;
+    }
+
+    &__stat-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    &__button {
+        padding: 7px 12px;
+    }
+}
