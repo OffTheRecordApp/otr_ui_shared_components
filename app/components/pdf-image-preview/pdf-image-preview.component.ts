@@ -47,7 +47,7 @@ class PDFImagePreviewCtrl implements IPDFImagePreviewCtrl {
             const page: PDFPageProxy = await doc.getPage(1);
             const canvas = await this.makeThumb(page);
 
-            const div = document.querySelector('.app-pdf-image-preview');
+            const div = this.$element.find('div')[0];
             div?.append(canvas);
         } catch (error) {
             console.error('Error loading PDF Preview: ', error);
