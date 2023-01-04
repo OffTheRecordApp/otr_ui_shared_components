@@ -55,8 +55,18 @@ class ButtonCard implements ButtonCardBindings {
             'fusion-purple'
         ];
         if (this.theme && themeEnums.includes(this.theme)) {
+            if (!this.isButtonVisible) {
+                return this.isSelected
+                    ? `${this.theme} ${this.theme}--selected clickable`
+                    : this.theme + ' ' + 'clickable';
+            }
             return this.isSelected ? `${this.theme} ${this.theme}--selected` : this.theme;
         } else {
+            if (!this.isButtonVisible) {
+                return this.isSelected
+                    ? 'default default--selected clickable'
+                    : 'default clickable';
+            }
             return this.isSelected ? 'default default--selected' : 'default';
         }
     }

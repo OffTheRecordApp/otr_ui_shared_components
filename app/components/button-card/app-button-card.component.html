@@ -21,23 +21,22 @@
                 </div>
         
                 <div ng-if="vm.isButtonVisible && vm.isRouting">
-                    <span class="app-button-card__message">{{vm.cardMessage}}</span> <a ui-sref="{{vm.route}}">{{vm.buttonText}}</a>
+                    <span class="app-button-card__message">{{vm.cardMessage}}</span> <a class="clickable" ui-sref="{{vm.route}}">{{vm.buttonText}}</a>
                 </div>
-      
-              <span ng-if="!vm.isRouting && vm.isButtonVisible && vm.theme">
-                  <button
-                      ng-click="vm.onButtonClick()"
-                      class="app-button-card__button"
-                      ng-class="vm.applyButtonClass()"
-                  >{{vm.buttonText}}</button>
-              </span>
-              <span ng-if="!vm.isRouting && vm.isButtonVisible && !vm.theme">
-                <button
-                    ng-click="vm.onButtonClick()"
-                    ng-style="vm.applyButtonColor()"
-                    class="app-button-card__button extend-otr-button"
-                >{{vm.buttonText}}</button>
-              </span>
+                <span ng-if="!vm.isRouting && vm.isButtonVisible && vm.theme">
+                    <button
+                        ng-click="vm.onButtonClick()"
+                        class="app-button-card__button"
+                        ng-class="vm.applyButtonClass()"
+                    >{{vm.buttonText}}</button>
+                </span>
+                <span ng-if="!vm.isRouting && vm.isButtonVisible && !vm.theme">
+                    <button
+                        ng-click="vm.onButtonClick()"
+                        ng-style="vm.applyButtonColor()"
+                        class="app-button-card__button extend-otr-button"
+                    >{{vm.buttonText}}</button>
+                </span>
             </div>
             <div>
                 <span
