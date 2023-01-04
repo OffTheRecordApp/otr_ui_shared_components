@@ -5,15 +5,9 @@ $appFusionYellow: #ffc533;
 $appFusionTeal: #2ac3be;
 $appFusionRed: #f2726f;
 $appFusionPurple: #5d62b5;
+$appNeutralBlue: #717d96;
 
 // Layout
-.vertical-center {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
 
 .position-relative {
     position: relative !important;
@@ -128,7 +122,7 @@ $appFusionPurple: #5d62b5;
     }
 
     &:disabled {
-        background-color: #717d96;
+        background-color: $appNeutralBlue;
     }
 }
 
@@ -144,7 +138,7 @@ $appFusionPurple: #5d62b5;
         }
 
         &:disabled {
-            background-color: #717d96;
+            background-color: $appNeutralBlue;
         }
     }
 
@@ -159,7 +153,7 @@ $appFusionPurple: #5d62b5;
         }
 
         &:disabled {
-            background-color: #717d96;
+            background-color: $appNeutralBlue;
         }
     }
 
@@ -174,7 +168,7 @@ $appFusionPurple: #5d62b5;
         }
 
         &:disabled {
-            background-color: #717d96;
+            background-color: $appNeutralBlue;
         }
     }
 
@@ -189,7 +183,7 @@ $appFusionPurple: #5d62b5;
         }
 
         &:disabled {
-            background-color: #717d96;
+            background-color: $appNeutralBlue;
         }
     }
 }

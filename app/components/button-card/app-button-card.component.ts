@@ -58,7 +58,7 @@ class ButtonCard implements ButtonCardBindings {
             if (!this.isButtonVisible) {
                 return this.isSelected
                     ? `${this.theme} ${this.theme}--selected clickable`
-                    : this.theme + ' ' + 'clickable';
+                    : `${this.theme} clickable`;
             }
             return this.isSelected ? `${this.theme} ${this.theme}--selected` : this.theme;
         } else {
