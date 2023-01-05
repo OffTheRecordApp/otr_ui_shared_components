@@ -5,11 +5,12 @@
         'toggle-success-green': !vm.isEnabled
         }"
 >
-    <div class="app-stat-card__heading">
+    <div class="app-stat-card__heading app-toggle-card__heading">
         <div 
             class="app-toggle-card__layout"
             ng-switch
-            on="vm.isEnabled">
+            on="vm.isEnabled"
+        >
             <div class="app-toggle-card__title">
                 {{ vm.cardTitle }}
             </div>
@@ -17,7 +18,7 @@
                 <span class="app-toggle-card__loading" ng-if="vm.isToggleLoading === true">
                     <i class="fa fa-spinner fa-pulse"></i>
                 </span>
-                <span class="clickable" ng-click="vm.onSwitchClick()">
+                <span class="clickable" ng-click="vm.onSwitchClick()" ng-if="!vm.isToggleLoading">
                     <i class="fa fa-toggle-on app-toggle-card__toggle" ng-switch-default></i>
                     <i
                         class="fa fa-toggle-on fa-rotate-180 app-toggle-card__toggle"
@@ -45,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div ng-if="vm.isIconShowing">
                 <span class="app-stat-card__stat-icon">
                     <i ng-class="{{'vm.iconClass'}}"></i>
                 </span>

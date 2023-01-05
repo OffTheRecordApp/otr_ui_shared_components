@@ -15,6 +15,12 @@
     height: 100%;
     cursor: default;
 
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
     &__sub-title {
         padding-right: 10px;
         font-size: 14px;
@@ -96,11 +102,15 @@
 // color options for toggle card
 
 .toggle-success-green {
-    color: green;
-    border-left-color: green;
+    color: green !important;
+    border-left-color: green !important;
 }
 
 .toggle-error-red {
-    color: red;
-    border-color: red;
+    color: red !important;
+    border-color: red !important;
+}
+
+.clickable {
+    cursor: pointer;
 }

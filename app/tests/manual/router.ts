@@ -133,7 +133,7 @@ angular
                                 vm.uibMessage =
                                     'Accepting Cases is turned off for your law firm. You will not receive any new cases. If you wish to resume receiving cases, you can click the toggle switch to start receiving cases again at any time.';
                                 vm.title = 'Not accepting cases';
-                                vm.vacationModeUpdating = 'false';
+                                vm.vacationModeUpdating = false;
                                 vm.isVacationMode = true;
 
                                 vm.updateVacationMode = () => {

@@ -2,7 +2,7 @@ import angular from 'angular';
 import template from './app-toggle-card.component.html';
 
 interface ToggleCardBindings {
-    iconClass: string;
+    iconClass?: string;
     cardTitle: string;
     tooltipPlacement?: string;
     tooltipMessage?: string;
@@ -10,6 +10,7 @@ interface ToggleCardBindings {
     isEnabled: boolean;
     onSwitchClick: () => null;
     isToggleLoading: boolean;
+    isIconShowing: boolean;
 }
 
 type Theme = 'success-green' | 'error-red';
@@ -29,16 +30,18 @@ type TooltipPlacements =
 
 class ToggleCard implements ToggleCardBindings {
     // bindings
-    iconClass!: string;
+    iconClass?: string;
     cardTitle!: string;
     tooltipPlacement?: TooltipPlacements;
     tooltipMessage?: string;
     message?: string;
     isEnabled!: boolean;
     isToggleLoading!: boolean;
+    isIconShowing!: boolean;
     onSwitchClick!: () => null;
 
     $onInit() {
+        console.log(this.isToggleLoading);
         this.iconClass = this.iconClass || 'fa fa-solid fa-info';
         this.cardTitle = this.cardTitle || 'Card Title';
     }
@@ -55,7 +58,8 @@ const component = {
         message: '@',
         isEnabled: '<',
         isToggleLoading: '<',
-        onSwitchClick: '&'
+        onSwitchClick: '&',
+        isIconShowing: '<'
     },
     controller: ToggleCard,
     controllerAs: 'vm'
