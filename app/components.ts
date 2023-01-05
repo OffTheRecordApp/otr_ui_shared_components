@@ -7,6 +7,7 @@ import './components/app-pdf-image-preview.component.scss';
 import './components/app-dropdown.component.scss';
 import './components/app-payments.component.scss';
 import './components/app-credit-card-form.component.scss';
+import './components/app-button-card.component.scss';
 
 import './directives/app-fuse-highlight.directive.ts';
 import './components/stat-card/app-stat-card.component.ts';
@@ -21,6 +22,7 @@ import './components/star-rating-display/app-star-rating-display.component.ts';
 import './components/payment-logo/payment-logos.component.ts';
 import './components/select-payment/select-payment.component';
 import './components/credit-card-form/credit-card-form.component';
+import './components/button-card/app-button-card.component';
 
 // services
 import './services/payments.service';

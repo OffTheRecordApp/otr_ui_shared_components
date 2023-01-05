@@ -1,0 +1,61 @@
+<div
+    class="app-stat-card"
+    ng-class="vm.applyThemeClass()"
+    ng-style="vm.applyCustomColor()"
+    ng-click="vm.onSelect()"
+>
+    <div class="app-stat-card__heading">
+        <div class="app-button-card__stat-bar">
+            <div>
+                <div class="app-button-card__title-layout">
+                    <div class="app-stat-card__title">
+                        {{ vm.cardTitle }}
+                    </div>
+                    <div class="app-toggle-card__tooltip" ng-if="vm.tooltipVisible">
+                        <i 
+                            class="fa fa-question-circle-o"
+                            uib-tooltip="{{vm.tooltipMessage}}"
+                            tooltip-class="app-toggle-card__uib-tooltip"
+                            tooltip-placement="{{vm.tooltipPlacement}}"></i>
+                    </div>
+                </div>
+                <div ng-if="!vm.statInfoToDisplay">
+                    <i class="fa fa-spinner fa-pulse fa-lg"></i>
+                </div>
+                <div
+                    ng-if="vm.statInfoToDisplay && !vm.isButtonVisible"
+                    class="app-stat-card__stat-num app-stat-card__clickable"
+                >
+                    {{ vm.statInfoToDisplay }}
+                </div>
+        
+                <div ng-if="vm.isButtonVisible && vm.isRouting">
+                    <span class="app-button-card__message">{{vm.cardMessage}}</span> <a class="clickable" ui-sref="{{vm.route}}">{{vm.buttonText}}</a>
+                </div>
+                <span ng-if="!vm.isRouting && vm.isButtonVisible && vm.theme">
+                    <button
+                        ng-click="vm.onButtonClick()"
+                        class="app-button-card__button"
+                        ng-class="vm.applyButtonClass()"
+                    >{{vm.buttonText}}</button>
+                </span>
+                <span ng-if="!vm.isRouting && vm.isButtonVisible && !vm.theme">
+                    <button
+                        ng-click="vm.onButtonClick()"
+                        ng-style="vm.applyButtonColor()"
+                        class="app-button-card__button extend-otr-button"
+                    >{{vm.buttonText}}</button>
+                </span>
+            </div>
+            <div>
+                <span
+                    class="app-button-card__stat-icon"
+                    ng-if="vm.isIconShowing === true"
+                >
+                    <i ng-class="{{'vm.iconClass'}}"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+ 

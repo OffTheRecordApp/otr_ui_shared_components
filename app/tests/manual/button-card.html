@@ -1,0 +1,53 @@
+<div class="flex-center">
+    <div class="button-card__group">
+        <div class="button-card__control">
+            <app-button-card
+                theme="{{ vm.theme }}"
+                icon-class="{{ vm.iconClass }}"
+                card-title="{{ vm.cardTitle }}"
+                stat-info-to-display="{{ vm.statInfoToDisplay }}"
+                is-routing="vm.isRouting"
+                route="{{ vm.route }}"
+                is-selected="vm.statusToFilterOn === 'payment_plan_cases'"
+                on-select="vm.onSelectCard('payment_plan_cases')"
+                is-icon-showing="vm.isIconShowing"
+                is-button-visible="false"
+                tooltip-visible="vm.tooltipVisible"
+                tooltip-placement="{{vm.tooltipPlacement}}"
+                tooltip-message="{{vm.tooltipMessage}}"
+            ></app-button-card>
+        </div>
+        <div class="button-card__control-route">
+            <app-button-card
+                theme="{{ vm.theme }}"
+                icon-class="{{ vm.iconClass }}"
+                card-title="{{ vm.cardTitle }}"
+                stat-info-to-display="{{ vm.statInfoToDisplay }}"
+                is-routing="vm.isRouting"
+                route="{{ vm.route }}"
+                is-selected="false"
+                button-text="{{ vm.buttonText }}"
+                card-message="{{ vm.cardMessage }}"
+                on-select="vm.onSelectCard('payment_plan_cases')"
+                is-icon-showing="vm.isIconShowing"
+                is-button-visible="true"
+                tooltip-visible="vm.tooltipVisible"
+                tooltip-placement="{{vm.tooltipPlacement}}"
+                tooltip-message="{{vm.tooltipMessage}}"
+            ></app-button-card>
+        </div>
+        <div class="button-card__control">
+            <app-button-card
+                color="green"
+                icon-class="{{ vm.iconClass }}"
+                card-title="{{ vm.cardTitle }}"
+                stat-info-to-display="{{ vm.statInfoToDisplay }}"
+                is-routing="false"
+                is-icon-showing="vm.isIconShowing"
+                is-button-visible="true"
+                button-text="Turn on payment plans"
+                on-button-click="vm.onClick()"
+            ></app-button-card>
+        </div>
+    </div>
+</div>

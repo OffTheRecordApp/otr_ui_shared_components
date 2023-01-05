@@ -8,6 +8,7 @@ import statCardsTemplate from './stat-cards.html';
 import toggleCardsTemplate from './toggle-cards.html';
 import avatarFallbackTemplate from './avatars.html';
 import paymentLogosTemplate from './payment-logos.html';
+import buttonCardTemplate from './button-card.html';
 
 angular
     .module('otr-ui-shared-components')
@@ -204,6 +205,47 @@ angular
 
                                 vm.onError = (error) => {
                                     console.log('from test', error);
+                                };
+                            }
+                        }
+                    }
+                })
+                .state('button-card', {
+                    url: '/button-card',
+                    views: {
+                        '': {
+                            template: buttonCardTemplate,
+                            controllerAs: 'vm',
+                            controller: function () {
+                                let vm: any = this;
+                                vm.theme = 'fusion-teal';
+                                vm.iconClass = 'fa fa-solid fa-info';
+                                vm.isIconShowing = true;
+                                vm.cardTitle = 'Payment Plan Cases';
+                                vm.statInfoToDisplay = '45%';
+                                vm.isRouting = true;
+                                vm.route = 'payment-logos';
+                                vm.buttonText = 'Turn on payment plans.';
+                                vm.isButtonVisible = true;
+                                vm.cardMessage =
+                                    'Firms who accept payment plans see a 10-15% lift in bookings.';
+                                vm.statusToFilterOn = null;
+                                vm.tooltipVisible = true;
+                                vm.tooltipPlacement = 'bottom';
+                                vm.tooltipMessage =
+                                    'Accepting payment plans leads to more case bookings. Your account is experiencing a 7% increase in case bookings due to payment plans.';
+                                vm.onSelectCard = (status) => {
+                                    if (vm.statusToFilterOn) {
+                                        vm.statusToFilterOn = null;
+                                    } else {
+                                        vm.statusToFilterOn = status;
+                                    }
+
+                                    console.log(vm.statusToFilterOn);
+                                };
+
+                                vm.onClick = () => {
+                                    console.log('I have been clicked');
                                 };
                             }
                         }

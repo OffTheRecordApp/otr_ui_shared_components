@@ -96,6 +96,7 @@
             .section__toggle-card {
                 height: 100px;
                 max-width: 300px;
+                margin-left: 50px;
             }
         
             button {
@@ -122,6 +123,30 @@
                 margin: 0 auto;
                 max-width: 530px;
             }
+
+            .button-card__group {
+                display: flex;
+                flex-direction: column;
+                margin-top: 25px;
+                gap: 20px;
+            }
+
+            .button-card__control-route {
+                height: 92px;
+                width: 100%;
+                max-width: 388px;
+            }
+
+            .button-card__control {
+                height: 90px;
+                width: 295px;
+            }
+
+            .flex-center {
+                display: flex;
+                justify-content: center;
+                height: 500px;
+            }
         </style>
         <div class="menu">
             <a ui-sref="courts">Courts</a>
@@ -132,6 +157,7 @@
             <a ui-sref="toggle-cards">Toggle Cards</a>
             <a ui-sref="avatars">Avatars</a>
             <a ui-sref="payment-logos">Payment</a>
+            <a ui-sref="button-card">Button Card</a>
         </div>
         <div ui-view></div>
     </body>
