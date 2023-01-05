@@ -102,15 +102,11 @@
 // color options for toggle card
 
 .toggle-success-green {
-    color: green !important;
-    border-left-color: green !important;
+    color: green;
+    border-left-color: green;
 }
 
 .toggle-error-red {
-    color: red !important;
-    border-color: red !important;
-}
-
-.clickable {
-    cursor: pointer;
+    color: red;
+    border-color: red;
 }

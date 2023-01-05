@@ -10,7 +10,7 @@ interface ToggleCardBindings {
     isEnabled: boolean;
     onSwitchClick: () => null;
     isToggleLoading: boolean;
-    isIconShowing: boolean;
+    isIconVisible: boolean;
 }
 
 type Theme = 'success-green' | 'error-red';
@@ -37,11 +37,10 @@ class ToggleCard implements ToggleCardBindings {
     message?: string;
     isEnabled!: boolean;
     isToggleLoading!: boolean;
-    isIconShowing!: boolean;
+    isIconVisible!: boolean;
     onSwitchClick!: () => null;
 
     $onInit() {
-        console.log(this.isToggleLoading);
         this.iconClass = this.iconClass || 'fa fa-solid fa-info';
         this.cardTitle = this.cardTitle || 'Card Title';
     }
@@ -59,7 +58,7 @@ const component = {
         isEnabled: '<',
         isToggleLoading: '<',
         onSwitchClick: '&',
-        isIconShowing: '<'
+        isIconVisible: '<'
     },
     controller: ToggleCard,
     controllerAs: 'vm'
