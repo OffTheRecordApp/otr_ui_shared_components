@@ -230,6 +230,10 @@ angular
                                 vm.cardMessage =
                                     'Firms who accept payment plans see a 10-15% lift in bookings.';
                                 vm.statusToFilterOn = null;
+                                vm.tooltipVisible = true;
+                                vm.tooltipPlacement = 'bottom';
+                                vm.tooltipMessage =
+                                    'Accepting payment plans leads to more case bookings. Your account is experiencing a 7% increase in case bookings due to payment plans.';
                                 vm.onSelectCard = (status) => {
                                     if (vm.statusToFilterOn) {
                                         vm.statusToFilterOn = null;

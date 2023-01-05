@@ -1,6 +1,11 @@
 @import'_vars.scss';
 
 .app-button-card {
+    &__title-layout {
+        display: flex;
+        gap: 10px;
+    }
+
     &__message {
         color: $conversationDarkGray;
     }

@@ -16,12 +16,15 @@ interface ButtonCardBindings {
     buttonText?: string;
     cardMessage?: string;
     isButtonVisible: boolean;
+    tooltipPlacement?: string;
+    tooltipMessage?: string;
+    tooltipVisible: boolean;
 }
 
 type Theme = 'fusion-yellow' | 'fusion-teal' | 'fusion-red' | 'fusion-purple' | 'default';
 
 class ButtonCard implements ButtonCardBindings {
-    //bindings
+    // card bindings
     theme?: Theme;
     color?: string;
     iconClass!: string;
@@ -36,6 +39,11 @@ class ButtonCard implements ButtonCardBindings {
     buttonText?: string;
     cardMessage?: string;
     isButtonVisible!: boolean;
+
+    // tooltip bindings
+    tooltipPlacement?: string;
+    tooltipMessage?: string;
+    tooltipVisible!: boolean;
 
     $onInit() {
         this.color = this.color ?? undefined;
@@ -117,7 +125,10 @@ const component = {
         route: '@',
         buttonText: '@',
         isButtonVisible: '<',
-        cardMessage: '@'
+        cardMessage: '@',
+        tooltipPlacement: '@',
+        tooltipMessage: '@',
+        tooltipVisible: '<'
     },
     controller: ButtonCard,
     controllerAs: 'vm'

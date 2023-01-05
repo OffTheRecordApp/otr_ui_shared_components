@@ -7,8 +7,17 @@
     <div class="app-stat-card__heading">
         <div class="app-button-card__stat-bar">
             <div>
-                <div class="app-stat-card__title">
-                    {{ vm.cardTitle }}
+                <div class="app-button-card__title-layout">
+                    <div class="app-stat-card__title">
+                        {{ vm.cardTitle }}
+                    </div>
+                    <div class="app-toggle-card__tooltip" ng-if="vm.tooltipVisible">
+                        <i 
+                            class="fa fa-question-circle-o"
+                            uib-tooltip="{{vm.tooltipMessage}}"
+                            tooltip-class="app-toggle-card__uib-tooltip"
+                            tooltip-placement="{{vm.tooltipPlacement}}"></i>
+                    </div>
                 </div>
                 <div ng-if="!vm.statInfoToDisplay">
                     <i class="fa fa-spinner fa-pulse fa-lg"></i>

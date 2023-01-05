@@ -12,6 +12,9 @@
                 on-select="vm.onSelectCard('payment_plan_cases')"
                 is-icon-showing="vm.isIconShowing"
                 is-button-visible="false"
+                tooltip-visible="vm.tooltipVisible"
+                tooltip-placement="{{vm.tooltipPlacement}}"
+                tooltip-message="{{vm.tooltipMessage}}"
             ></app-button-card>
         </div>
         <div class="button-card__control-route">
@@ -28,6 +31,9 @@
                 on-select="vm.onSelectCard('payment_plan_cases')"
                 is-icon-showing="vm.isIconShowing"
                 is-button-visible="true"
+                tooltip-visible="vm.tooltipVisible"
+                tooltip-placement="{{vm.tooltipPlacement}}"
+                tooltip-message="{{vm.tooltipMessage}}"
             ></app-button-card>
         </div>
         <div class="button-card__control">
