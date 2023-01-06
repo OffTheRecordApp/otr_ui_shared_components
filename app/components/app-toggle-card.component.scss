@@ -15,6 +15,12 @@
     height: 100%;
     cursor: default;
 
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
     &__sub-title {
         padding-right: 10px;
         font-size: 14px;
