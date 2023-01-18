@@ -18,6 +18,7 @@ interface ButtonCardBindings {
     isButtonVisible: boolean;
     tooltipPlacement?: string;
     tooltipMessage?: string;
+    tooltipHtml?: HTMLElement;
     tooltipVisible: boolean;
 }
 
@@ -43,6 +44,7 @@ class ButtonCard implements ButtonCardBindings {
     // tooltip bindings
     tooltipPlacement?: string;
     tooltipMessage?: string;
+    tooltipHtml?: HTMLElement;
     tooltipVisible!: boolean;
 
     $onInit() {
@@ -128,6 +130,7 @@ const component = {
         cardMessage: '@',
         tooltipPlacement: '@',
         tooltipMessage: '@',
+        tooltipHtml: '<',
         tooltipVisible: '<'
     },
     controller: ButtonCard,
