@@ -1,6 +1,6 @@
 {
   "name": "@otr-app/ui-shared-components",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Module for shared components across OTR sites",
   "files": [
     "/dist"
