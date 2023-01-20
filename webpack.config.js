@@ -4,13 +4,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
     let libsToIgnore = {};
-    if(!env.WEBPACK_SERVE) {
+    if (!env.WEBPACK_SERVE) {
         libsToIgnore = {
-            'angular': 'angular',
-            'lodash': '_',
-            // must be included in the consumers before we can do this
-            // 'pdfjs-dist': 'commonjs pdfjs-dist',
-            // 'pdfjs-dist/build/pdf.worker.entry': 'commonjs pdfjs-dist/build/pdf.worker.entry',
+            angular: 'angular',
+            lodash: '_',
             'fuse.js': 'commonjs fuse.js'
         };
     }
@@ -45,7 +42,7 @@ module.exports = (env, argv) => {
         },
         plugins: [
             // generates an index.html file based on our existing index.html
-            new HtmlWebpackPlugin({ template: './index-test.html', inject: false}),
+            new HtmlWebpackPlugin({ template: './index-test.html', inject: false }),
             // copy over non TS files
             new CopyPlugin({
                 patterns: [
