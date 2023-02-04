@@ -3,7 +3,7 @@ import otrSearchTemplate from './otr-search-template.html';
 
 angular.module('otr-ui-shared-components', [
     'angucomplete-alt',
-    'otrBackendService',
+    'api',
     'ui.bootstrap',
     'ngLetterAvatar'
 ]).run(['$templateCache', ($templateCache) => {

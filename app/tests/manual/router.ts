@@ -22,15 +22,11 @@ angular
     ])
     .config([
         '$stateProvider',
-        'otrServiceProvider',
         'basePathProvider',
         '$httpProvider',
-        function ($stateProvider, otrServiceProvider, basePathProvider, $httpProvider) {
+        function ($stateProvider, basePathProvider, $httpProvider) {
             $httpProvider.defaults.withCredentials = true;
-
-            otrServiceProvider.setDomain(
-                'https://otr-backend-service-us-devo.offtherecord.com'
-            );
+            
             basePathProvider.setDomain(
                 'https://otr-backend-service-us-devo.offtherecord.com'
             );

@@ -1,6 +1,7 @@
 import angular from "angular";
 import template from './remote-courts-dropdown.component.html';
 import _ from "lodash";
+import { CourtControllerApi } from "@otr-app/shared-backend-generated-client/dist/typescript";
 
 interface RemoteCourtsDropdownBindings {
     inputClass: string;
@@ -24,13 +25,13 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
     private isNoCourtsMessageVisible = false;
     private isDataLoading = false;
 
-    constructor(private $scope, private otrService) {
+    constructor(private $scope, private courtControllerApi: CourtControllerApi) {
         this.selectCourt = this.selectCourt.bind(this);
         this.findMatchingCourts = this.findMatchingCourts.bind(this);
         this.formatMatchingCourtsResponse = this.formatMatchingCourtsResponse.bind(this);
     }
 
-    async findMatchingCourts(query: string): Promise<any[]> {
+    async findMatchingCourts(query: string): Promise<any> {
         const params = {
             q: query,
             state: this.state,
@@ -40,9 +41,18 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
         try {
             this.setSpinnerPosition();
             this.isDataLoading = true;
-            const response = await this.otrService.searchCourtsUsingGET(params);
-            this.isNoCourtsMessageVisible = !response.data.numRecord;
-            return response;
+            const response = await this.courtControllerApi.searchCourtsUsingGET(this.citationId,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                query,
+                undefined,
+                // @ts-ignore
+                this.state);
+            this.isNoCourtsMessageVisible = !response.data.numRecords;
+            return response.data;
         } finally {
             this.isDataLoading = false;
         }
@@ -90,4 +100,4 @@ angular.module('otr-ui-shared-components')
            }
        });
 
-RemoteCourtsDropdownComponent.$inject = ['$scope', 'otrService'];
+RemoteCourtsDropdownComponent.$inject = ['$scope', 'CourtControllerApi'];

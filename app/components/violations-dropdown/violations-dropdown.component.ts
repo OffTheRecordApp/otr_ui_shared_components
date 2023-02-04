@@ -2,6 +2,7 @@ import angular from "angular";
 import template from './violations-dropdown.component.html';
 import Fuse from "fuse.js";
 import _ from "lodash";
+import { TrafficViolationControllerApi } from "@otr-app/shared-backend-generated-client/dist/typescript";
 
 interface ViolationsDropdownBindings {
     regionCode: string;
@@ -18,7 +19,7 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
     public classes;
     private isDataLoading: boolean = false;
 
-    constructor(private $scope, private otrService) {
+    constructor(private $scope, private trafficViolationControllerApi: TrafficViolationControllerApi) {
         this.filterViolationSearch = this.filterViolationSearch.bind(this);
         this.onSelect = this.onSelect.bind(this);
     }
@@ -81,11 +82,12 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
 
         try {
             this.isDataLoading = true;
-            const response = await this.otrService
-                .getTrafficViolationTypesUsingGET({
-                    state: this.regionCode,
-                    audience: 'CLIENT'
-                });
+            const response = await this.trafficViolationControllerApi
+                .getTrafficViolationTypesUsingGET( 'CLIENT',
+                    undefined,
+                    undefined,
+                   this.regionCode,
+                );
             this.violations = response.data.violationTypes;
         } catch(error) {
             console.error('ERROR: ', error);
@@ -109,4 +111,4 @@ angular.module('otr-ui-shared-components')
            }
         });
 
-ViolationsDropdownComponent.$inject = ['$scope', 'otrService'];
+ViolationsDropdownComponent.$inject = ['$scope', 'TrafficViolationControllerApi'];

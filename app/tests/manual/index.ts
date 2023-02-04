@@ -1,7 +1,6 @@
 import '@otr-app/shared-backend-generated-client/dist/typescript/api.module';
 import '@otr-app/shared-backend-generated-client/dist/typescript/index';
 import './app';
-import '../../providers/otr-service.provider.ts';
 import '../../providers/base-path.provider';
 import './router';
 import '../../components';

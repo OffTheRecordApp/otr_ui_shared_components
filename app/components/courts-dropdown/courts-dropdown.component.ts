@@ -1,8 +1,12 @@
 import angular from 'angular';
 import template from './courts-dropdown.component.html';
 import _ from "lodash";
+import { CourtControllerApi, GetCourtsInnerResponse } from "@otr-app/shared-backend-generated-client/dist/typescript";
 
 declare const Fuse: any;
+type GetCourtsModel = (GetCourtsInnerResponse & {
+    customTitle?: string,
+    customDescription?: string})[];
 
 interface CourtsDropdownBindings {
     inputClass: string;
@@ -26,10 +30,11 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     public onSelectCourt!: (selectedCourt: any) => any;
     public state!: string;
 
-    declare public courts: any[];
+    declare public courts: GetCourtsModel;
+
     private isNoCourtsMessageVisible!: boolean;
 
-    constructor(private $scope, private otrService) {
+    constructor(private $scope, private courtControllerApi: CourtControllerApi) {
         this.inputClass = '';
         this.hasError = false;
         this.classes = this.inputClass;
@@ -69,8 +74,13 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     private async fetchCourts(): Promise<any[]> {
         try {
             this.isDataLoading = true;
-            let response = await this.otrService.findCourtsUsingGET({ state: this.state });
-            this.courts = _.forEach(response.data.courts, (court) => {
+            const { data } = await this.courtControllerApi.findCourtsUsingGET(undefined,
+                undefined, undefined, undefined, undefined, undefined,
+                undefined,
+                undefined,
+                // @ts-ignore
+                this.state);
+            this.courts = _.forEach(data.courts as GetCourtsModel, (court) => {
                 court.customTitle = court.courtName;
                 court.customTitle += court.courtNameAdditional
                     ? ' – ' + court.courtNameAdditional
@@ -78,10 +88,10 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
                 court.customTitle += court.courtCode
                     ? ' (' + court.courtCode + ')'
                     : '';
-                court.customDescription = court.address.city + ', '
-                    + court.address.regionCode + ' '
-                    + court.address.postalCode + ' – '
-                    + court.address.countyName + ' County';
+                court.customDescription = court.address?.city + ', '
+                    + court.address?.regionCode + ' '
+                    + court.address?.postalCode + ' – '
+                    + court.address?.countyName + ' County';
             });
             return this.courts;
         } finally {
@@ -163,4 +173,4 @@ angular
         }
     });
 
-CourtsDropdownCtrl.$inject = ['$scope', 'otrService'];
+CourtsDropdownCtrl.$inject = ['$scope', 'CourtControllerApi'];
