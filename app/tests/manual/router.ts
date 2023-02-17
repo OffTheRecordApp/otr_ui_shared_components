@@ -2,7 +2,6 @@ import angular from 'angular';
 import courtTemplate from './courts.html';
 import otrSearchTemplate from '../../otr-search-template.html';
 import violationsTemplate from './violations.html';
-import pdfTemplate from './pdf.html';
 import starRatingTemplate from './star-rating.html';
 import statCardsTemplate from './stat-cards.html';
 import toggleCardsTemplate from './toggle-cards.html';
@@ -61,14 +60,6 @@ angular
                                     console.log('Selected violation', c);
                                 };
                             }
-                        }
-                    }
-                })
-                .state('pdf-preview', {
-                    url: '/pdf',
-                    views: {
-                        '': {
-                            template: pdfTemplate
                         }
                     }
                 })

@@ -15,7 +15,6 @@
             rel="stylesheet"
             href="node_modules/@fortawesome/fontawesome-free/css/v4-shims.css"
         />
-    
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
         <link
             rel="stylesheet"
@@ -31,14 +30,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.30/angular-ui-router.js"></script>
         <script src="node_modules/angucomplete-alt/angucomplete-alt.js"></script>
-    
+
         <!-- DEV DEPENDENCIES BELOW ARE JUST FOR TESTING -->
         <script src="node_modules/@otr-app/shared-backend-generated-client/dist/typescript/index.js"></script>
         <script src="node_modules/@otr-app/shared-backend-generated-client/dist/typescript/api.module.js"></script>
         <script src="node_modules/lodash/lodash.js"></script>
         <script src="node_modules/fuse.js/dist/fuse.js"></script>
-        <script src="node_modules/pdfjs-dist/build/pdf.js"></script>
-        <script src="node_modules/pdfjs-dist/build/pdf.worker.js"></script>
         <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
         <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
         <script src="node_modules/angular-animate/angular-animate.min.js"></script>
@@ -48,10 +45,9 @@
             href="https://pro.fontawesome.com/releases/v5.5.0/css/all.css"
             integrity="sha384-j8y0ITrvFafF4EkV1mPW0BKm6dp3c+J9Fky22Man50Ofxo2wNe5pT1oZejDH9/Dt"
             crossorigin="anonymous"
-            />
+        />
 
         <script src="<%= htmlWebpackPlugin.files.js[1] %>"></script>
-
     </head>
     <body>
         <style>
@@ -86,33 +82,33 @@
                 width: 250px;
                 max-width: 250px;
             }
-        
+
             .stat-card__singular {
                 display: flex;
                 height: 100px;
                 width: 180px;
                 margin-bottom: 10px;
             }
-        
+
             .section__toggle-card {
                 margin: 20px;
                 height: 100px;
                 max-width: 300px;
                 margin-left: 50px;
             }
-        
+
             button {
                 height: min-content;
                 margin: auto 0;
             }
-        
+
             .customer {
                 border-radius: 50%;
                 height: 62px;
                 object-fit: cover;
                 width: 62px;
             }
-        
+
             .image-fallback-group {
                 display: flex;
                 flex-direction: row;
@@ -153,7 +149,6 @@
         <div class="menu">
             <a ui-sref="courts">Courts</a>
             <a ui-sref="violations">Violations</a>
-            <a ui-sref="pdf-preview">PDFs</a>
             <a ui-sref="star-rating">Ratings</a>
             <a ui-sref="stat-cards">Stat Cards</a>
             <a ui-sref="toggle-cards">Toggle Cards</a>
