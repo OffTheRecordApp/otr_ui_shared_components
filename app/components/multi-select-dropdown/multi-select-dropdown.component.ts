@@ -18,9 +18,13 @@ class MultiSelectDropdown {
   placeholderText?: string;
   overrideOption?: DropdownDataObj;
   onOptionChanged!: any;
+  maxWidth?: string;
+  smartTextWidth?: string;
 
   async $onInit() {
       this.smartButtonText = this.buttonText ?? '';
+      this.maxWidth = this.maxWidth ?? '260px';
+      this.smartTextWidth = this.smartTextWidth ?? '190px';
   }
 
   public onOptionSelection(option) {
@@ -84,7 +88,8 @@ bindings: {
   buttonText: '@',
   placeholderText: '@',
   overrideOption: '<',
-  onOptionChanged: '&'
+  onOptionChanged: '&',
+  maxWidth: '@'
 },
 controller: MultiSelectDropdown,
 controllerAs: 'vm'
