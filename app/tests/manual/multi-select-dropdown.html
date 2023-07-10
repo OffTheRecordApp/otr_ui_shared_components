@@ -1,0 +1,23 @@
+<div class="static-width">
+    <h3>Multi-Select Dropdown</h3>
+
+    <div style="padding: 10px 0;">
+        <app-multi-select-dropdown
+            options="vm.options"
+            selected-options="vm.selectedOptions"
+            button-text=""
+            placeholder-text="Select Options"
+            override-option="vm.overrideOption"
+            on-option-changed=""
+        ></app-multi-select-dropdown>
+    </div>
+    <div style="padding: 10px 0;">
+        <app-multi-select-dropdown
+            options="vm.optionsGrouped"
+            selected-options="vm.selectedOptions"
+            button-text=""
+            placeholder-text="Select Grouped Options"
+            on-option-changed=""
+        ></app-multi-select-dropdown>
+    </div>
+</div>
