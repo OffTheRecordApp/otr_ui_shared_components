@@ -276,6 +276,7 @@ angular
                                 ];
 
                                 vm.selectedOptions = [];
+                                vm.selectedGroupedOptions = [];
 
                                 vm.optionsGrouped = [
                                     {

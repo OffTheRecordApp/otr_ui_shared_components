@@ -6,20 +6,22 @@
             options="vm.options"
             selected-options="vm.selectedOptions"
             button-text=""
-            placeholder-text="Select a State or States"
+            placeholder-text="Select Options"
             override-option="vm.overrideOption"
             on-option-changed="vm.logOptions(selectedOptions)"
         ></app-multi-select-dropdown>
+        <!-- override option will de-select all other options when selected -->
     </div>
     <div style="padding: 10px 0;">
         <app-multi-select-dropdown
             options="vm.optionsGrouped"
-            selected-options="vm.selectedOptions"
+            selected-options="vm.selectedGroupedOptions"
             button-text=""
             placeholder-text="Select Grouped Options"
             on-option-changed="vm.logOptions(selectedOptions)"
             max-width="300px"
             smart-text-width="230px"
         ></app-multi-select-dropdown>
+        <!-- smart-text-width should generally be ~70px less than max-width -->
     </div>
 </div>
