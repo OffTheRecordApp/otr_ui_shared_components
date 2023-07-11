@@ -76,7 +76,7 @@ module.exports = (env, argv) => {
             // serve index.html for all 404
             historyApiFallback: true,
             compress: true,
-            port: 8080,
+            port: 8889,
             hot: true,
             open: true
         },
