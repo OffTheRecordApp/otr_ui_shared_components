@@ -6,9 +6,9 @@
             options="vm.options"
             selected-options="vm.selectedOptions"
             button-text=""
-            placeholder-text="Select Options"
+            placeholder-text="Select a State or States"
             override-option="vm.overrideOption"
-            on-option-changed=""
+            on-option-changed="vm.logOptions(selectedOptions)"
         ></app-multi-select-dropdown>
     </div>
     <div style="padding: 10px 0;">
@@ -17,7 +17,9 @@
             selected-options="vm.selectedOptions"
             button-text=""
             placeholder-text="Select Grouped Options"
-            on-option-changed=""
+            on-option-changed="vm.logOptions(selectedOptions)"
+            max-width="300px"
+            smart-text-width="230px"
         ></app-multi-select-dropdown>
     </div>
 </div>

@@ -26,7 +26,7 @@ angular
         '$httpProvider',
         function ($stateProvider, basePathProvider, $httpProvider) {
             $httpProvider.defaults.withCredentials = true;
-            
+
             basePathProvider.setDomain(
                 'https://otr-backend-service-us-devo.offtherecord.com'
             );
@@ -248,109 +248,270 @@ angular
                             controller: function () {
                                 let vm: any = this;
                                 vm.options = [
-                                    {label: 'All States', value: ""},
-                                    {label: "Alabama", value: "AL"},
-                                    {label: "Alaska", value: "AK"},
-                                    {label: "Arizona", value: "AZ"},
-                                    {label: "Arkansas", value: "AR"},
-                                    {label: "California", value: "CA"},
-                                    {label: "Colorado", value: "CO"},
-                                    {label: "Connecticut", value: "CT"},
-                                    {label: "Delaware", value: "DE"},
-                                    {label: "Florida", value: "FL"},
-                                    {label: "Georgia", value: "GA"},
-                                    {label: "Hawaii", value: "HI"},
-                                    {label: "Idaho", value: "ID"},
-                                    {label: "Illinois", value: "IL"},
-                                    {label: "Indiana", value: "IN"},
-                                    {label: "Iowa", value: "IA"},
-                                    {label: "Kansas", value: "KS"},
-                                    {label: "Kentucky", value: "KY"},
-                                    {label: "Louisiana", value: "LA"},
-                                    {label: "Maine", value: "ME"},
-                                    {label: "Maryland", value: "MD"},
-                                    {label: "Massachusetts", value: "MA"},
-                                    {label: "Michigan", value: "MI"},
-                                    {label: "Minnesota", value: "MN"},
-                                    {label: "Mississippi", value: "MS"},
-                                    {label: "Missouri", value: "MO"},
-                                    {label: "Montana", value: "MT"},
-                                    {label: "Nebraska", value: "NE"},
-                                    {label: "Nevada", value: "NV"},
-                                    {label: "New Hampshire", value: "NH"},
-                                    {label: "New Jersey", value: "NJ"},
-                                    {label: "New Mexico", value: "NM"},
-                                    {label: "New York", value: "NY"},
-                                    {label: "North Carolina", value: "NC"},
-                                    {label: "North Dakota", value: "ND"},
-                                    {label: "Ohio", value: "OH"},
-                                    {label: "Oklahoma", value: "OK"},
-                                    {label: "Oregon", value: "OR"},
-                                    {label: "Pennsylvania", value: "PA"},
-                                    {label: "Rhode Island", value: "RI"},
-                                    {label: "South Carolina", value: "SC"},
-                                    {label: "South Dakota", value: "SD"},
-                                    {label: "Tennessee", value: "TN"},
-                                    {label: "Texas", value: "TX"},
-                                    {label: "Utah", value: "UT"},
-                                    {label: "Vermont", value: "VT"},
-                                    {label: "Virginia", value: "VA"},
-                                    {label: "Washington", value: "WA"},
-                                    {label: "West Virginia", value: "WV"},
-                                    {label: "Wisconsin", value: "WI"},
-                                    {label: "Wyoming", value: "WY"}
-                                  ];
-
-                                  vm.optionsGrouped = [
                                     {
-                                        group: "Regions",
+                                        name: 'All States',
+                                        label: 'All States',
+                                        value: ''
+                                    },
+                                    { name: 'Alabama', label: 'Alabama', value: 'AL' },
+                                    { name: 'Alaska', label: 'Alaska', value: 'AK' },
+                                    { name: 'Arizona', label: 'Arizona', value: 'AZ' },
+                                    { name: 'Arkansas', label: 'Arkansas', value: 'AR' },
+                                    {
+                                        name: 'California',
+                                        label: 'California',
+                                        value: 'CA'
+                                    },
+                                    { name: 'Colorado', label: 'Colorado', value: 'CO' },
+                                    {
+                                        name: 'Connecticut',
+                                        label: 'Connecticut',
+                                        value: 'CT'
+                                    },
+                                    { name: 'Delaware', label: 'Delaware', value: 'DE' },
+                                    { name: 'Florida', label: 'Florida', value: 'FL' },
+                                    { name: 'Georgia', label: 'Georgia', value: 'GA' },
+                                    { name: 'Hawaii', label: 'Hawaii', value: 'HI' },
+                                    { name: 'Idaho', label: 'Idaho', value: 'ID' },
+                                    { name: 'Illinois', label: 'Illinois', value: 'IL' },
+                                    { name: 'Indiana', label: 'Indiana', value: 'IN' },
+                                    { name: 'Iowa', label: 'Iowa', value: 'IA' },
+                                    { name: 'Kansas', label: 'Kansas', value: 'KS' },
+                                    { name: 'Kentucky', label: 'Kentucky', value: 'KY' },
+                                    {
+                                        name: 'Louisiana',
+                                        label: 'Louisiana',
+                                        value: 'LA'
+                                    },
+                                    { name: 'Maine', label: 'Maine', value: 'ME' },
+                                    { name: 'Maryland', label: 'Maryland', value: 'MD' },
+                                    {
+                                        name: 'Massachusetts',
+                                        label: 'Massachusetts',
+                                        value: 'MA'
+                                    },
+                                    { name: 'Michigan', label: 'Michigan', value: 'MI' },
+                                    {
+                                        name: 'Minnesota',
+                                        label: 'Minnesota',
+                                        value: 'MN'
+                                    },
+                                    {
+                                        name: 'Mississippi',
+                                        label: 'Mississippi',
+                                        value: 'MS'
+                                    },
+                                    { name: 'Missouri', label: 'Missouri', value: 'MO' },
+                                    { name: 'Montana', label: 'Montana', value: 'MT' },
+                                    { name: 'Nebraska', label: 'Nebraska', value: 'NE' },
+                                    { name: 'Nevada', label: 'Nevada', value: 'NV' },
+                                    {
+                                        name: 'New Hampshire',
+                                        label: 'New Hampshire',
+                                        value: 'NH'
+                                    },
+                                    {
+                                        name: 'New Jersey',
+                                        label: 'New Jersey',
+                                        value: 'NJ'
+                                    },
+                                    {
+                                        name: 'New Mexico',
+                                        label: 'New Mexico',
+                                        value: 'NM'
+                                    },
+                                    { name: 'New York', label: 'New York', value: 'NY' },
+                                    {
+                                        name: 'North Carolina',
+                                        label: 'North Carolina',
+                                        value: 'NC'
+                                    },
+                                    {
+                                        name: 'North Dakota',
+                                        label: 'North Dakota',
+                                        value: 'ND'
+                                    },
+                                    { name: 'Ohio', label: 'Ohio', value: 'OH' },
+                                    { name: 'Oklahoma', label: 'Oklahoma', value: 'OK' },
+                                    { name: 'Oregon', label: 'Oregon', value: 'OR' },
+                                    {
+                                        name: 'Pennsylvania',
+                                        label: 'Pennsylvania',
+                                        value: 'PA'
+                                    },
+                                    {
+                                        name: 'Rhode Island',
+                                        label: 'Rhode Island',
+                                        value: 'RI'
+                                    },
+                                    {
+                                        name: 'South Carolina',
+                                        label: 'South Carolina',
+                                        value: 'SC'
+                                    },
+                                    {
+                                        name: 'South Dakota',
+                                        label: 'South Dakota',
+                                        value: 'SD'
+                                    },
+                                    {
+                                        name: 'Tennessee',
+                                        label: 'Tennessee',
+                                        value: 'TN'
+                                    },
+                                    { name: 'Texas', label: 'Texas', value: 'TX' },
+                                    { name: 'Utah', label: 'Utah', value: 'UT' },
+                                    { name: 'Vermont', label: 'Vermont', value: 'VT' },
+                                    { name: 'Virginia', label: 'Virginia', value: 'VA' },
+                                    {
+                                        name: 'Washington',
+                                        label: 'Washington',
+                                        value: 'WA'
+                                    },
+                                    {
+                                        name: 'West Virginia',
+                                        label: 'West Virginia',
+                                        value: 'WV'
+                                    },
+                                    {
+                                        name: 'Wisconsin',
+                                        label: 'Wisconsin',
+                                        value: 'WI'
+                                    },
+                                    { name: 'Wyoming', label: 'Wyoming', value: 'WY' }
+                                ];
+
+                                vm.selectedOptions = [];
+
+                                vm.optionsGrouped = [
+                                    {
+                                        group: 'Regions',
                                         set: [
-                                          { name: "WEST", value: "WEST", label: "West" },
-                                          { name: "EAST", value: "EAST", label: "East" },
-                                          { name: "SOUTH", value: "SOUTH", label: "South" },
-                                          { name: "MIDDLE", value: "MIDDLE", label: "Mid" },
+                                            {
+                                                name: 'WEST',
+                                                value: 'WEST',
+                                                label: 'West'
+                                            },
+                                            {
+                                                name: 'EAST',
+                                                value: 'EAST',
+                                                label: 'East'
+                                            },
+                                            {
+                                                name: 'SOUTH',
+                                                value: 'SOUTH',
+                                                label: 'South'
+                                            },
+                                            {
+                                                name: 'MIDDLE',
+                                                value: 'MIDDLE',
+                                                label: 'Mid'
+                                            }
                                         ]
-                                      },
-                                    {
-                                      group: "West",
-                                      set: [
-                                        { id: 1, name: "CALIFORNIA", value: "CA", label: "California" },
-                                        { id: 2, name: "ALASKA", value: "AK", label: "Alaska" },
-                                        { id: 3, name: "ARIZONA", value: "AZ", label: "Arizona" },
-                                        // Add more Western states here
-                                      ]
                                     },
                                     {
-                                      group: "East",
-                                      set: [
-                                        { id: 4, name: "NEW YORK", value: "NY", label: "New York" },
-                                        { id: 5, name: "FLORIDA", value: "FL", label: "Florida" },
-                                        { id: 6, name: "MASSACHUSETTS", value: "MA", label: "Massachusetts" },
-                                        // Add more Eastern states here
-                                      ]
+                                        group: 'West',
+                                        set: [
+                                            {
+                                                id: 1,
+                                                name: 'CALIFORNIA',
+                                                value: 'CA',
+                                                label: 'California'
+                                            },
+                                            {
+                                                id: 2,
+                                                name: 'ALASKA',
+                                                value: 'AK',
+                                                label: 'Alaska'
+                                            },
+                                            {
+                                                id: 3,
+                                                name: 'ARIZONA',
+                                                value: 'AZ',
+                                                label: 'Arizona'
+                                            }
+                                            // Add more Western states here
+                                        ]
                                     },
                                     {
-                                      group: "South",
-                                      set: [
-                                        { id: 7, name: "TEXAS", value: "TX", label: "Texas" },
-                                        { id: 8, name: "GEORGIA", value: "GA", label: "Georgia" },
-                                        { id: 9, name: "FLORIDA", value: "FL", label: "Florida" },
-                                        // Add more Southern states here
-                                      ]
+                                        group: 'East',
+                                        set: [
+                                            {
+                                                id: 4,
+                                                name: 'NEW YORK',
+                                                value: 'NY',
+                                                label: 'New York'
+                                            },
+                                            {
+                                                id: 5,
+                                                name: 'FLORIDA',
+                                                value: 'FL',
+                                                label: 'Florida'
+                                            },
+                                            {
+                                                id: 6,
+                                                name: 'MASSACHUSETTS',
+                                                value: 'MA',
+                                                label: 'Massachusetts'
+                                            }
+                                            // Add more Eastern states here
+                                        ]
                                     },
                                     {
-                                      group: "Middle",
-                                      set: [
-                                        { id: 10, name: "OHIO", value: "OH", label: "Ohio" },
-                                        { id: 11, name: "MICHIGAN", value: "MI", label: "Michigan" },
-                                        { id: 12, name: "INDIANA", value: "IN", label: "Indiana" },
-                                        // Add more Middle states here
-                                      ]
+                                        group: 'South',
+                                        set: [
+                                            {
+                                                id: 7,
+                                                name: 'TEXAS',
+                                                value: 'TX',
+                                                label: 'Texas'
+                                            },
+                                            {
+                                                id: 8,
+                                                name: 'GEORGIA',
+                                                value: 'GA',
+                                                label: 'Georgia'
+                                            },
+                                            {
+                                                id: 9,
+                                                name: 'FLORIDA',
+                                                value: 'FL',
+                                                label: 'Florida'
+                                            }
+                                            // Add more Southern states here
+                                        ]
                                     },
+                                    {
+                                        group: 'Middle',
+                                        set: [
+                                            {
+                                                id: 10,
+                                                name: 'OHIO',
+                                                value: 'OH',
+                                                label: 'Ohio'
+                                            },
+                                            {
+                                                id: 11,
+                                                name: 'MICHIGAN',
+                                                value: 'MI',
+                                                label: 'Michigan'
+                                            },
+                                            {
+                                                id: 12,
+                                                name: 'INDIANA',
+                                                value: 'IN',
+                                                label: 'Indiana'
+                                            }
+                                            // Add more Middle states here
+                                        ]
+                                    }
                                     // Add more groups and states as needed
-                                  ];
+                                ];
 
-                                  vm.overrideOption = vm.options[0];
+                                vm.overrideOption = vm.options[0];
+                                vm.logOptions = (options) => {
+                                    console.log('Selected options: ', options);
+                                };
                             }
                         }
                     }
