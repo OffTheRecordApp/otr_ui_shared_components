@@ -33,8 +33,12 @@ class MultiSelectDropdown {
           (o) => o.label === option.label
       );
 
-      /* if override option is chosen, clear selectedOptions list and just add that one
-      if anything else gets selected, remove override option */
+      /* 
+      Selecting overrideOption will clear all other selectedOptions
+
+      Selecting any other option will remove overrideOption from the selectedOptions list
+      */
+     
       if (option.name === this.overrideOption?.name) {
           this.selectedOptions = [];
       } else if (
