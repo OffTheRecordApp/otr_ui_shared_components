@@ -1,0 +1,52 @@
+@import 'vars';
+
+.multiselect-dropdown {
+    &__flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        color: $conversationDarkGray;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    &__option {
+        padding: 3px 20px;
+
+        &--selected {
+            background: $curiousBlue;
+            color: white;
+            font-weight: 600;
+        }
+    }
+
+    &__dropdown-menu {
+        max-height: 275px;
+        overflow: auto;
+        padding: 0px 0;
+        width: 100%;
+        margin: 0px;
+        border-top: 0px;
+    }
+
+    &__button {
+        background-color: inherit;
+        border: 1.5px solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        &:focus {
+            border: 2px solid $conversationDarkGray;
+            outline: none !important;
+        }
+    }
+
+    &__truncate-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

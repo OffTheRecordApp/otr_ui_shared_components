@@ -8,6 +8,7 @@ import toggleCardsTemplate from './toggle-cards.html';
 import avatarFallbackTemplate from './avatars.html';
 import paymentLogosTemplate from './payment-logos.html';
 import buttonCardTemplate from './button-card.html';
+import multiSelectDropdownTemplate from './multi-select-dropdown.html';
 
 angular
     .module('otr-ui-shared-components')
@@ -25,7 +26,7 @@ angular
         '$httpProvider',
         function ($stateProvider, basePathProvider, $httpProvider) {
             $httpProvider.defaults.withCredentials = true;
-            
+
             basePathProvider.setDomain(
                 'https://otr-backend-service-us-devo.offtherecord.com'
             );
@@ -233,6 +234,178 @@ angular
 
                                 vm.onClick = () => {
                                     console.log('I have been clicked');
+                                };
+                            }
+                        }
+                    }
+                })
+                .state('multi-select-dropdown', {
+                    url: '/multi-select-dropdown',
+                    views: {
+                        '': {
+                            template: multiSelectDropdownTemplate,
+                            controllerAs: 'vm',
+                            controller: function () {
+                                let vm: any = this;
+                                vm.options = [
+                                    {
+                                        name: 'All States',
+                                        label: 'All States',
+                                        value: ''
+                                    },
+                                    { name: 'Alabama', label: 'Alabama', value: 'AL' },
+                                    { name: 'Alaska', label: 'Alaska', value: 'AK' },
+                                    { name: 'Arizona', label: 'Arizona', value: 'AZ' },
+                                    { name: 'Arkansas', label: 'Arkansas', value: 'AR' },
+                                    {
+                                        name: 'California',
+                                        label: 'California',
+                                        value: 'CA'
+                                    },
+                                    { name: 'Colorado', label: 'Colorado', value: 'CO' },
+                                    {
+                                        name: 'Connecticut',
+                                        label: 'Connecticut',
+                                        value: 'CT'
+                                    },
+                                    { name: 'Delaware', label: 'Delaware', value: 'DE' },
+                                    { name: 'Florida', label: 'Florida', value: 'FL' },
+                                    { name: 'Georgia', label: 'Georgia', value: 'GA' },
+                                    { name: 'Hawaii', label: 'Hawaii', value: 'HI' },
+                                    { name: 'Idaho', label: 'Idaho', value: 'ID' }
+                                ];
+
+                                vm.selectedOptions = [];
+                                vm.selectedGroupedOptions = [];
+
+                                vm.optionsGrouped = [
+                                    {
+                                        group: 'Regions',
+                                        set: [
+                                            {
+                                                name: 'WEST',
+                                                value: 'WEST',
+                                                label: 'West'
+                                            },
+                                            {
+                                                name: 'EAST',
+                                                value: 'EAST',
+                                                label: 'East'
+                                            },
+                                            {
+                                                name: 'SOUTH',
+                                                value: 'SOUTH',
+                                                label: 'South'
+                                            },
+                                            {
+                                                name: 'MIDDLE',
+                                                value: 'MIDDLE',
+                                                label: 'Mid'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        group: 'West',
+                                        set: [
+                                            {
+                                                id: 1,
+                                                name: 'CALIFORNIA',
+                                                value: 'CA',
+                                                label: 'California'
+                                            },
+                                            {
+                                                id: 2,
+                                                name: 'ALASKA',
+                                                value: 'AK',
+                                                label: 'Alaska'
+                                            },
+                                            {
+                                                id: 3,
+                                                name: 'ARIZONA',
+                                                value: 'AZ',
+                                                label: 'Arizona'
+                                            }
+                                            // Add more Western states here
+                                        ]
+                                    },
+                                    {
+                                        group: 'East',
+                                        set: [
+                                            {
+                                                id: 4,
+                                                name: 'NEW YORK',
+                                                value: 'NY',
+                                                label: 'New York'
+                                            },
+                                            {
+                                                id: 5,
+                                                name: 'FLORIDA',
+                                                value: 'FL',
+                                                label: 'Florida'
+                                            },
+                                            {
+                                                id: 6,
+                                                name: 'MASSACHUSETTS',
+                                                value: 'MA',
+                                                label: 'Massachusetts'
+                                            }
+                                            // Add more Eastern states here
+                                        ]
+                                    },
+                                    {
+                                        group: 'South',
+                                        set: [
+                                            {
+                                                id: 7,
+                                                name: 'TEXAS',
+                                                value: 'TX',
+                                                label: 'Texas'
+                                            },
+                                            {
+                                                id: 8,
+                                                name: 'GEORGIA',
+                                                value: 'GA',
+                                                label: 'Georgia'
+                                            },
+                                            {
+                                                id: 9,
+                                                name: 'FLORIDA',
+                                                value: 'FL',
+                                                label: 'Florida'
+                                            }
+                                            // Add more Southern states here
+                                        ]
+                                    },
+                                    {
+                                        group: 'Middle',
+                                        set: [
+                                            {
+                                                id: 10,
+                                                name: 'OHIO',
+                                                value: 'OH',
+                                                label: 'Ohio'
+                                            },
+                                            {
+                                                id: 11,
+                                                name: 'MICHIGAN',
+                                                value: 'MI',
+                                                label: 'Michigan'
+                                            },
+                                            {
+                                                id: 12,
+                                                name: 'INDIANA',
+                                                value: 'IN',
+                                                label: 'Indiana'
+                                            }
+                                            // Add more Middle states here
+                                        ]
+                                    }
+                                    // Add more groups and states as needed
+                                ];
+
+                                vm.overrideOption = vm.options[0];
+                                vm.logOptions = (options) => {
+                                    console.log('Selected options: ', options);
                                 };
                             }
                         }

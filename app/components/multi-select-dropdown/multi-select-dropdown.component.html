@@ -1,0 +1,62 @@
+<div>
+    <div uib-dropdown auto-close="outsideClick">
+        <button
+            ng-style="{ 'max-width': vm.maxWidth }"
+            class="multiselect-dropdown__button btn"
+            uib-dropdown-toggle>
+            <span ng-if="vm.selectedOptions.length === 0">{{ vm.placeholderText }}</span>
+            <span
+                ng-style="{ 'max-width': vm.smartTextWidth }"
+                class="multiselect-dropdown__truncate-text"
+                ng-if="vm.selectedOptions.length > 0">
+                {{ vm.smartButtonText }}
+            </span>
+            <i class="fa fas fa-chevron-down"
+                style="font-size: 14px; padding-top: 3px"></i>
+        </button>
+
+        <ul
+            class="multiselect-dropdown__dropdown-menu"
+            uib-dropdown-menu
+            ng-style="{ 'max-width': vm.maxWidth }"
+            ng-if="!vm.options[0].group">
+            <li
+                ng-repeat="option in vm.options"
+                class="multiselect-dropdown__flex-column">
+                <span
+                    class="clickable multiselect-dropdown__option"
+                    ng-class="{
+                        'multiselect-dropdown__option--selected':
+                            vm.isOptionSelected(option)}"
+                    ng-click="vm.onOptionSelection(option)">
+                    <i class="fas fa-check" ng-if="vm.isOptionSelected(option)"></i>
+                    {{ option.label }}</span>
+            </li>
+        </ul>
+
+        <ul
+            class="multiselect-dropdown__dropdown-menu"
+            uib-dropdown-menu
+            ng-style="{ 'max-width': vm.maxWidth }"
+            ng-if="vm.options[0].group">
+            <li
+                ng-repeat="option in vm.options"
+                class="multiselect-dropdown__flex-column">
+                <span class="multiselect-dropdown__header multiselect-dropdown__option">{{
+                    option.group}}</span>
+                <span class="multiselect-dropdown__flex-column">
+                    <span
+                        ng-repeat="set in option.set"
+                        class="clickable multiselect-dropdown__option"
+                        ng-class="{
+                            'multiselect-dropdown__option--selected':
+                                vm.isOptionSelected(set)}"
+                        ng-click="vm.onOptionSelection(set)">
+                        <i class="fa fas fa-check" ng-if="vm.isOptionSelected(set)"></i>
+                        {{ set.label }}
+                    </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
