@@ -283,21 +283,25 @@ angular
                                         group: 'Regions',
                                         set: [
                                             {
+                                                id: 13,
                                                 name: 'WEST',
                                                 value: 'WEST',
                                                 label: 'West'
                                             },
                                             {
+                                                id: 14,
                                                 name: 'EAST',
                                                 value: 'EAST',
                                                 label: 'East'
                                             },
                                             {
+                                                id: 15,
                                                 name: 'SOUTH',
                                                 value: 'SOUTH',
                                                 label: 'South'
                                             },
                                             {
+                                                id: 16,
                                                 name: 'MIDDLE',
                                                 value: 'MIDDLE',
                                                 label: 'Mid'
