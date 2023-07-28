@@ -324,6 +324,12 @@ angular
                                                 name: 'ARIZONA',
                                                 value: 'AZ',
                                                 label: 'Arizona'
+                                            },
+                                            {
+                                                id: 4,
+                                                name: 'WEST',
+                                                value: 'WA',
+                                                label: 'West'
                                             }
                                             // Add more Western states here
                                         ]

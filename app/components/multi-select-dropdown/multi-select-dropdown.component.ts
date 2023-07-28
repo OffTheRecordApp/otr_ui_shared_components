@@ -30,7 +30,7 @@ class MultiSelectDropdown {
   public onOptionSelection(option) {
       const isOptionSelected = _.findIndex(
           this.selectedOptions,
-          (o) => o.label === option.label
+          (o) => o === option
       );
 
       /* 
@@ -50,7 +50,7 @@ class MultiSelectDropdown {
 
       // if findIndex returns -1 option is not in list
       if (isOptionSelected > -1) {
-          _.remove(this.selectedOptions, (o) => o.label === option.label);
+          _.remove(this.selectedOptions, (o) => o === option);
           this.setSmartButtonText(option);
       } else {
           this.selectedOptions.push(option);
@@ -75,7 +75,7 @@ class MultiSelectDropdown {
   public isOptionSelected(option: DropdownDataObj): boolean {
       const isOptionSelected = _.findIndex(
           this.selectedOptions,
-          (o) => o.label === option.label
+          (o) => o === option
       );
 
       // if findIndex returns -1 option is not in list
