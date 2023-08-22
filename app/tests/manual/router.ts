@@ -253,7 +253,7 @@ angular
                                         label: 'All States',
                                         value: ''
                                     },
-                                    { name: 'Alabama', label: 'Alabama', value: 'AL' },
+                                    { name: 'Alabama', label: 'Alabama Long Multi-Word Title', value: 'AL' },
                                     { name: 'Alaska', label: 'Alaska', value: 'AK' },
                                     { name: 'Arizona', label: 'Arizona', value: 'AZ' },
                                     { name: 'Arkansas', label: 'Arkansas', value: 'AR' },
@@ -305,6 +305,12 @@ angular
                                                 name: 'MIDDLE',
                                                 value: 'MIDDLE',
                                                 label: 'Mid'
+                                            },
+                                            {
+                                                id: 16,
+                                                name: 'MIDDLE',
+                                                value: 'MIDDLE',
+                                                label: 'Extra Long Set Name ... Extra Long'
                                             }
                                         ]
                                     },
