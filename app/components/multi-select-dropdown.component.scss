@@ -18,7 +18,16 @@
         &--selected {
             background: $curiousBlue;
             color: white;
-            font-weight: 600;
+            display: flex;
+            gap:5px;
+            align-items: center;
+            i {
+                position: absolute;
+                left: 5px;
+            }
+            li {
+                position: relative;
+            }
         }
     }
 
