@@ -8,12 +8,15 @@ interface CreditCardFormBindings {
     onCardAdd: () => null;
     onError: (error) => null;
     currentUser: any;
+    addCardButtonText: string;
 }
 
 class CreditCardFormComponent implements CreditCardFormBindings {
     onCardAdd!: () => null;
     onError!: (error) => null;
     currentUser!: any;
+
+    addCardButtonText!: string;
 
     constructor(
         private CreditCardService: CreditCardService,
@@ -32,6 +35,7 @@ class CreditCardFormComponent implements CreditCardFormBindings {
     paymentErrorMessage: any;
 
     $onInit() {
+        this.addCardButtonText ??= 'Verify Card';
         this.populateCountriesForCC();
     }
 
@@ -100,7 +104,8 @@ const component = {
     bindings: {
         onCardAdd: '&',
         currentUser: '<',
-        onError: '&'
+        onError: '&',
+        addCardButtonText: '@?'
     },
     controller: CreditCardFormComponent,
     controllerAs: 'vm'
