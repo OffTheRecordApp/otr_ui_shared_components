@@ -253,7 +253,11 @@ angular
                                         label: 'All States',
                                         value: ''
                                     },
-                                    { name: 'Alabama', label: 'Alabama Long Multi-Word Title', value: 'AL' },
+                                    {
+                                        name: 'Alabama',
+                                        label: 'Alabama Long Multi-Word Title',
+                                        value: 'AL'
+                                    },
                                     { name: 'Alaska', label: 'Alaska', value: 'AK' },
                                     { name: 'Arizona', label: 'Arizona', value: 'AZ' },
                                     { name: 'Arkansas', label: 'Arkansas', value: 'AR' },
