@@ -18,7 +18,7 @@
                 <span class="app-toggle-card__loading" ng-if="vm.isToggleLoading === true">
                     <i class="fa fa-spinner fa-pulse"></i>
                 </span>
-                <span class="clickable" ng-click="vm.onSwitchClick()" ng-if="!vm.isToggleLoading">
+                <span class="clickable" ng-click="vm.onSwitchClick()" ng-if="!vm.isToggleLoading && vm.isEnabled !== null">
                     <i class="fa fa-toggle-on app-toggle-card__toggle" ng-switch-default></i>
                     <i
                         class="fa fa-toggle-on fa-rotate-180 app-toggle-card__toggle"
@@ -34,10 +34,11 @@
                     </div>
                     <div
                         class="app-toggle-card__sub-title"
+                        ng-class="{ 'app-toggle-card__sub-title-alt': vm.isEnabled === null}"
                     >
                         {{ vm.message }}
                     </div>
-                    <div class="app-toggle-card__tooltip">
+                    <div class="app-toggle-card__tooltip" ng-if="vm.isEnabled">
                         <i 
                             class="fa fa-question-circle-o"
                             uib-tooltip="{{vm.tooltipMessage}}"
