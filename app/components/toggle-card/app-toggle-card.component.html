@@ -5,13 +5,21 @@
         'toggle-success-green': !vm.isEnabled
         }"
 >
-    <div class="app-stat-card__heading app-toggle-card__heading">
+    <div 
+        class="app-toggle-card__heading"
+        ng-class="{'app-stat-card__heading-alt': vm.isEnabled === null,
+                    'app-stat-card__heading': vm.isEnabled !== null
+                }"
+    >
         <div 
             class="app-toggle-card__layout"
             ng-switch
             on="vm.isEnabled"
         >
-            <div class="app-toggle-card__title">
+            <div 
+                class="app-toggle-card__title"
+                ng-class="{'app-toggle-card__title-alt': vm.isEnabled === null}"
+            >
                 {{ vm.cardTitle }}
             </div>
             <div>
