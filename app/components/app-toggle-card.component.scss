@@ -37,7 +37,12 @@
         font-weight: 700;
         padding-bottom: 5px;
         text-transform: uppercase;
-        color: black !important;
+        color: black;
+
+        &-alt {
+            font-size: 14px;
+            color: green;
+        }
     }
 
     &__layout {
