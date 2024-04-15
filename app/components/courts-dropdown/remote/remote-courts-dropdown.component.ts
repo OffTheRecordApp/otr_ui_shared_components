@@ -1,7 +1,7 @@
-import angular from "angular";
+import angular from 'angular';
 import template from './remote-courts-dropdown.component.html';
-import _ from "lodash";
-import { CourtControllerApi } from "@otr-app/shared-backend-generated-client/dist/typescript";
+import { forEach } from 'lodash-es';
+import { CourtControllerApi } from '@otr-app/shared-backend-generated-client/dist/typescript';
 
 interface RemoteCourtsDropdownBindings {
     inputClass: string;
@@ -14,18 +14,21 @@ interface RemoteCourtsDropdownBindings {
 }
 
 class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
-    inputClass: string = "";
+    inputClass: string = '';
     hasError: boolean = false;
     onSelectCourt: (selectedCourt: any, index?: number) => any = (court, index) => null;
-    state: string = "";
+    state: string = '';
     citationId;
     index;
-    placeholder: string = "";
+    placeholder: string = '';
 
     private isNoCourtsMessageVisible = false;
     private isDataLoading = false;
 
-    constructor(private $scope, private courtControllerApi: CourtControllerApi) {
+    constructor(
+        private $scope,
+        private courtControllerApi: CourtControllerApi
+    ) {
         this.selectCourt = this.selectCourt.bind(this);
         this.findMatchingCourts = this.findMatchingCourts.bind(this);
         this.formatMatchingCourtsResponse = this.formatMatchingCourtsResponse.bind(this);
@@ -41,7 +44,8 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
         try {
             this.setSpinnerPosition();
             this.isDataLoading = true;
-            const response = await this.courtControllerApi.searchCourtsUsingGET(this.citationId,
+            const response = await this.courtControllerApi.searchCourtsUsingGET(
+                this.citationId,
                 undefined,
                 undefined,
                 undefined,
@@ -50,7 +54,8 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
                 query,
                 undefined,
                 // @ts-ignore
-                this.state);
+                this.state
+            );
             this.isNoCourtsMessageVisible = !response.data.numRecords;
             return response.data;
         } finally {
@@ -59,8 +64,8 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
     }
 
     formatMatchingCourtsResponse(response) {
-        _.forEach(response.courts,  (elem) => {
-            elem.title = `${elem.courtName} (${elem.courtId})`
+        forEach(response.courts, (elem) => {
+            elem.title = `${elem.courtName} (${elem.courtId})`;
             elem.customDescription = `${elem.address.city}, ${elem.address.region.regionCode} - ${elem.countyObj.countyName} County`;
         });
         setTimeout(() => this.$scope.$apply(), 0);
@@ -72,10 +77,11 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
         const width = inputElement?.clientWidth;
         const height = inputElement?.clientHeight;
         const iconNode = document.querySelector('.app-remote-courts .otr-dropdown__icon');
-        if(width && height) {
-            iconNode?.setAttribute('style',
-                'left: ' + (width - 30) + 'px; ' +
-                'top: ' + ((height / 2) - 6) + 'px');
+        if (width && height) {
+            iconNode?.setAttribute(
+                'style',
+                'left: ' + (width - 30) + 'px; ' + 'top: ' + (height / 2 - 6) + 'px'
+            );
         }
     }
 
@@ -84,20 +90,19 @@ class RemoteCourtsDropdownComponent implements RemoteCourtsDropdownBindings {
     }
 }
 
-angular.module('otr-ui-shared-components')
-       .component('appRemoteCourtsDropdown', {
-           template: template,
-           controller: RemoteCourtsDropdownComponent,
-           controllerAs: 'vm',
-           bindings: {
-               state: '@',
-               citationId: '@',
-               placeholder: '@',
-               onSelectCourt: '<',
-               index: '@',
-               inputClass: '@',
-               hasError: '<'
-           }
-       });
+angular.module('otr-ui-shared-components').component('appRemoteCourtsDropdown', {
+    template: template,
+    controller: RemoteCourtsDropdownComponent,
+    controllerAs: 'vm',
+    bindings: {
+        state: '@',
+        citationId: '@',
+        placeholder: '@',
+        onSelectCourt: '<',
+        index: '@',
+        inputClass: '@',
+        hasError: '<'
+    }
+});
 
 RemoteCourtsDropdownComponent.$inject = ['$scope', 'CourtControllerApi'];

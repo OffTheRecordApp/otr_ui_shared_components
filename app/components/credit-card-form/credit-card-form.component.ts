@@ -1,5 +1,5 @@
 import angular from 'angular';
-import _ from 'lodash';
+import { get } from 'lodash-es';
 import template from './credit-card-form.component.html';
 import { CreditCardService } from '../../services/credit-card.service';
 import { FlashService } from '../../services/flash.service';
@@ -40,7 +40,7 @@ class CreditCardFormComponent implements CreditCardFormBindings {
     }
 
     confirmAddCard(form) {
-        _.get(this.newCard, 'phoneNumber') &&
+        get(this.newCard, 'phoneNumber') &&
             this.CreditCardService.saveUserPhoneNumber(
                 this.newCard.phoneNumber,
                 this.currentUser.userId.toString()

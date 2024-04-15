@@ -1,5 +1,5 @@
 import angular from 'angular';
-import _ from 'lodash';
+import { get }  from 'lodash-es';
 import {
     UserProfileControllerApi,
     StripeCardControllerApi,
@@ -101,8 +101,8 @@ export class CreditCardService {
 
         // Fixes error in Safari where the credit card date validation overrides angular-validator
         if (
-            (_.get(field, '$name') === 'ccExpYear' ||
-                _.get(field, '$name') === 'ccExpMonth') &&
+            (get(field, '$name') === 'ccExpYear' ||
+                get(field, '$name') === 'ccExpMonth') &&
             field.$error.parse
         ) {
             field.$setValidity('parse', true);

@@ -1,6 +1,6 @@
 import angular from 'angular';
 import template from './courts-dropdown.component.html';
-import _ from "lodash";
+import { forEach, sortBy, min, chain } from "lodash-es";
 import { CourtControllerApi, GetCourtsInnerResponse } from "@otr-app/shared-backend-generated-client/dist/typescript";
 
 declare const Fuse: any;
@@ -80,7 +80,7 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
                 undefined,
                 // @ts-ignore
                 this.state);
-            this.courts = _.forEach(data.courts as GetCourtsModel, (court) => {
+            this.courts = forEach(data.courts as GetCourtsModel, (court) => {
                 court.customTitle = court.courtName;
                 court.customTitle += court.courtNameAdditional
                     ? ' – ' + court.courtNameAdditional
@@ -135,15 +135,14 @@ class CourtsDropdownCtrl implements ICourtsDropdownCtrl {
     public findMatchingCourts(query: string): any[] {
 
         const threshold = 600;
-        let allKeysResults: any[] = _.sortBy(this.fuseAllKeys.search(query), 'courtId');
-        let courtCodeResults: any[] = _.sortBy(this.fuseCourtCode.search(query), 'courtId');
+        let allKeysResults: any[] = sortBy(this.fuseAllKeys.search(query), 'courtId');
+        let courtCodeResults: any[] = sortBy(this.fuseCourtCode.search(query), 'courtId');
 
-        let results: any[] = _
-            .chain(allKeysResults)
+        let results: any[] = chain(allKeysResults)
             .unionWith(courtCodeResults, (codeVal, allVal) => {
                 let isEqual: boolean = codeVal.item.courtId === allVal.item.courtId;
                 if (isEqual) {
-                    allVal.score = _.min([codeVal.score, allVal.score])
+                    allVal.score = min([codeVal.score, allVal.score])
                 }
                 return isEqual;
             })

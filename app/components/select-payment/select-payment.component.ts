@@ -7,7 +7,7 @@ import {
     StripeCardControllerApi
 } from '@otr-app/shared-backend-generated-client/dist/typescript';
 import { GlobalUtils } from '../../services/global-util.service';
-import _ from 'lodash';
+import { filter, find, snakeCase } from 'lodash-es';
 
 interface SelectPaymentBindings {
     onSelectPaymentMethod?: ({ paymentMethod }) => null;
@@ -74,7 +74,7 @@ class SelectPayment implements SelectPaymentBindings {
                 params
             );
 
-        this.paymentMethods = _.filter(data.paymentMethods, ['isExpired', false]);
+        this.paymentMethods = filter(data.paymentMethods, ['isExpired', false]);
         if (!this.paymentMethods?.length) {
             this.openNewCardForm();
         } else {
@@ -102,11 +102,11 @@ class SelectPayment implements SelectPaymentBindings {
             return;
         }
 
-        return _.find(this.paymentMethods, { isDefault: true });
+        return find(this.paymentMethods, { isDefault: true });
     }
 
     selectPaymentMethod(cardId: string) {
-        this.selectedPaymentMethod = _.find(this.paymentMethods, ['id', cardId]);
+        this.selectedPaymentMethod = find(this.paymentMethods, ['id', cardId]);
         this.isPaymentMethodsVisible = false;
         this.isAddCardFormVisible = false;
         this.paymentErrorMessage = null;
@@ -115,7 +115,7 @@ class SelectPayment implements SelectPaymentBindings {
     }
 
     getBrandLogo(brand) {
-        const brandFormatted = _.snakeCase(brand);
+        const brandFormatted = snakeCase(brand);
         brand = this.availablePaymentLogos.find((a) => a.key === brandFormatted);
         return brand.logo;
     }
