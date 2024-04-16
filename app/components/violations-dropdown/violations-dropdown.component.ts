@@ -1,25 +1,28 @@
-import angular from "angular";
+import angular from 'angular';
 import template from './violations-dropdown.component.html';
-import Fuse from "fuse.js";
-import _ from "lodash";
-import { TrafficViolationControllerApi } from "@otr-app/shared-backend-generated-client/dist/typescript";
+import Fuse from 'fuse.js';
+import { chain } from 'lodash-es';
+import { TrafficViolationControllerApi } from '@otr-app/shared-backend-generated-client/dist/typescript';
 
 interface ViolationsDropdownBindings {
     regionCode: string;
     onSelect: (violation: any) => any;
-    inputClass: string
+    inputClass: string;
 }
 
 class ViolationsDropdownComponent implements ViolationsDropdownBindings {
     private violations: any;
     private fuseDescription: any;
-    public regionCode: string = "";
+    public regionCode: string = '';
     public onSelect = (violation: any) => console.log('onSelect binding not provided');
-    public inputClass = "";
+    public inputClass = '';
     public classes;
     private isDataLoading: boolean = false;
 
-    constructor(private $scope, private trafficViolationControllerApi: TrafficViolationControllerApi) {
+    constructor(
+        private $scope,
+        private trafficViolationControllerApi: TrafficViolationControllerApi
+    ) {
         this.filterViolationSearch = this.filterViolationSearch.bind(this);
         this.onSelect = this.onSelect.bind(this);
     }
@@ -30,18 +33,21 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
             const inputElement = document.querySelector('.app-violations input');
             const width = inputElement?.clientWidth;
             const height = inputElement?.clientHeight;
-            const iconNode = document.querySelector('.app-violations .otr-dropdown__icon');
-            if(width && height) {
-                iconNode?.setAttribute('style',
-                    'left: ' + (width - 30) + 'px; ' +
-                    'top: ' + ((height / 2) - 6) + 'px');
+            const iconNode = document.querySelector(
+                '.app-violations .otr-dropdown__icon'
+            );
+            if (width && height) {
+                iconNode?.setAttribute(
+                    'style',
+                    'left: ' + (width - 30) + 'px; ' + 'top: ' + (height / 2 - 6) + 'px'
+                );
             }
         });
         await this.fetchTrafficViolationTypes();
     }
 
     async $onChanges(changes) {
-        if(changes.regionCode && this.regionCode) {
+        if (changes.regionCode && this.regionCode) {
             await this.fetchTrafficViolationTypes();
         }
     }
@@ -71,25 +77,26 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
         query = query.toLowerCase();
 
         const descriptionResults = this.fuseDescription.search(query);
-        return _.chain(descriptionResults).map('item').value();
+        return chain(descriptionResults).map('item').value();
     }
 
     async fetchTrafficViolationTypes() {
-        if(!this.regionCode) {
-            console.warn("No region code provided");
+        if (!this.regionCode) {
+            console.warn('No region code provided');
             return;
         }
 
         try {
             this.isDataLoading = true;
-            const response = await this.trafficViolationControllerApi
-                .getTrafficViolationTypesUsingGET( 'CLIENT',
+            const response =
+                await this.trafficViolationControllerApi.getTrafficViolationTypesUsingGET(
+                    'CLIENT',
                     undefined,
                     undefined,
-                   this.regionCode,
+                    this.regionCode
                 );
             this.violations = response.data.violationTypes;
-        } catch(error) {
+        } catch (error) {
             console.error('ERROR: ', error);
             throw error;
         } finally {
@@ -99,16 +106,15 @@ class ViolationsDropdownComponent implements ViolationsDropdownBindings {
     }
 }
 
-angular.module('otr-ui-shared-components')
-       .component('appViolationsDropdown', {
-           template: template,
-           controller: ViolationsDropdownComponent,
-           controllerAs: 'vm',
-           bindings: {
-               regionCode: '<',
-               inputClass: '@',
-               onSelect: '<'
-           }
-        });
+angular.module('otr-ui-shared-components').component('appViolationsDropdown', {
+    template: template,
+    controller: ViolationsDropdownComponent,
+    controllerAs: 'vm',
+    bindings: {
+        regionCode: '<',
+        inputClass: '@',
+        onSelect: '<'
+    }
+});
 
 ViolationsDropdownComponent.$inject = ['$scope', 'TrafficViolationControllerApi'];

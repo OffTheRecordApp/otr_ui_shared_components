@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
     if (!env.WEBPACK_SERVE) {
         libsToIgnore = {
             angular: 'angular',
-            lodash: '_',
+            'lodash-es': '_',
             'fuse.js': 'commonjs fuse.js'
         };
     }
