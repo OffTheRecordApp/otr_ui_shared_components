@@ -33,7 +33,6 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.2",
     "html-webpack-plugin": "^5.5.0",
-    "lodash": "^4.17.21",
     "merge-stream": "^2.0.0",
     "sass": "^1.37.5",
     "sass-loader": "^13.2.0",
