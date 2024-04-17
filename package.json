@@ -28,6 +28,7 @@
     "@types/angular": "^1.8.2",
     "@types/lodash": "^4.14.172",
     "@types/node": "^16.4.14",
+    "@otr-app/angular-validator": "1.2.10",
     "angular": "~1.6.9",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.2",
@@ -46,7 +47,6 @@
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@otr-app/shared-backend-generated-client": ">= 1.0.0 || < 3.0.0",
-    "@otr-app/angular-validator": "1.2.10",
     "angucomplete-alt": "3.0.0",
     "angular-animate": ">= 1.4.9 || <= 1.6.9",
     "angular-credit-cards": "3.1.7",

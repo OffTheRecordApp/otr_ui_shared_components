@@ -14,8 +14,8 @@ module.exports = (env, argv) => {
     return {
         externals: libsToIgnore,
         entry: {
-            main: './app/index.ts',
-            test: './app/tests/manual/index.ts'
+            main: './app/index.ts'
+            // test: './app/tests/manual/index.ts'
         },
         module: {
             rules: [
